@@ -12,7 +12,7 @@ export default function WorkerDashboard() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
@@ -21,6 +21,32 @@ export default function WorkerDashboard() {
           <p className="text-slate-600">
             Manage your profile, applications, and opportunities.
           </p>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="mb-8 bg-white rounded-lg border border-slate-200 border-b-0">
+          <div className="flex gap-4 border-b border-slate-200 px-6">
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+                activeTab === "dashboard"
+                  ? "text-slate-900 border-blue-600"
+                  : "text-slate-600 border-transparent hover:text-slate-900"
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("profile")}
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+                activeTab === "profile"
+                  ? "text-slate-900 border-blue-600"
+                  : "text-slate-600 border-transparent hover:text-slate-900"
+              }`}
+            >
+              Profile
+            </button>
+          </div>
         </div>
 
         {/* Profile Completion Section */}
