@@ -6,6 +6,9 @@ export interface JobPostFormData {
   payType: 'hourly' | 'fixed';
   payMin: number;
   payMax: number;
+  variableHours: boolean;
+  hoursPerPeriod: number;
+  hoursPeriodType: 'week' | 'month';
   skillsRequired: string[];
   certifications: string[];
   experienceLevel: string;
