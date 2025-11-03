@@ -109,9 +109,6 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
             </p>
           </div>
         </label>
-        {errors.requireBackgroundCheck && (
-          <p className="text-red-500 text-sm mt-2 ml-7">{errors.requireBackgroundCheck}</p>
-        )}
       </div>
 
       {/* Intro Video */}
@@ -132,9 +129,6 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
             </p>
           </div>
         </label>
-        {errors.requireIntroVideo && (
-          <p className="text-red-500 text-sm mt-2 ml-7">{errors.requireIntroVideo}</p>
-        )}
       </div>
 
       {/* References */}
@@ -155,9 +149,6 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
             </p>
           </div>
         </label>
-        {errors.requireReferences && (
-          <p className="text-red-500 text-sm mt-2 ml-7">{errors.requireReferences}</p>
-        )}
       </div>
 
       {/* Language Requirements */}
