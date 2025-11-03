@@ -93,6 +93,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-2">
+              <ViewModeToggle />
               <LanguageSelector />
 
               {user && userProfile && (
