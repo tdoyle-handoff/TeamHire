@@ -652,23 +652,61 @@ export default function FindWork() {
                     </div>
                   </div>
 
-                  {/* Skills */}
+                  {/* Skills & Languages & Licenses */}
                   <div className="mb-4 pb-4 border-t border-slate-200">
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {job.skillsRequired.slice(0, 2).map((skill, i) => (
-                        <span
-                          key={i}
-                          className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                      {job.skillsRequired.length > 2 && (
-                        <span className="text-xs text-slate-600 px-2 py-1">
-                          +{job.skillsRequired.length - 2} more
-                        </span>
-                      )}
+                    {/* Skills */}
+                    <div className="mb-3">
+                      <p className="text-xs font-medium text-slate-600 mb-1">Skills</p>
+                      <div className="flex flex-wrap gap-2">
+                        {job.skillsRequired.slice(0, 2).map((skill, i) => (
+                          <span
+                            key={i}
+                            className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                        {job.skillsRequired.length > 2 && (
+                          <span className="text-xs text-slate-600 px-2 py-1">
+                            +{job.skillsRequired.length - 2} more
+                          </span>
+                        )}
+                      </div>
                     </div>
+
+                    {/* Languages */}
+                    {job.languageRequirements.length > 0 && (
+                      <div className="mb-2">
+                        <p className="text-xs font-medium text-slate-600 mb-1">Languages</p>
+                        <div className="flex flex-wrap gap-1">
+                          {job.languageRequirements.map((lang, i) => (
+                            <span
+                              key={i}
+                              className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded"
+                            >
+                              {lang}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Licenses */}
+                    {job.licensesRequired && job.licensesRequired.length > 0 && (
+                      <div>
+                        <p className="text-xs font-medium text-slate-600 mb-1">Licenses</p>
+                        <div className="flex flex-wrap gap-1">
+                          {job.licensesRequired.map((license, i) => (
+                            <span
+                              key={i}
+                              className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded"
+                            >
+                              {license}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Features */}
