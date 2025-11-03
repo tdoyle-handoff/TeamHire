@@ -355,10 +355,15 @@ export default function FindWork() {
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="w-full px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
                 >
-                  {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
+                  <option value="All Categories">All Categories</option>
+                  {CATEGORY_GROUPS.map((group) => (
+                    <optgroup key={group.category} label={group.category}>
+                      {group.subcategories.map((subcat) => (
+                        <option key={subcat} value={subcat}>
+                          {subcat}
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
               </div>
