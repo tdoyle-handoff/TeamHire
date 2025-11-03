@@ -63,6 +63,14 @@ export const validateStep1 = (data: Partial<JobPostFormData>): StepErrors => {
     errors.payMax = 'Maximum pay must be greater than or equal to minimum pay';
   }
 
+  if (!data.variableHours && (!data.hoursPerPeriod || data.hoursPerPeriod <= 0)) {
+    errors.hoursPerPeriod = 'Hours per period is required when hours are not variable';
+  }
+
+  if (!data.hoursPeriodType) {
+    errors.hoursPeriodType = 'Hours period type is required';
+  }
+
   return errors;
 };
 
