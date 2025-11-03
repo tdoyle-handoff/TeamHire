@@ -317,6 +317,8 @@ export default function FindWork() {
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [minPay, setMinPay] = useState(0);
   const [maxPay, setMaxPay] = useState(50);
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [selectedLicenses, setSelectedLicenses] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
 
   // Filter jobs based on all criteria
