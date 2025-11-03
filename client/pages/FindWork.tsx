@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Search,
   MapPin,
@@ -9,6 +9,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { Layout } from "@/components/Layout";
+import { useAuth } from "@/contexts/AuthContext";
 import { JobPost } from "@shared/types";
 
 // Demo jobs data
