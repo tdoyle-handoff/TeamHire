@@ -753,10 +753,16 @@ export default function FindWork() {
 
                   {/* Action Buttons */}
                   <div className="flex gap-2 pt-4 border-t border-slate-200">
-                    <button className="flex-1 px-4 py-2 rounded-md bg-[#24405A] text-white text-sm font-medium hover:opacity-95 transition-all">
+                    <button
+                      onClick={() => handleApplyNow(job.id)}
+                      className="flex-1 px-4 py-2 rounded-md bg-[#24405A] text-white text-sm font-medium hover:opacity-95 transition-all"
+                    >
                       Apply Now
                     </button>
-                    <button className="flex-1 px-4 py-2 rounded-md bg-slate-100 text-slate-900 text-sm font-medium hover:bg-slate-200 transition-all">
+                    <button
+                      onClick={() => handleMessage(job.id)}
+                      className="flex-1 px-4 py-2 rounded-md bg-slate-100 text-slate-900 text-sm font-medium hover:bg-slate-200 transition-all"
+                    >
                       Message
                     </button>
                   </div>
