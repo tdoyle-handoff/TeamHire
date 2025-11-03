@@ -124,6 +124,7 @@ const demoJobs: JobPost[] = [
     description: "Fast-paced restaurant kitchen environment",
     skillsRequired: ["Food Prep", "Teamwork", "Cleanliness"],
     languageRequirements: ["English"],
+    licensesRequired: ["Food Handler License"],
     payRangeHourly: { min: 16, max: 18 },
     locationCityArea: "San Francisco, CA",
     schedule: {
