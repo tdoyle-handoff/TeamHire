@@ -179,11 +179,32 @@ export default function PostJob() {
     setSkillsRequired(skillsRequired.filter((s) => s !== skill));
   };
 
+  const toggleNoLanguageRequirement = () => {
+    setNoLanguageRequirement(!noLanguageRequirement);
+    if (!noLanguageRequirement) {
+      setLanguageRequirements([]);
+      setCustomLanguage("");
+    }
+  };
+
   const toggleLanguage = (language: string) => {
+    if (noLanguageRequirement) {
+      setNoLanguageRequirement(false);
+    }
     if (languageRequirements.includes(language)) {
       setLanguageRequirements(languageRequirements.filter((l) => l !== language));
     } else {
       setLanguageRequirements([...languageRequirements, language]);
+    }
+  };
+
+  const addCustomLanguage = () => {
+    if (customLanguage.trim() && !languageRequirements.includes(customLanguage.trim())) {
+      setLanguageRequirements([...languageRequirements, customLanguage.trim()]);
+      setCustomLanguage("");
+      if (noLanguageRequirement) {
+        setNoLanguageRequirement(false);
+      }
     }
   };
 
