@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ViewModeToggle } from "@/components/ViewModeToggle";
+import { AccessibilityControls } from "@/components/AccessibilityControls";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
