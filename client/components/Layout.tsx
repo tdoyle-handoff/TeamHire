@@ -95,7 +95,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="flex items-center gap-2">
               <AccessibilityControls />
               <ViewModeToggle />
-              <LanguageSelector />
 
               {user && userProfile && (
                 <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full text-sm font-medium text-foreground">
