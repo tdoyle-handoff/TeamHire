@@ -417,7 +417,13 @@ export default function FindWork() {
       {/* Hero */}
       <section className="bg-[#FAFAFA] border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">Find Work</h1>
+          <div className="flex items-center gap-2 mb-4">
+            <h1 className="text-3xl font-bold text-slate-900">Find Work</h1>
+            <ReadAloudButton
+              text={`Find Work. Browse ${demoJobs.length} verified job opportunities from trusted employers`}
+              size="lg"
+            />
+          </div>
           <p className="text-slate-600">
             Browse {demoJobs.length} verified job opportunities from trusted employers
           </p>
