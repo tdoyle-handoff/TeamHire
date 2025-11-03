@@ -26,6 +26,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navLinks: Array<{ href: string; label: string; icon?: any }> = [
     { href: "/", label: "Home" },
+    { href: "/find-work", label: "Find a Job" },
+    { href: "/post-job", label: "Post a Job" },
     { href: "/how-it-works", label: "How It Works" },
     { href: "/safety-privacy", label: "Safety & Privacy", icon: Shield },
     { href: "/about", label: "About" },
