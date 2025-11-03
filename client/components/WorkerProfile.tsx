@@ -653,9 +653,15 @@ export const WorkerProfile: React.FC = () => {
         {activeTab === "education" && (
           <div className="space-y-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold text-slate-900">
-                Education
-              </h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Education
+                </h2>
+                <ReadAloudButton
+                  text={`Your education: ${education.map((e) => `${e.field} from ${e.school}`).join(", ")}`}
+                  size="md"
+                />
+              </div>
               <button
                 onClick={handleAddEducation}
                 className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
