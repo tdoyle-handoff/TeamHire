@@ -23,7 +23,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     });
   };
 
-  const navLinks = [
+  const navLinks: Array<{ href: string; label: string; icon?: any }> = [
     { href: "/", label: "Home" },
     { href: "/safety-privacy", label: "Safety & Privacy", icon: Shield },
     { href: "/about", label: "About" },
@@ -48,20 +48,24 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors",
-                    isActive(link.href)
-                      ? "text-primary border-b-2 border-primary pb-1"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={cn(
+                      "text-sm font-medium transition-colors flex items-center gap-1.5",
+                      isActive(link.href)
+                        ? "text-primary border-b-2 border-primary pb-1"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {Icon && <Icon className="w-4 h-4" />}
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side actions */}
