@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ViewModeProvider } from "@/contexts/ViewModeContext";
 import { CollectiveProvider } from "@/contexts/CollectiveContext";
 import { AccessibilityProvider } from "@/contexts/AccessibilityContext";
+import { ApplicationProvider } from "@/contexts/ApplicationContext";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import WorkerDashboard from "./pages/WorkerDashboard";
