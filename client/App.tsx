@@ -35,7 +35,8 @@ const App = () => (
         <AccessibilityProvider>
           <ViewModeProvider>
             <CollectiveProvider>
-              <AuthProvider>
+              <ApplicationProvider>
+                <AuthProvider>
                 <Toaster />
                 <Sonner />
                 <BrowserRouter>
@@ -62,7 +63,8 @@ const App = () => (
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </BrowserRouter>
-              </AuthProvider>
+                </AuthProvider>
+              </ApplicationProvider>
             </CollectiveProvider>
           </ViewModeProvider>
         </AccessibilityProvider>
