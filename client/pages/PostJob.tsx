@@ -1,295 +1,156 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Layout } from "@/components/Layout";
-import { X, Plus } from "lucide-react";
-import { JobCategory } from "@shared/types";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Layout } from '@/components/Layout';
+import { toast } from 'sonner';
+import Step1 from '@/components/post-job/Step1';
+import Step2 from '@/components/post-job/Step2';
+import Step3 from '@/components/post-job/Step3';
+import Step4 from '@/components/post-job/Step4';
+import { JobPostFormData, StepErrors, isStep1Valid, isStep2Valid, isStep3Valid } from '@/lib/job-post-validation';
 
-const JOB_CATEGORIES = [
-  {
-    category: "Skilled Trades & Construction",
-    subcategories: [
-      "Carpentry",
-      "Electrical",
-      "Plumbing",
-      "HVAC / Refrigeration",
-      "Masonry / Concrete",
-      "Roofing / Framing",
-      "Welding / Fabrication",
-      "General Construction Labor",
-      "Site Cleanup / Demolition",
-    ],
-  },
-  {
-    category: "Home & Property Services",
-    subcategories: [
-      "Residential Cleaning",
-      "Handyman / Maintenance",
-      "Landscaping / Lawn Care",
-      "Gardening / Tree Trimming",
-      "Painting / Drywall",
-      "Pool Maintenance",
-      "Snow Removal",
-      "Pest Control",
-    ],
-  },
-  {
-    category: "Hospitality & Food Service",
-    subcategories: [
-      "Line Cook / Prep Cook",
-      "Server / Waitstaff",
-      "Bartender",
-      "Dishwasher",
-      "Host / Front Desk",
-      "Housekeeping (Hotels, Airbnb)",
-      "Catering & Events",
-      "Barista / Café Assistant",
-    ],
-  },
-  {
-    category: "Caregiving & Personal Support",
-    subcategories: [
-      "Childcare / Nanny",
-      "Elder Care / Companion",
-      "Home Health Aide",
-      "Personal Care Assistant",
-      "Pet Sitting / Dog Walking",
-      "Housekeeper / Domestic Worker",
-    ],
-  },
-  {
-    category: "Transportation & Logistics",
-    subcategories: [
-      "Delivery Driver",
-      "Courier / Messenger",
-      "Mover / Loader",
-      "Forklift Operator",
-      "Warehouse Associate",
-      "Inventory Clerk",
-      "Fleet Maintenance",
-    ],
-  },
-  {
-    category: "Facilities & Operations",
-    subcategories: [
-      "Janitorial / Custodial",
-      "Security / Night Watch",
-      "Building Maintenance",
-      "Groundskeeping",
-      "Mailroom / Logistics",
-      "Equipment Technician",
-    ],
-  },
-  {
-    category: "Retail & Customer Service",
-    subcategories: [
-      "Cashier",
-      "Sales Associate",
-      "Stock Clerk",
-      "Customer Service Representative",
-    ],
-  },
-  {
-    category: "Beauty & Wellness",
-    subcategories: [
-      "Hairstylist",
-      "Barber",
-      "Massage Therapist",
-      "Esthetician",
-    ],
-  },
-  {
-    category: "Creative & Media",
-    subcategories: [
-      "Photographer",
-      "Graphic Designer",
-      "Video Editor",
-      "Writer",
-    ],
-  },
-];
-
-const LANGUAGES = [
-  "English",
-  "Spanish",
-  "Mandarin Chinese",
-  "Hindi",
-  "French",
-  "Arabic",
-  "Portuguese",
-  "Russian",
-  "Japanese",
-  "Vietnamese",
-  "Italian",
-  "Korean",
-  "German",
-  "Polish",
-  "Thai",
-];
-
-const DAYS_OF_WEEK = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-const TIME_BLOCKS = [
-  "6am-9am",
-  "9am-12pm",
-  "12pm-3pm",
-  "3pm-6pm",
-  "6pm-9pm",
-  "9pm-12am",
+const STEPS = [
+  { number: 1, title: 'About the Job' },
+  { number: 2, title: 'Worker Requirements' },
+  { number: 3, title: 'Conduct & Safety' },
+  { number: 4, title: 'Preview & Publish' },
 ];
 
 export default function PostJob() {
   const navigate = useNavigate();
-
-  // Form state
-  const [jobTitle, setJobTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState<JobCategory>("Carpentry");
-  const [skillsRequired, setSkillsRequired] = useState<string[]>([]);
-  const [skillInput, setSkillInput] = useState("");
-  const [locationCityArea, setLocationCityArea] = useState("");
-  const [payMin, setPayMin] = useState(15);
-  const [payMax, setPayMax] = useState(25);
-  const [startDate, setStartDate] = useState("");
-  const [daysOfWeek, setDaysOfWeek] = useState<string[]>([]);
-  const [timeBlocks, setTimeBlocks] = useState<string[]>([]);
-  const [noLanguageRequirement, setNoLanguageRequirement] = useState(false);
-  const [languageRequirements, setLanguageRequirements] = useState<string[]>([]);
-  const [customLanguage, setCustomLanguage] = useState("");
-  const [certifications, setCertifications] = useState<string[]>([]);
-  const [certificationInput, setCertificationInput] = useState("");
-  const [experienceLevel, setExperienceLevel] = useState("No specific requirement");
-  const [requireTools, setRequireTools] = useState(false);
-  const [toolsDescription, setToolsDescription] = useState("");
-  const [requireTransportation, setRequireTransportation] = useState(false);
-  const [requireBackgroundCheck, setRequireBackgroundCheck] = useState(false);
-  const [requireIntroVideo, setRequireIntroVideo] = useState(false);
-  const [requireReferences, setRequireReferences] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSavingDraft, setIsSavingDraft] = useState(false);
 
-  const addSkill = () => {
-    if (skillInput.trim() && !skillsRequired.includes(skillInput.trim())) {
-      setSkillsRequired([...skillsRequired, skillInput.trim()]);
-      setSkillInput("");
+  const [formData, setFormData] = useState<Partial<JobPostFormData>>({
+    jobTitle: '',
+    category: '',
+    description: '',
+    location: '',
+    payType: 'hourly',
+    payMin: 15,
+    payMax: 25,
+    skillsRequired: [],
+    certifications: [],
+    experienceLevel: 'No specific requirement',
+    requireTools: false,
+    toolsDescription: '',
+    requireTransportation: false,
+    noLanguageRequirement: false,
+    languageRequirements: [],
+    requireBackgroundCheck: false,
+    requireIntroVideo: false,
+    requireReferences: false,
+  });
+
+  const [errors, setErrors] = useState<StepErrors>({});
+
+  const validateCurrentStep = async (): Promise<boolean> => {
+    switch (currentStep) {
+      case 1:
+        return (window as any).__validateStep1?.() || isStep1Valid(formData);
+      case 2:
+        return (window as any).__validateStep2?.() || isStep2Valid(formData);
+      case 3:
+        return (window as any).__validateStep3?.() || isStep3Valid(formData);
+      default:
+        return true;
     }
   };
 
-  const removeSkill = (skill: string) => {
-    setSkillsRequired(skillsRequired.filter((s) => s !== skill));
-  };
-
-  const toggleNoLanguageRequirement = () => {
-    setNoLanguageRequirement(!noLanguageRequirement);
-    if (!noLanguageRequirement) {
-      setLanguageRequirements([]);
-      setCustomLanguage("");
-    }
-  };
-
-  const toggleLanguage = (language: string) => {
-    if (noLanguageRequirement) {
-      setNoLanguageRequirement(false);
-    }
-    if (languageRequirements.includes(language)) {
-      setLanguageRequirements(languageRequirements.filter((l) => l !== language));
-    } else {
-      setLanguageRequirements([...languageRequirements, language]);
-    }
-  };
-
-  const addCustomLanguage = () => {
-    if (customLanguage.trim() && !languageRequirements.includes(customLanguage.trim())) {
-      setLanguageRequirements([...languageRequirements, customLanguage.trim()]);
-      setCustomLanguage("");
-      if (noLanguageRequirement) {
-        setNoLanguageRequirement(false);
+  const handleNextStep = async () => {
+    const isValid = await validateCurrentStep();
+    if (isValid) {
+      if (currentStep < STEPS.length) {
+        setCurrentStep(currentStep + 1);
+        window.scrollTo(0, 0);
       }
     }
   };
 
-  const addCertification = () => {
-    if (certificationInput.trim() && !certifications.includes(certificationInput.trim())) {
-      setCertifications([...certifications, certificationInput.trim()]);
-      setCertificationInput("");
+  const handlePreviousStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+      window.scrollTo(0, 0);
     }
   };
 
-  const removeCertification = (cert: string) => {
-    setCertifications(certifications.filter((c) => c !== cert));
-  };
-
-  const toggleDayOfWeek = (day: string) => {
-    if (daysOfWeek.includes(day)) {
-      setDaysOfWeek(daysOfWeek.filter((d) => d !== day));
-    } else {
-      setDaysOfWeek([...daysOfWeek, day]);
+  const handleSaveDraft = async () => {
+    setIsSavingDraft(true);
+    try {
+      // TODO: Wire to your data/storage later
+      console.log('Saving draft:', formData);
+      toast.success('Draft saved successfully!');
+    } catch (error) {
+      toast.error('Failed to save draft');
+    } finally {
+      setIsSavingDraft(false);
     }
   };
 
-  const toggleTimeBlock = (block: string) => {
-    if (timeBlocks.includes(block)) {
-      setTimeBlocks(timeBlocks.filter((t) => t !== block));
-    } else {
-      setTimeBlocks([...timeBlocks, block]);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!jobTitle.trim() || !description.trim() || !locationCityArea.trim()) {
-      alert("Please fill in all required fields");
-      return;
-    }
-
-    if (skillsRequired.length === 0) {
-      alert("Please add at least one skill requirement");
-      return;
-    }
-
-    if (daysOfWeek.length === 0 || timeBlocks.length === 0 || !startDate) {
-      alert("Please set a schedule");
-      return;
-    }
-
+  const handlePublish = async () => {
     setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Job Posted:", {
-        jobTitle,
-        description,
-        category,
-        skillsRequired,
-        certifications: certifications.length > 0 ? certifications : "None specified",
-        experienceLevel,
-        toolsRequired: requireTools ? toolsDescription : "Not required",
-        transportationRequired: requireTransportation,
-        locationCityArea,
-        payRangeHourly: { min: payMin, max: payMax },
-        schedule: {
-          startDate: new Date(startDate),
-          daysOfWeek,
-          timeBlocks,
-        },
-        languageRequirements: noLanguageRequirement ? "no requirement" : languageRequirements,
-        requireBackgroundCheck,
-        requireIntroVideo,
-        requireReferences,
-      });
-
+    try {
+      // TODO: Wire to your API/database later
+      console.log('Publishing job:', formData);
+      
+      toast.success('Job posted successfully!');
+      
+      setTimeout(() => {
+        navigate('/employer-dashboard', {
+          state: { message: 'Job posted successfully!' },
+        });
+      }, 1500);
+    } catch (error) {
+      toast.error('Failed to post job');
+    } finally {
       setIsSubmitting(false);
-      navigate("/employer-dashboard", {
-        state: { message: "Job posted successfully!" },
-      });
-    }, 1000);
+    }
+  };
+
+  const handleEditSection = (step: number) => {
+    setCurrentStep(step);
+    window.scrollTo(0, 0);
+  };
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <Step1
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+            setErrors={setErrors}
+          />
+        );
+      case 2:
+        return (
+          <Step2
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+            setErrors={setErrors}
+          />
+        );
+      case 3:
+        return (
+          <Step3
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+            setErrors={setErrors}
+          />
+        );
+      case 4:
+        return (
+          <Step4
+            formData={formData}
+            onEditSection={handleEditSection}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -306,536 +167,104 @@ export default function PostJob() {
 
       <section className="bg-white py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Job Title and Category */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <label htmlFor="jobTitle" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Job Title <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="jobTitle"
-                  type="text"
-                  value={jobTitle}
-                  onChange={(e) => setJobTitle(e.target.value)}
-                  placeholder="e.g., House Cleaning - 3 Bedroom Home"
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="category" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Category <span className="text-red-500">*</span>
-                </label>
-                <select
-                  id="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value as JobCategory)}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+          {/* Step Indicator */}
+          <div className="mb-8">
+            <div className="flex justify-between mb-2">
+              {STEPS.map((step) => (
+                <div
+                  key={step.number}
+                  className="flex-1 flex flex-col items-center"
                 >
-                  {JOB_CATEGORIES.map((group) => (
-                    <optgroup key={group.category} label={group.category}>
-                      {group.subcategories.map((subcat) => (
-                        <option key={subcat} value={subcat}>
-                          {subcat}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-              </div>
+                  <button
+                    type="button"
+                    onClick={() => step.number < currentStep && setCurrentStep(step.number)}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold mb-2 transition-all ${
+                      currentStep === step.number
+                        ? 'bg-[#24405A] text-white'
+                        : step.number < currentStep
+                        ? 'bg-green-500 text-white cursor-pointer hover:bg-green-600'
+                        : 'bg-slate-200 text-slate-600'
+                    }`}
+                  >
+                    {step.number < currentStep ? '✓' : step.number}
+                  </button>
+                  <p className="text-xs sm:text-sm font-medium text-center text-slate-700 hidden sm:block">
+                    {step.title}
+                  </p>
+                </div>
+              ))}
             </div>
-
-            {/* Description */}
-            <div>
-              <label htmlFor="description" className="block text-sm font-semibold text-slate-900 mb-2">
-                Job Description <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Describe the job, responsibilities, and what you're looking for..."
-                rows={5}
-                className="w-full px-4 py-3 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent resize-none"
-                required
+            {/* Progress bar */}
+            <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#24405A] transition-all duration-300"
+                style={{ width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%` }}
               />
             </div>
+          </div>
 
-            {/* Location and Pay */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-1">
-                <label htmlFor="location" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Location <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="location"
-                  type="text"
-                  value={locationCityArea}
-                  onChange={(e) => setLocationCityArea(e.target.value)}
-                  placeholder="e.g., San Francisco, CA"
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="payMin" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Min Pay/hr <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="payMin"
-                  type="number"
-                  min="0"
-                  step="1"
-                  value={payMin}
-                  onChange={(e) => setPayMin(parseInt(e.target.value) || 0)}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="payMax" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Max Pay/hr <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="payMax"
-                  type="number"
-                  min="0"
-                  step="1"
-                  value={payMax}
-                  onChange={(e) => setPayMax(parseInt(e.target.value) || 0)}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Skills Required */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-2">
-                Skills Required <span className="text-red-500">*</span>
-              </label>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  value={skillInput}
-                  onChange={(e) => setSkillInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      addSkill();
-                    }
-                  }}
-                  placeholder="e.g., House Cleaning, Detail Oriented"
-                  className="flex-1 px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={addSkill}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 transition-colors font-medium"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {skillsRequired.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex items-center gap-2 bg-[#24405A] text-white px-3 py-1 rounded-full text-sm"
-                  >
-                    {skill}
-                    <button
-                      type="button"
-                      onClick={() => removeSkill(skill)}
-                      className="hover:bg-white/20 rounded-full p-0.5"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
+          {/* Summary Errors */}
+          {Object.keys(errors).length > 0 && currentStep !== 4 && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm font-semibold text-red-900 mb-2">Please fix the following errors:</p>
+              <ul className="list-disc list-inside space-y-1">
+                {Object.values(errors).map((error, idx) => (
+                  <li key={idx} className="text-sm text-red-800">{error}</li>
                 ))}
-              </div>
+              </ul>
             </div>
+          )}
 
-            {/* Certifications Required */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-2">
-                Certifications Required
-              </label>
-              <p className="text-xs text-slate-600 mb-3">
-                Optional: Specify any required certifications
-              </p>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  value={certificationInput}
-                  onChange={(e) => setCertificationInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      addCertification();
-                    }
-                  }}
-                  placeholder="e.g., CPR Certification, OSHA 30, Forklift License"
-                  className="flex-1 px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={addCertification}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 transition-colors font-medium"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
+          {/* Step Content */}
+          <div className="mb-8">
+            {renderStep()}
+          </div>
 
-              {certifications.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {certifications.map((cert) => (
-                    <span
-                      key={cert}
-                      className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-sm"
-                    >
-                      {cert}
-                      <button
-                        type="button"
-                        onClick={() => removeCertification(cert)}
-                        className="hover:bg-amber-200 rounded-full p-0.5"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Experience Level and Tools */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Minimum Experience Level */}
-              <div>
-                <label htmlFor="experience" className="block text-sm font-semibold text-slate-900 mb-2">
-                  Minimum Experience Level
-                </label>
-                <select
-                  id="experience"
-                  value={experienceLevel}
-                  onChange={(e) => setExperienceLevel(e.target.value)}
-                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
-                >
-                  <option value="No specific requirement">No specific requirement</option>
-                  <option value="Entry level (no experience)">Entry level (no experience)</option>
-                  <option value="Less than 1 year">Less than 1 year</option>
-                  <option value="1-2 years">1-2 years</option>
-                  <option value="3-5 years">3-5 years</option>
-                  <option value="5+ years">5+ years</option>
-                  <option value="10+ years">10+ years</option>
-                </select>
-              </div>
-
-              {/* Tools or Uniform Required */}
-              <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">
-                  Tools or Uniform
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={requireTools}
-                    onChange={(e) => setRequireTools(e.target.checked)}
-                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
-                  />
-                  <span className="text-sm text-slate-700">
-                    Worker must provide/wear tools or uniform
-                  </span>
-                </label>
-                {requireTools && (
-                  <input
-                    type="text"
-                    value={toolsDescription}
-                    onChange={(e) => setToolsDescription(e.target.value)}
-                    placeholder="e.g., Steel-toed boots, hard hat, work gloves"
-                    className="mt-2 w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent text-sm"
-                  />
-                )}
-              </div>
-            </div>
-
-            {/* Transportation Access */}
-            <div>
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={requireTransportation}
-                  onChange={(e) => setRequireTransportation(e.target.checked)}
-                  className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
-                />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">
-                    Transportation Access Required
-                  </p>
-                  <p className="text-xs text-slate-600 mt-0.5">
-                    Worker must have reliable transportation for off-site work
-                  </p>
-                </div>
-              </label>
-            </div>
-
-            {/* Language Requirements */}
-            <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-3">
-                Language Requirements
-              </label>
-
-              {/* No Requirement Option */}
-              <div className="mb-4">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={noLanguageRequirement}
-                    onChange={toggleNoLanguageRequirement}
-                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
-                  />
-                  <span className="text-sm font-medium text-slate-700">
-                    No specific language requirement
-                  </span>
-                </label>
-              </div>
-
-              {/* Language Checkboxes */}
-              {!noLanguageRequirement && (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {LANGUAGES.map((language) => (
-                      <label
-                        key={language}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={languageRequirements.includes(language)}
-                          onChange={() => toggleLanguage(language)}
-                          className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
-                        />
-                        <span className="text-sm text-slate-700">{language}</span>
-                      </label>
-                    ))}
-                  </div>
-
-                  {/* Custom Language Input */}
-                  <div className="mt-4 pt-4 border-t border-slate-200">
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Other language
-                    </label>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        value={customLanguage}
-                        onChange={(e) => setCustomLanguage(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            e.preventDefault();
-                            addCustomLanguage();
-                          }
-                        }}
-                        placeholder="e.g., Amharic, Hmong, Swahili"
-                        className="flex-1 px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent text-sm"
-                      />
-                      <button
-                        type="button"
-                        onClick={addCustomLanguage}
-                        className="px-4 py-2 bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 transition-colors font-medium text-sm"
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Selected Languages Display */}
-                  {languageRequirements.length > 0 && (
-                    <div className="mt-4 p-3 bg-slate-50 rounded-md">
-                      <p className="text-xs font-medium text-slate-600 mb-2">
-                        Selected languages:
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {languageRequirements.map((lang) => (
-                          <span
-                            key={lang}
-                            className="inline-flex items-center gap-1.5 bg-[#24405A] text-white px-2.5 py-1 rounded-full text-xs"
-                          >
-                            {lang}
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setLanguageRequirements(
-                                  languageRequirements.filter((l) => l !== lang)
-                                )
-                              }
-                              className="hover:bg-white/20 rounded-full p-0.5"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* Schedule */}
-            <div className="border-t border-slate-200 pt-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                Schedule <span className="text-red-500">*</span>
-              </h3>
-
-              <div className="space-y-6">
-                {/* Start Date */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="startDate" className="block text-sm font-medium text-slate-700 mb-2">
-                      Start Date <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      id="startDate"
-                      type="date"
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* Days of Week */}
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-3">
-                    Days of Week <span className="text-red-500">*</span>
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {DAYS_OF_WEEK.map((day) => (
-                      <label
-                        key={day}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={daysOfWeek.includes(day)}
-                          onChange={() => toggleDayOfWeek(day)}
-                          className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
-                        />
-                        <span className="text-sm text-slate-700">{day}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Time Blocks */}
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-3">
-                    Time Blocks <span className="text-red-500">*</span>
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {TIME_BLOCKS.map((block) => (
-                      <label
-                        key={block}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={timeBlocks.includes(block)}
-                          onChange={() => toggleTimeBlock(block)}
-                          className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
-                        />
-                        <span className="text-sm text-slate-700">{block}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Requirements */}
-            <div className="border-t border-slate-200 pt-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                Requirements
-              </h3>
-
-              <div className="space-y-4">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={requireBackgroundCheck}
-                    onChange={(e) => setRequireBackgroundCheck(e.target.checked)}
-                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">
-                      Require Background Check
-                    </p>
-                    <p className="text-xs text-slate-600">
-                      Workers must have a completed background check
-                    </p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={requireIntroVideo}
-                    onChange={(e) => setRequireIntroVideo(e.target.checked)}
-                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">
-                      Require Intro Video
-                    </p>
-                    <p className="text-xs text-slate-600">
-                      Workers must submit an introduction video
-                    </p>
-                  </div>
-                </label>
-
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={requireReferences}
-                    onChange={(e) => setRequireReferences(e.target.checked)}
-                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">
-                      Require References
-                    </p>
-                    <p className="text-xs text-slate-600">
-                      Workers must provide professional references
-                    </p>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <div className="flex gap-4 pt-6 border-t border-slate-200">
+          {/* Navigation Buttons */}
+          <div className="flex items-center justify-between gap-4 pt-6 border-t border-slate-200">
+            {currentStep > 1 ? (
               <button
                 type="button"
-                onClick={() => navigate("/employer-dashboard")}
-                className="flex-1 px-6 py-3 border border-slate-300 text-slate-900 font-semibold rounded-md hover:bg-slate-50 transition-colors"
+                onClick={handlePreviousStep}
+                className="px-6 py-3 border border-slate-300 text-slate-900 font-semibold rounded-md hover:bg-slate-50 transition-colors"
               >
-                Cancel
+                Back
               </button>
+            ) : (
+              <div />
+            )}
+
+            <div className="flex gap-3">
               <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex-1 px-6 py-3 bg-[#24405A] text-white font-semibold rounded-md hover:opacity-95 disabled:opacity-50 transition-all"
+                type="button"
+                onClick={handleSaveDraft}
+                disabled={isSavingDraft}
+                className="px-6 py-3 border border-slate-300 text-slate-900 font-semibold rounded-md hover:bg-slate-50 transition-colors disabled:opacity-50"
               >
-                {isSubmitting ? "Posting..." : "Post Job"}
+                {isSavingDraft ? 'Saving...' : 'Save Draft'}
               </button>
+
+              {currentStep < 4 ? (
+                <button
+                  type="button"
+                  onClick={handleNextStep}
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-[#24405A] text-white font-semibold rounded-md hover:opacity-95 transition-all disabled:opacity-50"
+                >
+                  Continue
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handlePublish}
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition-all disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Publishing...' : 'Publish Job'}
+                </button>
+              )}
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </Layout>
