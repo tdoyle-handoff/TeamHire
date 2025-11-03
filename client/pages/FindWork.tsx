@@ -387,6 +387,8 @@ export default function FindWork() {
     setSelectedLocation("All Locations");
     setMinPay(0);
     setMaxPay(50);
+    setSelectedLanguages([]);
+    setSelectedLicenses([]);
   };
 
   return (
