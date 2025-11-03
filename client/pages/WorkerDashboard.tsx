@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { WorkerProfileCompletion } from "@/components/WorkerProfileCompletion";
 import { WorkerProfile } from "@/components/WorkerProfile";
 import { WorkerCollectivesPanel } from "@/components/WorkerCollectivesPanel";
+import { WorkerApplicationsPanel } from "@/components/WorkerApplicationsPanel";
 import { useAuth } from "@/contexts/AuthContext";
 import { Briefcase, CheckCircle } from "lucide-react";
 
