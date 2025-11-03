@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, LogOut, Settings, Shield, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
+import { LanguageSelector } from "@/components/LanguageSelector";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface LayoutProps {
@@ -74,7 +75,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             </nav>
 
             {/* Right side actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <LanguageSelector />
+
               {user && userProfile && (
                 <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full text-sm font-medium text-foreground">
                   <span className="capitalize">{userProfile.role}</span>
