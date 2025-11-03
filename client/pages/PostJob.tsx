@@ -163,6 +163,12 @@ export default function PostJob() {
   const [noLanguageRequirement, setNoLanguageRequirement] = useState(false);
   const [languageRequirements, setLanguageRequirements] = useState<string[]>([]);
   const [customLanguage, setCustomLanguage] = useState("");
+  const [certifications, setCertifications] = useState<string[]>([]);
+  const [certificationInput, setCertificationInput] = useState("");
+  const [experienceLevel, setExperienceLevel] = useState("No specific requirement");
+  const [requireTools, setRequireTools] = useState(false);
+  const [toolsDescription, setToolsDescription] = useState("");
+  const [requireTransportation, setRequireTransportation] = useState(false);
   const [requireBackgroundCheck, setRequireBackgroundCheck] = useState(false);
   const [requireIntroVideo, setRequireIntroVideo] = useState(false);
   const [requireReferences, setRequireReferences] = useState(false);
