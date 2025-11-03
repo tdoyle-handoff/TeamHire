@@ -279,6 +279,38 @@ const ALL_CATEGORIES = CATEGORY_GROUPS.flatMap((g) => g.subcategories);
 
 const LOCATIONS = ["All Locations", "San Francisco, CA", "Oakland, CA", "Berkeley, CA", "San Jose, CA", "Palo Alto, CA"];
 
+const LANGUAGES = [
+  "English",
+  "Spanish",
+  "Mandarin Chinese",
+  "Hindi",
+  "French",
+  "Arabic",
+  "Portuguese",
+  "Russian",
+  "Japanese",
+  "Vietnamese",
+  "Italian",
+  "Korean",
+  "German",
+  "Polish",
+  "Thai",
+];
+
+const LICENSES = [
+  "Driver's License",
+  "Commercial Driver's License (CDL)",
+  "Forklift License",
+  "Electrical License",
+  "Plumbing License",
+  "HVAC License",
+  "First Aid Certification",
+  "CPR Certification",
+  "Food Handler License",
+  "OSHA Certification",
+  "Commercial License",
+];
+
 export default function FindWork() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
