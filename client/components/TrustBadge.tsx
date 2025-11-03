@@ -25,7 +25,11 @@ const bgColorMap = {
   secure: "bg-warm-neutral/10",
 };
 
-export const TrustBadge: React.FC<TrustBadgeProps> = ({ icon, title, description }) => {
+export const TrustBadge: React.FC<TrustBadgeProps> = ({
+  icon,
+  title,
+  description,
+}) => {
   const Icon = iconMap[icon];
   const iconColor = colorMap[icon];
   const bgColor = bgColorMap[icon];

@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, Briefcase, Clock, Shield, Video, MapPin, DollarSign, CheckCircle, Star } from "lucide-react";
+import {
+  ArrowRight,
+  Users,
+  Briefcase,
+  Clock,
+  Shield,
+  Video,
+  MapPin,
+  DollarSign,
+  CheckCircle,
+  Star,
+} from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { JobCard } from "@/components/JobCard";
 import { WorkerCard } from "@/components/WorkerCard";
@@ -296,7 +307,10 @@ const demoWorkers: WorkerProfile[] = [
     payExpectationHourly: { min: 20, max: 28 },
     backgroundCheckStatus: "complete",
     references: [
-      { type: "text", value: "Landscape company owner - Dedicated professional" },
+      {
+        type: "text",
+        value: "Landscape company owner - Dedicated professional",
+      },
     ],
     reliabilityScore: 94,
     profileVisibility: "publicMinimal",
@@ -310,7 +324,9 @@ export default function Home() {
   const [showMoreWorkers, setShowMoreWorkers] = useState(false);
 
   const displayedJobs = showMoreJobs ? demoJobs : demoJobs.slice(0, 3);
-  const displayedWorkers = showMoreWorkers ? demoWorkers : demoWorkers.slice(0, 3);
+  const displayedWorkers = showMoreWorkers
+    ? demoWorkers
+    : demoWorkers.slice(0, 3);
 
   return (
     <Layout>
@@ -381,7 +397,8 @@ export default function Home() {
                 Create Your Profile
               </h3>
               <p className="text-muted-foreground text-sm">
-                Share your skills and experience. Last name and address are optional—you control your privacy.
+                Share your skills and experience. Last name and address are
+                optional—you control your privacy.
               </p>
             </div>
 
@@ -395,7 +412,8 @@ export default function Home() {
                 Apply to Jobs
               </h3>
               <p className="text-muted-foreground text-sm">
-                Browse verified jobs and apply directly. Connect with employers who respect your time.
+                Browse verified jobs and apply directly. Connect with employers
+                who respect your time.
               </p>
             </div>
 
@@ -409,7 +427,8 @@ export default function Home() {
                 Get Hired & Earn
               </h3>
               <p className="text-muted-foreground text-sm">
-                Secure the job. After completion, both parties can leave ratings and reviews.
+                Secure the job. After completion, both parties can leave ratings
+                and reviews.
               </p>
             </div>
           </div>
@@ -426,7 +445,8 @@ export default function Home() {
                 Post a Job
               </h3>
               <p className="text-muted-foreground text-sm">
-                Describe your needs. Request intro videos, background checks, or references.
+                Describe your needs. Request intro videos, background checks, or
+                references.
               </p>
             </div>
 
@@ -440,7 +460,8 @@ export default function Home() {
                 Vet Candidates
               </h3>
               <p className="text-muted-foreground text-sm">
-                Review verified profiles, ratings, and communications. You're in control.
+                Review verified profiles, ratings, and communications. You're in
+                control.
               </p>
             </div>
 
@@ -454,7 +475,8 @@ export default function Home() {
                 Hire with Confidence
               </h3>
               <p className="text-muted-foreground text-sm">
-                Build relationships with reliable workers and watch your team grow.
+                Build relationships with reliable workers and watch your team
+                grow.
               </p>
             </div>
           </div>
@@ -499,29 +521,33 @@ export default function Home() {
               <li className="flex gap-3">
                 <CheckCircle className="w-5 h-5 text-natural-green flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-foreground">No exploitation.</strong> Transparent
-                  pricing and fair terms.
+                  <strong className="text-foreground">No exploitation.</strong>{" "}
+                  Transparent pricing and fair terms.
                 </span>
               </li>
               <li className="flex gap-3">
                 <CheckCircle className="w-5 h-5 text-natural-green flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Your control.</strong> Optional data
-                  fields mean you decide what's shared.
+                  <strong className="text-foreground">Your control.</strong>{" "}
+                  Optional data fields mean you decide what's shared.
                 </span>
               </li>
               <li className="flex gap-3">
                 <CheckCircle className="w-5 h-5 text-natural-green flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Real accountability.</strong> Verified
-                  reviews post-completion.
+                  <strong className="text-foreground">
+                    Real accountability.
+                  </strong>{" "}
+                  Verified reviews post-completion.
                 </span>
               </li>
               <li className="flex gap-3">
                 <CheckCircle className="w-5 h-5 text-natural-green flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Safe communication.</strong> In-app
-                  messaging with identity verification.
+                  <strong className="text-foreground">
+                    Safe communication.
+                  </strong>{" "}
+                  In-app messaging with identity verification.
                 </span>
               </li>
             </ul>
@@ -555,7 +581,9 @@ export default function Home() {
                 key={job.id}
                 job={job}
                 onApply={() => console.log("Apply clicked for job:", job.id)}
-                onMessage={() => console.log("Message clicked for job:", job.id)}
+                onMessage={() =>
+                  console.log("Message clicked for job:", job.id)
+                }
               />
             ))}
           </div>
@@ -599,8 +627,12 @@ export default function Home() {
               <WorkerCard
                 key={worker.id}
                 worker={worker}
-                onContact={() => console.log("Contact clicked for worker:", worker.id)}
-                onViewProfile={() => console.log("View profile clicked for worker:", worker.id)}
+                onContact={() =>
+                  console.log("Contact clicked for worker:", worker.id)
+                }
+                onViewProfile={() =>
+                  console.log("View profile clicked for worker:", worker.id)
+                }
               />
             ))}
           </div>
@@ -627,7 +659,8 @@ export default function Home() {
               Ready to get started?
             </h2>
             <p className="text-lg text-white/90 mb-8">
-              Join thousands of workers and employers building a better hiring experience.
+              Join thousands of workers and employers building a better hiring
+              experience.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

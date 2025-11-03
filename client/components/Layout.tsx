@@ -57,7 +57,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                     "text-sm font-medium transition-colors",
                     isActive(link.href)
                       ? "text-primary border-b-2 border-primary pb-1"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {link.label}
@@ -79,7 +79,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   "hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all text-sm",
                   userRole
                     ? "bg-secondary text-foreground hover:bg-secondary/80"
-                    : "bg-primary text-white hover:bg-primary/90"
+                    : "bg-primary text-white hover:bg-primary/90",
                 )}
               >
                 {userRole ? "Sign Out" : "Sign In"}
@@ -110,7 +110,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                     "px-3 py-2 rounded-lg font-medium transition-colors text-sm",
                     isActive(link.href)
                       ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-secondary"
+                      : "text-foreground hover:bg-secondary",
                   )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -123,14 +123,15 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   "w-full px-3 py-2 rounded-lg font-medium transition-all text-sm mt-2",
                   userRole
                     ? "bg-secondary text-foreground hover:bg-secondary/80"
-                    : "bg-primary text-white hover:bg-primary/90"
+                    : "bg-primary text-white hover:bg-primary/90",
                 )}
               >
                 {userRole ? "Sign Out" : "Sign In"}
               </button>
               {userRole && (
                 <div className="px-3 py-2 text-sm text-muted-foreground">
-                  Logged in as: <span className="capitalize font-medium">{userRole}</span>
+                  Logged in as:{" "}
+                  <span className="capitalize font-medium">{userRole}</span>
                 </div>
               )}
             </nav>
@@ -160,20 +161,31 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* For Workers */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4 text-sm">For Workers</h4>
+              <h4 className="font-semibold text-foreground mb-4 text-sm">
+                For Workers
+              </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/jobs" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/jobs"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Find Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/dashboard"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Your Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/safety-privacy" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/safety-privacy"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Your Privacy
                   </Link>
                 </li>
@@ -182,20 +194,31 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* For Employers */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4 text-sm">For Employers</h4>
+              <h4 className="font-semibold text-foreground mb-4 text-sm">
+                For Employers
+              </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/workers" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/workers"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Find Workers
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/dashboard"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Your Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/post-job" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/post-job"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Post a Job
                   </Link>
                 </li>
@@ -204,20 +227,31 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Company */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4 text-sm">Company</h4>
+              <h4 className="font-semibold text-foreground mb-4 text-sm">
+                Company
+              </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/about" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/about"
+                    className="hover:text-foreground transition-colors"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/safety-privacy" className="hover:text-foreground transition-colors">
+                  <Link
+                    to="/safety-privacy"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Safety & Privacy
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:hello@teamhire.com" className="hover:text-foreground transition-colors">
+                  <a
+                    href="mailto:hello@teamhire.com"
+                    className="hover:text-foreground transition-colors"
+                  >
                     Contact
                   </a>
                 </li>

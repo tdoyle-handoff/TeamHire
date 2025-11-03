@@ -1,5 +1,12 @@
 import React from "react";
-import { MapPin, DollarSign, Clock, Star, CheckCircle, MessageCircle } from "lucide-react";
+import {
+  MapPin,
+  DollarSign,
+  Clock,
+  Star,
+  CheckCircle,
+  MessageCircle,
+} from "lucide-react";
 import { JobPost } from "@shared/types";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +32,9 @@ export const JobCard: React.FC<JobCardProps> = ({
             <h3 className="font-semibold text-lg text-foreground line-clamp-2">
               {job.title}
             </h3>
-            <p className="text-sm text-muted-foreground mt-1">{job.employerName}</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {job.employerName}
+            </p>
           </div>
           {job.employerVerificationLevel === "verified" && (
             <CheckCircle className="w-5 h-5 text-natural-green flex-shrink-0" />
@@ -104,7 +113,7 @@ export const JobCard: React.FC<JobCardProps> = ({
             "flex-1 px-4 py-2 rounded-lg font-medium text-sm transition-all",
             isApplied
               ? "bg-secondary text-foreground"
-              : "bg-primary text-white hover:bg-primary/90"
+              : "bg-primary text-white hover:bg-primary/90",
           )}
         >
           {isApplied ? "Applied" : "Apply Now"}

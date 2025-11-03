@@ -69,7 +69,9 @@ export const WorkerCard: React.FC<WorkerCardProps> = ({
               </div>
             )}
             <div>
-              <h3 className="font-semibold text-lg text-foreground">{displayName}</h3>
+              <h3 className="font-semibold text-lg text-foreground">
+                {displayName}
+              </h3>
               <p className="text-sm text-muted-foreground">
                 {worker.experienceYears} years experience
               </p>
@@ -96,7 +98,7 @@ export const WorkerCard: React.FC<WorkerCardProps> = ({
                     "w-4 h-4",
                     i < Math.round(worker.reliabilityScore! / 20)
                       ? "text-warm-neutral fill-warm-neutral"
-                      : "text-muted"
+                      : "text-muted",
                   )}
                 />
               ))}
@@ -115,7 +117,10 @@ export const WorkerCard: React.FC<WorkerCardProps> = ({
         </p>
         <div className="flex flex-wrap gap-2">
           {worker.skills.slice(0, 3).map((skill, i) => (
-            <span key={i} className="text-xs bg-secondary text-foreground px-2 py-1 rounded">
+            <span
+              key={i}
+              className="text-xs bg-secondary text-foreground px-2 py-1 rounded"
+            >
               {skill}
             </span>
           ))}
@@ -134,11 +139,18 @@ export const WorkerCard: React.FC<WorkerCardProps> = ({
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
               Languages
             </p>
-            <p className="text-sm text-foreground">{worker.languages.join(", ")}</p>
+            <p className="text-sm text-foreground">
+              {worker.languages.join(", ")}
+            </p>
           </div>
         )}
 
-        <div className={cn("flex items-center gap-1 text-sm", getBackgroundCheckColor(worker.backgroundCheckStatus))}>
+        <div
+          className={cn(
+            "flex items-center gap-1 text-sm",
+            getBackgroundCheckColor(worker.backgroundCheckStatus),
+          )}
+        >
           <CheckCircle className="w-4 h-4" />
           <span>{getBackgroundCheckLabel(worker.backgroundCheckStatus)}</span>
         </div>

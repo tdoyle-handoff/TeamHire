@@ -1,10 +1,20 @@
 export type UserRole = "worker" | "employer";
 
-export type BackgroundCheckStatus = "none" | "requested" | "in_progress" | "complete";
+export type BackgroundCheckStatus =
+  | "none"
+  | "requested"
+  | "in_progress"
+  | "complete";
 
 export type ProfileVisibility = "publicMinimal" | "privateUntilApplied";
 
-export type JobCategory = "Cleaning" | "General Labor" | "Caregiving" | "Handyman" | "Hospitality" | "Other";
+export type JobCategory =
+  | "Cleaning"
+  | "General Labor"
+  | "Caregiving"
+  | "Handyman"
+  | "Hospitality"
+  | "Other";
 
 export type EmployerVerificationLevel = "basic" | "verified";
 
