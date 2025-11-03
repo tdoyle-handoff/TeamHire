@@ -52,7 +52,19 @@ export type JobCategory =
   | "Building Maintenance"
   | "Groundskeeping"
   | "Mailroom / Logistics"
-  | "Equipment Technician";
+  | "Equipment Technician"
+  | "Cashier"
+  | "Sales Associate"
+  | "Stock Clerk"
+  | "Customer Service Representative"
+  | "Hairstylist"
+  | "Barber"
+  | "Massage Therapist"
+  | "Esthetician"
+  | "Photographer"
+  | "Graphic Designer"
+  | "Video Editor"
+  | "Writer";
 
 export type EmployerVerificationLevel = "basic" | "verified";
 
