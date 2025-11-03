@@ -116,7 +116,7 @@ const demoJobs: JobPost[] = [
   {
     id: "5",
     title: "Restaurant Service - Kitchen Help",
-    category: "Hospitality",
+    category: "Line Cook / Prep Cook",
     description: "Fast-paced restaurant kitchen environment",
     skillsRequired: ["Food Prep", "Teamwork", "Cleanliness"],
     languageRequirements: ["English"],
