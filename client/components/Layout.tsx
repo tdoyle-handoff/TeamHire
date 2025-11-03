@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, LogOut, Settings, Shield, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
-import { LanguageSelector } from "@/components/LanguageSelector";
 import { ViewModeToggle } from "@/components/ViewModeToggle";
 import { AccessibilityControls } from "@/components/AccessibilityControls";
 import { useAuth } from "@/contexts/AuthContext";
