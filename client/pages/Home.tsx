@@ -31,7 +31,7 @@ export default function Home() {
       {/* Search & Quick Action */}
       <section className="bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="mb-8">
+          <div className="mb-8 text-center">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">
               Find Work or Hire Talent
             </h2>
@@ -41,7 +41,7 @@ export default function Home() {
           </div>
 
           {/* Mode Toggle */}
-          <div className="flex gap-3 mb-6">
+          <div className="flex gap-3 mb-6 justify-center">
             <button
               onClick={() => setMode("find")}
               className={`px-6 py-2 rounded-md font-medium transition-all ${
@@ -65,7 +65,7 @@ export default function Home() {
           </div>
 
           {/* Search/Post Forms */}
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto">
             {mode === "find" ? (
               <form onSubmit={handleSearchJobs} className="space-y-3">
                 <div className="relative">
