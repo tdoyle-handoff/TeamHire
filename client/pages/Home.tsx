@@ -33,9 +33,15 @@ export default function Home() {
       <section className="bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">
-              Find Work or Hire Talent
-            </h2>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <h2 className="text-2xl font-bold text-slate-900">
+                Find Work or Hire Talent
+              </h2>
+              <ReadAloudButton
+                text="Find Work or Hire Talent. Search for jobs by title or skill, or post your opportunity"
+                size="lg"
+              />
+            </div>
             <p className="text-slate-600">
               Search for jobs by title or skill, or post your opportunity
             </p>
