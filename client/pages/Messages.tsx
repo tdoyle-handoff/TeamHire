@@ -64,8 +64,8 @@ export default function Messages() {
     setAttachedFiles(attachedFiles.filter((_, i) => i !== index));
   };
 
-  // Mock applications data
-  const mockApplications = [
+  // Mock applications data for workers
+  const mockWorkerApplications = [
     {
       id: "1",
       jobTitle: "House Cleaning - 3 Bedroom Home",
@@ -89,6 +89,40 @@ export default function Messages() {
       appliedDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
       status: "pending" as const,
       message: null,
+    },
+  ];
+
+  // Mock applications data for employers
+  const mockEmployerApplications = [
+    {
+      id: "101",
+      jobTitle: "Residential Cleaner – 2 Days/Week – Upper Manhattan",
+      applicantName: "Maria G.",
+      applicantEmail: "maria.g@example.com",
+      appliedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+      status: "reviewing" as const,
+      rating: 4.8,
+      verified: true,
+    },
+    {
+      id: "102",
+      jobTitle: "Residential Cleaner – 2 Days/Week – Upper Manhattan",
+      applicantName: "James L.",
+      applicantEmail: "james.l@example.com",
+      appliedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+      status: "accepted" as const,
+      rating: 4.5,
+      verified: true,
+    },
+    {
+      id: "103",
+      jobTitle: "Kitchen Prep Cook – Afternoon Shift",
+      applicantName: "David M.",
+      applicantEmail: "david.m@example.com",
+      appliedDate: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+      status: "pending" as const,
+      rating: 4.2,
+      verified: false,
     },
   ];
 
