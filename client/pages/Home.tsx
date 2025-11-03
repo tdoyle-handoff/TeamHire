@@ -408,38 +408,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Proof */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="rounded-lg border border-slate-200 p-6">
-              <p className="text-4xl font-bold text-slate-900">2,800+</p>
-              <p className="text-slate-600">Workers</p>
-            </div>
-            <div className="rounded-lg border border-slate-200 p-6">
-              <p className="text-4xl font-bold text-slate-900">1,200+</p>
-              <p className="text-slate-600">Jobs posted</p>
-            </div>
-            <div className="rounded-lg border border-slate-200 p-6">
-              <p className="text-4xl font-bold text-slate-900">4.8★</p>
-              <p className="text-slate-600">Average rating</p>
-            </div>
-          </div>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <blockquote className="rounded-lg border border-slate-200 p-6 text-slate-700">
-              "Clear expectations. Better hires."
-              <br />
-              <span className="text-sm text-slate-500">Ann K., Facilities</span>
-            </blockquote>
-            <blockquote className="rounded-lg border border-slate-200 p-6 text-slate-700">
-              "I felt respected and safe."
-              <br />
-              <span className="text-sm text-slate-500">Luis M., Cleaner</span>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
       {/* Safety */}
       <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
