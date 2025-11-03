@@ -290,6 +290,69 @@ export default function Step1({ formData, setFormData, errors, setErrors }: Step
           {errors.payMax && <p className="text-red-500 text-sm mt-1">{errors.payMax}</p>}
         </div>
       </div>
+
+      {/* Hours Required */}
+      <div className="border-t border-slate-200 pt-6">
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">Hours Required</h3>
+
+        <label className="flex items-start gap-3 cursor-pointer mb-4">
+          <input
+            type="checkbox"
+            checked={formData.variableHours || false}
+            onChange={(e) => handleChange('variableHours', e.target.checked)}
+            className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
+          />
+          <div>
+            <p className="text-sm font-semibold text-slate-900">
+              Variable hours
+            </p>
+            <p className="text-xs text-slate-600 mt-0.5">
+              Hours can be flexible or will be determined during discussion
+            </p>
+          </div>
+        </label>
+
+        {!formData.variableHours && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded-md">
+            <div>
+              <label htmlFor="hoursPerPeriod" className="block text-sm font-semibold text-slate-900 mb-2">
+                Hours Required <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="hoursPerPeriod"
+                type="number"
+                min="1"
+                step="1"
+                value={formData.hoursPerPeriod || ''}
+                onChange={(e) => handleChange('hoursPerPeriod', parseFloat(e.target.value) || 0)}
+                placeholder="e.g., 20"
+                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent ${
+                  errors.hoursPerPeriod ? 'border-red-500' : 'border-slate-200'
+                }`}
+              />
+              {errors.hoursPerPeriod && <p className="text-red-500 text-sm mt-1">{errors.hoursPerPeriod}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="hoursPeriodType" className="block text-sm font-semibold text-slate-900 mb-2">
+                Per <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="hoursPeriodType"
+                value={formData.hoursPeriodType || 'week'}
+                onChange={(e) => handleChange('hoursPeriodType', e.target.value as 'week' | 'month')}
+                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] ${
+                  errors.hoursPeriodType ? 'border-red-500' : 'border-slate-200'
+                }`}
+              >
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+              </select>
+              {errors.hoursPeriodType && <p className="text-red-500 text-sm mt-1">{errors.hoursPeriodType}</p>}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
