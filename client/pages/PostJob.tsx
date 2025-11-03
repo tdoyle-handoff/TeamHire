@@ -214,6 +214,17 @@ export default function PostJob() {
     }
   };
 
+  const addCertification = () => {
+    if (certificationInput.trim() && !certifications.includes(certificationInput.trim())) {
+      setCertifications([...certifications, certificationInput.trim()]);
+      setCertificationInput("");
+    }
+  };
+
+  const removeCertification = (cert: string) => {
+    setCertifications(certifications.filter((c) => c !== cert));
+  };
+
   const toggleDayOfWeek = (day: string) => {
     if (daysOfWeek.includes(day)) {
       setDaysOfWeek(daysOfWeek.filter((d) => d !== day));
