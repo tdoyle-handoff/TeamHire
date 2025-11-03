@@ -15,6 +15,8 @@ import About from "./pages/About";
 import FindWork from "./pages/FindWork";
 import HireWorkers from "./pages/HireWorkers";
 import PostJob from "./pages/PostJob";
+import HowItWorks from "./pages/HowItWorks";
+import Categories from "./pages/Categories";
 
 const queryClient = new QueryClient();
 
