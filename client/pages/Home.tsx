@@ -450,6 +450,70 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Jobs */}
+      <section className="bg-[#FAFAFA]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+              Essential Jobs, Dignified Opportunities
+            </h2>
+            <p className="text-lg text-slate-600">
+              Browse verified jobs with transparent pay, fair employers, and worker protections.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <JobListingCard
+              id="1"
+              title="Residential Cleaner – 2 Days/Week"
+              employer="GreenClean Services"
+              location="Upper Manhattan, NY"
+              payMin={20}
+              payMax={25}
+              schedule="Flexible Days"
+              verificationLevel={1}
+              languages={["English", "Spanish"]}
+              idRequired={false}
+            />
+
+            <JobListingCard
+              id="2"
+              title="General Laborer – Construction Site"
+              employer="BuildRight Construction"
+              location="Brooklyn, NY"
+              payMin={22}
+              payMax={28}
+              schedule="Full-Time"
+              verificationLevel={2}
+              languages={["English", "Spanish", "Creole"]}
+              idRequired={false}
+            />
+
+            <JobListingCard
+              id="3"
+              title="Kitchen Prep Cook – Evening Shift"
+              employer="Fresh Bowl Restaurant"
+              location="Midtown, Manhattan"
+              payMin={18}
+              payMax={22}
+              schedule="Evening, Part-Time"
+              verificationLevel={1}
+              languages={["English", "Spanish"]}
+              idRequired={false}
+            />
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              to="/find-work"
+              className="inline-flex items-center justify-center rounded-md bg-[#24405A] px-6 py-3 text-white font-medium hover:opacity-95 transition-all"
+            >
+              View All Jobs
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center">
@@ -461,13 +525,13 @@ export default function Home() {
               to="/post-job"
               className="inline-flex items-center justify-center rounded-md bg-[#3BA55C] px-5 py-3 text-white font-medium hover:opacity-95 transition-all"
             >
-              Post a job
+              {t("cta.postJob")}
             </Link>
             <Link
               to="/find-work"
               className="inline-flex items-center justify-center rounded-md bg-[#24405A] px-5 py-3 text-white font-medium hover:opacity-95 transition-all"
             >
-              Find work
+              {t("cta.findWork")}
             </Link>
           </div>
         </div>
