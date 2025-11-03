@@ -194,6 +194,147 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* Safety & Privacy */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="text-3xl font-semibold text-slate-900 mb-12 text-center">
+            Safety & Privacy
+          </h2>
+
+          {/* Privacy Controls */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">
+              Your Privacy
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="rounded-lg border border-slate-200 p-6">
+                <Eye className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Optional Personal Details
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Your last name and address are completely optional. Share them with verified matches only when you're comfortable.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 p-6">
+                <Eye className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Alias Support
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Use an alias in your public profile. Your real name is revealed only to matched parties who have both approved.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 p-6">
+                <Lock className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Private Until You Consent
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Your profile information is only visible to verified employers or workers you've applied to or contacted.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust & Verification */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-6">
+              Trust & Verification
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-lg border border-slate-200 p-6">
+                <Shield className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Background Checks
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Optional for both workers and jobs. You control whether you complete one. Employers can require them for certain positions.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 p-6">
+                <CheckCircle className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Video Introductions
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Workers can upload intro videos to build trust. Employers can request videos for certain roles. Always optional.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 p-6">
+                <CheckCircle className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  References & Reviews
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  References can be uploaded or written. Reviews are only posted after work is completed, from verified accounts.
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 p-6">
+                <Shield className="w-8 h-8 text-[#24405A] mb-3" />
+                <h4 className="font-semibold text-slate-900 mb-2">
+                  Verified Accounts
+                </h4>
+                <p className="text-slate-600 text-sm">
+                  Badges show who's been verified. Email, phone, and identity verification help ensure authentic connections.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Secure Messaging */}
+          <div className="mb-12 rounded-lg bg-[#FAFAFA] border border-slate-200 p-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">
+              Secure In-App Messaging
+            </h3>
+            <p className="text-slate-600 mb-6">
+              All communication between workers and employers happens in-app. Your phone number and email address are never shared until both parties consent.
+            </p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-[#3BA55C] flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700">
+                  Keep personal contact details private by default
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-[#3BA55C] flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700">
+                  Report and block users who make you uncomfortable
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-[#3BA55C] flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700">
+                  Verified profiles show trust badges and credentials
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Fair Work Guidelines */}
+          <div className="rounded-lg bg-blue-50 border border-blue-200 p-8">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-4">
+              Fair Work Guidelines
+            </h3>
+            <div className="space-y-3 text-slate-700">
+              <p>
+                <strong>Fair Pay:</strong> All job postings must include a clear pay range. Workers deserve to know rates upfront.
+              </p>
+              <p>
+                <strong>Clear Expectations:</strong> Employers describe the work clearly. Workers can ask questions before applying.
+              </p>
+              <p>
+                <strong>Respect Everyone's Time:</strong> Both parties are expected to communicate honestly and promptly.
+              </p>
+              <p>
+                <strong>No Discrimination:</strong> We prohibit discrimination based on protected characteristics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center">
