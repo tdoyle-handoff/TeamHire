@@ -826,6 +826,24 @@ export default function FindWork() {
           )}
         </div>
       </section>
+
+      {/* Application Modal */}
+      {selectedJob && (
+        <ApplicationModal
+          job={selectedJob}
+          isOpen={applicationModalOpen}
+          onClose={() => {
+            setApplicationModalOpen(false);
+            setSelectedJob(null);
+          }}
+          onSubmit={() => {
+            toast({
+              title: "Success!",
+              description: "Application submitted successfully",
+            });
+          }}
+        />
+      )}
     </Layout>
   );
 }
