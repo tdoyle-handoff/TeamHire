@@ -268,6 +268,10 @@ export default function PostJob() {
         description,
         category,
         skillsRequired,
+        certifications: certifications.length > 0 ? certifications : "None specified",
+        experienceLevel,
+        toolsRequired: requireTools ? toolsDescription : "Not required",
+        transportationRequired: requireTransportation,
         locationCityArea,
         payRangeHourly: { min: payMin, max: payMax },
         schedule: {
