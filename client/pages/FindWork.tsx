@@ -12,6 +12,8 @@ import { Layout } from "@/components/Layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { JobPost } from "@shared/types";
 import { ReadAloudButton } from "@/components/ReadAloudButton";
+import { ApplicationModal } from "@/components/ApplicationModal";
+import { useToast } from "@/hooks/use-toast";
 
 // Demo jobs data
 const demoJobs: JobPost[] = [
