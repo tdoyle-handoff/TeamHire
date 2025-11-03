@@ -72,23 +72,28 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-3">
-              {userRole && (
+              {user && userProfile && (
                 <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full text-sm font-medium text-foreground">
-                  <span className="capitalize">{userRole}</span>
+                  <span className="capitalize">{userProfile.role}</span>
                 </div>
               )}
 
-              <button
-                onClick={toggleRole}
-                className={cn(
-                  "hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all text-sm",
-                  userRole
-                    ? "bg-secondary text-foreground hover:bg-secondary/80"
-                    : "bg-primary text-white hover:bg-primary/90",
-                )}
-              >
-                {userRole ? "Sign Out" : "Sign In"}
-              </button>
+              {user ? (
+                <button
+                  onClick={handleSignOut}
+                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all text-sm bg-secondary text-foreground hover:bg-secondary/80"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/sign-in"
+                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all text-sm bg-primary text-white hover:bg-primary/90"
+                >
+                  Sign In
+                </Link>
+              )}
 
               {/* Mobile menu button */}
               <button
