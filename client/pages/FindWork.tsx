@@ -325,6 +325,7 @@ const LICENSES = [
 export default function FindWork() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
@@ -333,14 +334,16 @@ export default function FindWork() {
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [selectedLicenses, setSelectedLicenses] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [applicationModalOpen, setApplicationModalOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
 
-  const handleApplyNow = (jobId: string) => {
+  const handleApplyNow = (job: JobPost) => {
     if (!user) {
       navigate("/sign-in");
       return;
     }
-    // TODO: Navigate to job application or show application modal
-    navigate(`/messages?jobId=${jobId}`);
+    setSelectedJob(job);
+    setApplicationModalOpen(true);
   };
 
   const handleMessage = (jobId: string) => {
