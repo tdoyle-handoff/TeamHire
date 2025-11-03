@@ -258,7 +258,7 @@ export default function PostJob() {
           daysOfWeek,
           timeBlocks,
         },
-        languageRequirements,
+        languageRequirements: noLanguageRequirement ? "no requirement" : languageRequirements,
         requireBackgroundCheck,
         requireIntroVideo,
         requireReferences,
