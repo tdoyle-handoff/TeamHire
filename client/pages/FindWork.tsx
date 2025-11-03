@@ -72,6 +72,7 @@ const demoJobs: JobPost[] = [
     description: "Various repairs and maintenance needed",
     skillsRequired: ["General Repair", "Carpentry", "Plumbing"],
     languageRequirements: ["English"],
+    licensesRequired: ["Electrical License"],
     payRangeHourly: { min: 25, max: 35 },
     locationCityArea: "Berkeley, CA",
     schedule: {
