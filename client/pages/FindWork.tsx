@@ -41,7 +41,7 @@ const demoJobs: JobPost[] = [
   {
     id: "2",
     title: "General Labor - Warehouse Setup",
-    category: "General Labor",
+    category: "General Construction Labor",
     description: "Help setting up new warehouse facility",
     skillsRequired: ["Heavy Lifting", "Teamwork", "Physical Fitness"],
     languageRequirements: ["English"],
