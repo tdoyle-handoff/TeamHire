@@ -289,7 +289,10 @@ export const WorkerProfile: React.FC = () => {
             {/* About Section */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-slate-900">About</h2>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-slate-900">About</h2>
+                  <ReadAloudButton text={about} size="md" />
+                </div>
                 {!editingAbout && (
                   <button
                     onClick={() => {
