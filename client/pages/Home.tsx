@@ -143,45 +143,148 @@ export default function Home() {
       {/* Categories */}
       <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            Popular categories
-          </h2>
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            <a
-              className="group rounded-lg border border-slate-200 bg-white p-4 hover:shadow-sm transition-shadow"
-              href="/jobs?cat=cleaning"
-            >
-              <p className="font-medium text-slate-900">Cleaning</p>
-              <p className="text-sm text-slate-600">Homes • Offices</p>
-            </a>
-            <a
-              className="group rounded-lg border border-slate-200 bg-white p-4 hover:shadow-sm transition-shadow"
-              href="/jobs?cat=labor"
-            >
-              <p className="font-medium text-slate-900">General Labor</p>
-              <p className="text-sm text-slate-600">Moving • Setup</p>
-            </a>
-            <a
-              className="group rounded-lg border border-slate-200 bg-white p-4 hover:shadow-sm transition-shadow"
-              href="/jobs?cat=care"
-            >
-              <p className="font-medium text-slate-900">Caregiving</p>
-              <p className="text-sm text-slate-600">Senior • Child</p>
-            </a>
-            <a
-              className="group rounded-lg border border-slate-200 bg-white p-4 hover:shadow-sm transition-shadow"
-              href="/jobs?cat=handyman"
-            >
-              <p className="font-medium text-slate-900">Handyman</p>
-              <p className="text-sm text-slate-600">Repairs • Install</p>
-            </a>
-            <a
-              className="group rounded-lg border border-slate-200 bg-white p-4 hover:shadow-sm transition-shadow"
-              href="/jobs?cat=hospitality"
-            >
-              <p className="font-medium text-slate-900">Hospitality</p>
-              <p className="text-sm text-slate-600">Events • Kitchen</p>
-            </a>
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+              Find work in your field
+            </h2>
+            <p className="text-lg text-slate-600">
+              Browse opportunities across diverse industries and skill levels
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Skilled Trades & Construction */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Skilled Trades & Construction
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Carpentry</p>
+                <p className="text-sm text-slate-600">Electrical</p>
+                <p className="text-sm text-slate-600">Plumbing</p>
+                <p className="text-sm text-slate-600">HVAC / Refrigeration</p>
+                <p className="text-sm text-slate-600">Roofing / Framing</p>
+                <p className="text-sm text-slate-600">Welding / Fabrication</p>
+                <p className="text-sm text-slate-600">General Construction Labor</p>
+                <p className="text-sm text-slate-600">+ 2 more</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
+
+            {/* Home & Property Services */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Home & Property Services
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Residential Cleaning</p>
+                <p className="text-sm text-slate-600">Handyman / Maintenance</p>
+                <p className="text-sm text-slate-600">Landscaping / Lawn Care</p>
+                <p className="text-sm text-slate-600">Gardening / Tree Trimming</p>
+                <p className="text-sm text-slate-600">Painting / Drywall</p>
+                <p className="text-sm text-slate-600">Pool Maintenance</p>
+                <p className="text-sm text-slate-600">Snow Removal</p>
+                <p className="text-sm text-slate-600">+ 1 more</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
+
+            {/* Hospitality & Food Service */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Hospitality & Food Service
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Line Cook / Prep Cook</p>
+                <p className="text-sm text-slate-600">Server / Waitstaff</p>
+                <p className="text-sm text-slate-600">Bartender</p>
+                <p className="text-sm text-slate-600">Dishwasher</p>
+                <p className="text-sm text-slate-600">Host / Front Desk</p>
+                <p className="text-sm text-slate-600">Housekeeping (Hotels, Airbnb)</p>
+                <p className="text-sm text-slate-600">Catering & Events</p>
+                <p className="text-sm text-slate-600">+ 1 more</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
+
+            {/* Caregiving & Personal Support */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Caregiving & Personal Support
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Childcare / Nanny</p>
+                <p className="text-sm text-slate-600">Elder Care / Companion</p>
+                <p className="text-sm text-slate-600">Home Health Aide</p>
+                <p className="text-sm text-slate-600">Personal Care Assistant</p>
+                <p className="text-sm text-slate-600">Pet Sitting / Dog Walking</p>
+                <p className="text-sm text-slate-600">Housekeeper / Domestic Worker</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
+
+            {/* Transportation & Logistics */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Transportation & Logistics
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Delivery Driver</p>
+                <p className="text-sm text-slate-600">Courier / Messenger</p>
+                <p className="text-sm text-slate-600">Mover / Loader</p>
+                <p className="text-sm text-slate-600">Forklift Operator</p>
+                <p className="text-sm text-slate-600">Warehouse Associate</p>
+                <p className="text-sm text-slate-600">Inventory Clerk</p>
+                <p className="text-sm text-slate-600">Fleet Maintenance</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
+
+            {/* Facilities & Operations */}
+            <div className="rounded-lg border border-slate-200 bg-white p-6 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                Facilities & Operations
+              </h3>
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-slate-600">Janitorial / Custodial</p>
+                <p className="text-sm text-slate-600">Security / Night Watch</p>
+                <p className="text-sm text-slate-600">Building Maintenance</p>
+                <p className="text-sm text-slate-600">Groundskeeping</p>
+                <p className="text-sm text-slate-600">Mailroom / Logistics</p>
+                <p className="text-sm text-slate-600">Equipment Technician</p>
+              </div>
+              <Link
+                to="/find-work"
+                className="inline-flex text-sm font-medium text-[#24405A] hover:text-[#24405A]/80 transition-colors"
+              >
+                Browse jobs →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
