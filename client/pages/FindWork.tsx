@@ -165,14 +165,84 @@ const demoJobs: JobPost[] = [
   },
 ];
 
-const CATEGORIES = [
-  "All Categories",
-  "Cleaning",
-  "General Labor",
-  "Caregiving",
-  "Handyman",
-  "Hospitality",
+const CATEGORY_GROUPS = [
+  {
+    category: "Skilled Trades & Construction",
+    subcategories: [
+      "Carpentry",
+      "Electrical",
+      "Plumbing",
+      "HVAC / Refrigeration",
+      "Masonry / Concrete",
+      "Roofing / Framing",
+      "Welding / Fabrication",
+      "General Construction Labor",
+      "Site Cleanup / Demolition",
+    ],
+  },
+  {
+    category: "Home & Property Services",
+    subcategories: [
+      "Residential Cleaning",
+      "Handyman / Maintenance",
+      "Landscaping / Lawn Care",
+      "Gardening / Tree Trimming",
+      "Painting / Drywall",
+      "Pool Maintenance",
+      "Snow Removal",
+      "Pest Control",
+    ],
+  },
+  {
+    category: "Hospitality & Food Service",
+    subcategories: [
+      "Line Cook / Prep Cook",
+      "Server / Waitstaff",
+      "Bartender",
+      "Dishwasher",
+      "Host / Front Desk",
+      "Housekeeping (Hotels, Airbnb)",
+      "Catering & Events",
+      "Barista / Café Assistant",
+    ],
+  },
+  {
+    category: "Caregiving & Personal Support",
+    subcategories: [
+      "Childcare / Nanny",
+      "Elder Care / Companion",
+      "Home Health Aide",
+      "Personal Care Assistant",
+      "Pet Sitting / Dog Walking",
+      "Housekeeper / Domestic Worker",
+    ],
+  },
+  {
+    category: "Transportation & Logistics",
+    subcategories: [
+      "Delivery Driver",
+      "Courier / Messenger",
+      "Mover / Loader",
+      "Forklift Operator",
+      "Warehouse Associate",
+      "Inventory Clerk",
+      "Fleet Maintenance",
+    ],
+  },
+  {
+    category: "Facilities & Operations",
+    subcategories: [
+      "Janitorial / Custodial",
+      "Security / Night Watch",
+      "Building Maintenance",
+      "Groundskeeping",
+      "Mailroom / Logistics",
+      "Equipment Technician",
+    ],
+  },
 ];
+
+const ALL_CATEGORIES = CATEGORY_GROUPS.flatMap((g) => g.subcategories);
 
 const LOCATIONS = ["All Locations", "San Francisco, CA", "Oakland, CA", "Berkeley, CA", "San Jose, CA", "Palo Alto, CA"];
 
