@@ -20,6 +20,7 @@ const demoJobs: JobPost[] = [
     description: "Looking for reliable cleaner for recurring weekly service",
     skillsRequired: ["House Cleaning", "Detail Oriented"],
     languageRequirements: ["English"],
+    licensesRequired: [],
     payRangeHourly: { min: 18, max: 22 },
     locationCityArea: "San Francisco, CA",
     schedule: {
