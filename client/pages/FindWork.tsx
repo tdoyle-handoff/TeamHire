@@ -91,7 +91,7 @@ const demoJobs: JobPost[] = [
   {
     id: "4",
     title: "Caregiving - Elderly Companion",
-    category: "Caregiving",
+    category: "Elder Care / Companion",
     description: "Companionship and light assistance",
     skillsRequired: ["Compassion", "Patience", "Communication"],
     languageRequirements: ["English", "Spanish"],
