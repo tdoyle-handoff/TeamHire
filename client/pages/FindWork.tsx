@@ -16,7 +16,7 @@ const demoJobs: JobPost[] = [
   {
     id: "1",
     title: "House Cleaning - 3 Bedroom Home",
-    category: "Cleaning",
+    category: "Residential Cleaning",
     description: "Looking for reliable cleaner for recurring weekly service",
     skillsRequired: ["House Cleaning", "Detail Oriented"],
     languageRequirements: ["English"],
