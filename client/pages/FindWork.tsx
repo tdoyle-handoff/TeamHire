@@ -800,7 +800,7 @@ export default function FindWork() {
                   {/* Action Buttons */}
                   <div className="flex gap-2 pt-4 border-t border-slate-200">
                     <button
-                      onClick={() => handleApplyNow(job.id)}
+                      onClick={() => handleApplyNow(job)}
                       className="flex-1 px-4 py-2 rounded-md bg-[#24405A] text-white text-sm font-medium hover:opacity-95 transition-all"
                     >
                       Apply Now
