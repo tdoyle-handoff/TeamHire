@@ -150,6 +150,7 @@ const demoJobs: JobPost[] = [
     description: "Lawn maintenance and garden design",
     skillsRequired: ["Landscaping", "Gardening", "Equipment Operation"],
     languageRequirements: ["English"],
+    licensesRequired: [],
     payRangeHourly: { min: 18, max: 26 },
     locationCityArea: "Palo Alto, CA",
     schedule: {
