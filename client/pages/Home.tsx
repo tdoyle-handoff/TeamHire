@@ -65,34 +65,125 @@ export default function Home() {
           </div>
 
           {/* Search/Post Forms */}
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             {mode === "find" ? (
-              <form onSubmit={handleSearchJobs} className="space-y-3">
-                <div className="relative">
-                  <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
-                  <input
-                    type="text"
-                    placeholder="Search jobs by title or skills... (e.g., cleaning, construction, kitchen)"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#24405A]"
-                  />
+              <div className="space-y-6">
+                {/* Enhanced Search Bar */}
+                <form onSubmit={handleSearchJobs} className="space-y-4">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search jobs by title or skills..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full pl-6 pr-16 py-4 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                    />
+                    <button
+                      type="submit"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all flex items-center justify-center shadow-lg"
+                    >
+                      <Search className="w-6 h-6" />
+                    </button>
+                  </div>
+                </form>
+
+                {/* Saved & Popular Searches */}
+                <div className="bg-slate-100 rounded-2xl p-6 space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Saved Searches */}
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                        <Heart className="w-5 h-5 text-blue-600 fill-blue-600" />
+                        Saved Searches
+                      </h3>
+                      <div className="space-y-2">
+                        <button
+                          onClick={() => setSearchQuery("Barista")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Barista
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Driver")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Driver
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Housekeeper")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Housekeeper
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Hairdresser")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Hairdresser
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Popular Searches */}
+                    <div>
+                      <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5 text-blue-600" />
+                        Popular Searches
+                      </h3>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          onClick={() => setSearchQuery("Cleaning Lady")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Cleaning Lady
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Retail Sales")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Retail Sales
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Rideshare Driver")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Rideshare Driver
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Dog Walker")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Dog Walker
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Babysitter")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Babysitter
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Event Staff")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Event Staff
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Language Tutor")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Language Tutor
+                        </button>
+                        <button
+                          onClick={() => setSearchQuery("Virtual Assistant")}
+                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                        >
+                          Virtual Assistant
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-3">
-                  <button
-                    type="submit"
-                    className="flex-1 px-6 py-3 bg-[#24405A] text-white font-medium rounded-md hover:opacity-95 transition-all"
-                  >
-                    Search Jobs
-                  </button>
-                  <Link
-                    to="/find-work"
-                    className="flex-1 px-6 py-3 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-center"
-                  >
-                    Browse All
-                  </Link>
-                </div>
-              </form>
+              </div>
             ) : (
               <form onSubmit={handlePostJob} className="space-y-3">
                 <input
