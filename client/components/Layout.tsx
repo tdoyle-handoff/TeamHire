@@ -263,7 +263,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           <div className="border-t border-border pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground mb-6">
               <p>&copy; 2024 TeamHire. All rights reserved.</p>
               <div className="flex gap-6">
                 <a href="#" className="hover:text-foreground transition-colors">
@@ -276,6 +276,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   Cookie Policy
                 </a>
               </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-center items-center gap-2 text-xs text-muted-foreground">
+              <CheckCircle className="w-3.5 h-3.5 text-natural-green" />
+              <span>Privacy Protected</span>
+              <span>•</span>
+              <Shield className="w-3.5 h-3.5 text-primary" />
+              <span>Verified Employers</span>
+              <span>•</span>
+              <CheckCircle className="w-3.5 h-3.5 text-natural-green" />
+              <span>Fair Hiring Pledge</span>
             </div>
           </div>
         </div>
