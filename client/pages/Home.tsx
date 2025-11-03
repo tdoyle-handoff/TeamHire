@@ -4,6 +4,7 @@ import { Layout } from "@/components/Layout";
 import { JobListingCard } from "@/components/JobListingCard";
 import { VerificationBadge } from "@/components/VerificationBadge";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { ReadAloudButton } from "@/components/ReadAloudButton";
 import { Search, Briefcase, Users, TrendingUp, Heart, Key } from "lucide-react";
 
 export default function Home() {
