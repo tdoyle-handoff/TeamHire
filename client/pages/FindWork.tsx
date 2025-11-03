@@ -46,6 +46,7 @@ const demoJobs: JobPost[] = [
     description: "Help setting up new warehouse facility",
     skillsRequired: ["Heavy Lifting", "Teamwork", "Physical Fitness"],
     languageRequirements: ["English"],
+    licensesRequired: ["Forklift License"],
     payRangeHourly: { min: 16, max: 20 },
     locationCityArea: "Oakland, CA",
     schedule: {
