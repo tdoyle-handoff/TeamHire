@@ -7,6 +7,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { ViewModeToggle } from "@/components/ViewModeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useViewMode } from "@/contexts/ViewModeContext";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, userProfile, signOut } = useAuth();
   const { t } = useLanguage();
+  const { viewMode } = useViewMode();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,10 +32,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navLinks: Array<{ href: string; label: string; icon?: any }> = [
     { href: "/", label: "Home" },
-    ...(!user || userProfile?.role === "worker"
+    ...(!user || viewMode === "worker"
       ? [{ href: "/find-work", label: "Find a Job" }]
       : []),
-    ...(!user || userProfile?.role === "employer"
+    ...(!user || viewMode === "employer"
       ? [{ href: "/post-job", label: "Post a Job" }]
       : []),
     ...(user ? [{ href: "/messages", label: "Messages" }] : []),
@@ -41,7 +43,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       ? [
           {
             href:
-              userProfile.role === "employer"
+              viewMode === "employer"
                 ? "/employer-dashboard"
                 : "/dashboard",
             label: "Dashboard",
