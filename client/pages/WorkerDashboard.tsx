@@ -39,6 +39,16 @@ export default function WorkerDashboard() {
               Dashboard
             </button>
             <button
+              onClick={() => setActiveTab("applications")}
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+                activeTab === "applications"
+                  ? "text-slate-900 border-blue-600"
+                  : "text-slate-600 border-transparent hover:text-slate-900"
+              }`}
+            >
+              Applications
+            </button>
+            <button
               onClick={() => setActiveTab("profile")}
               className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
                 activeTab === "profile"
