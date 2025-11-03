@@ -269,7 +269,8 @@ export default function FindWork() {
       // Category filter
       const matchesCategory =
         selectedCategory === "All Categories" ||
-        job.category === selectedCategory;
+        job.category === selectedCategory ||
+        (selectedCategory !== "All Categories" && job.category === selectedCategory);
 
       // Location filter
       const matchesLocation =
