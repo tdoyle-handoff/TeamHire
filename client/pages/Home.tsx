@@ -1,8 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { Search, Briefcase } from "lucide-react";
 
 export default function Home() {
+  const [mode, setMode] = useState<"find" | "post">("find");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [jobLocation, setJobLocation] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchJobs = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate(`/find-work${searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ""}`);
+  };
+
+  const handlePostJob = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate("/post-job", { state: { jobTitle, jobLocation } });
+  };
+
   return (
     <Layout>
 
