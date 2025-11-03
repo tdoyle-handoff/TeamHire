@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ViewModeProvider } from "@/contexts/ViewModeContext";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import WorkerDashboard from "./pages/WorkerDashboard";
