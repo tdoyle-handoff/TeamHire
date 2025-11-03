@@ -35,10 +35,12 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Post your job</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Post your job
+                    </h3>
                     <p className="text-slate-600 mt-1">
-                      Describe the work, set requirements (skills, language, background
-                      check), and post to reach verified workers.
+                      Describe the work, set requirements (skills, language,
+                      background check), and post to reach verified workers.
                     </p>
                   </div>
                 </div>
@@ -50,7 +52,9 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Review profiles</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Review profiles
+                    </h3>
                     <p className="text-slate-600 mt-1">
                       Browse worker profiles with ratings, intro videos, and
                       background check status. Message top candidates.
@@ -65,7 +69,9 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Confirm & rate</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Confirm & rate
+                    </h3>
                     <p className="text-slate-600 mt-1">
                       Hire your top choice and leave a verified review after
                       completion. Build your team reputation.
@@ -94,10 +100,12 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Create your profile</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Create your profile
+                    </h3>
                     <p className="text-slate-600 mt-1">
-                      Add your skills, experience, and availability. Last name and
-                      address are optional—you control your privacy.
+                      Add your skills, experience, and availability. Last name
+                      and address are optional—you control your privacy.
                     </p>
                   </div>
                 </div>
@@ -109,10 +117,12 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Browse & apply</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Browse & apply
+                    </h3>
                     <p className="text-slate-600 mt-1">
-                      Find jobs that match your skills and schedule. Apply directly
-                      and message verified employers.
+                      Find jobs that match your skills and schedule. Apply
+                      directly and message verified employers.
                     </p>
                   </div>
                 </div>
@@ -124,7 +134,9 @@ export default function HowItWorks() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Get hired & build reputation</h3>
+                    <h3 className="font-semibold text-slate-900">
+                      Get hired & build reputation
+                    </h3>
                     <p className="text-slate-600 mt-1">
                       Complete the work and get a verified review. Build your
                       reputation and earn more opportunities.
@@ -158,36 +170,42 @@ export default function HowItWorks() {
               </p>
             </div>
             <div className="rounded-lg bg-white border border-slate-200 p-6">
-              <h3 className="font-semibold text-slate-900">Clear Expectations</h3>
+              <h3 className="font-semibold text-slate-900">
+                Clear Expectations
+              </h3>
               <p className="text-slate-600 mt-2">
-                Jobs include pay ranges, hours, and clear requirements. No surprises.
+                Jobs include pay ranges, hours, and clear requirements. No
+                surprises.
               </p>
             </div>
             <div className="rounded-lg bg-white border border-slate-200 p-6">
-              <h3 className="font-semibold text-slate-900">Private by Default</h3>
+              <h3 className="font-semibold text-slate-900">
+                Private by Default
+              </h3>
               <p className="text-slate-600 mt-2">
-                Last name and address are optional. Secure messaging keeps personal
-                info private until you consent.
+                Last name and address are optional. Secure messaging keeps
+                personal info private until you consent.
               </p>
             </div>
             <div className="rounded-lg bg-white border border-slate-200 p-6">
               <h3 className="font-semibold text-slate-900">Real Reviews</h3>
               <p className="text-slate-600 mt-2">
-                Reviews only posted after work is completed. Build reputation based on
-                real interactions.
+                Reviews only posted after work is completed. Build reputation
+                based on real interactions.
               </p>
             </div>
             <div className="rounded-lg bg-white border border-slate-200 p-6">
               <h3 className="font-semibold text-slate-900">Fair Pricing</h3>
               <p className="text-slate-600 mt-2">
-                Transparent rates. No hidden fees or surprise charges from either side.
+                Transparent rates. No hidden fees or surprise charges from
+                either side.
               </p>
             </div>
             <div className="rounded-lg bg-white border border-slate-200 p-6">
               <h3 className="font-semibold text-slate-900">No Exploitation</h3>
               <p className="text-slate-600 mt-2">
-                Designed to respect workers and employers equally. Dignity built in from
-                the start.
+                Designed to respect workers and employers equally. Dignity built
+                in from the start.
               </p>
             </div>
           </div>
@@ -213,7 +231,8 @@ export default function HowItWorks() {
                   Optional Personal Details
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Your last name and address are completely optional. Share them with verified matches only when you're comfortable.
+                  Your last name and address are completely optional. Share them
+                  with verified matches only when you're comfortable.
                 </p>
               </div>
               <div className="rounded-lg border border-slate-200 p-6">
@@ -222,7 +241,8 @@ export default function HowItWorks() {
                   Alias Support
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Use an alias in your public profile. Your real name is revealed only to matched parties who have both approved.
+                  Use an alias in your public profile. Your real name is
+                  revealed only to matched parties who have both approved.
                 </p>
               </div>
               <div className="rounded-lg border border-slate-200 p-6">
@@ -231,7 +251,8 @@ export default function HowItWorks() {
                   Private Until You Consent
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Your profile information is only visible to verified employers or workers you've applied to or contacted.
+                  Your profile information is only visible to verified employers
+                  or workers you've applied to or contacted.
                 </p>
               </div>
             </div>
@@ -249,7 +270,9 @@ export default function HowItWorks() {
                   Background Checks
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Optional for both workers and jobs. You control whether you complete one. Employers can require them for certain positions.
+                  Optional for both workers and jobs. You control whether you
+                  complete one. Employers can require them for certain
+                  positions.
                 </p>
               </div>
               <div className="rounded-lg border border-slate-200 p-6">
@@ -258,7 +281,8 @@ export default function HowItWorks() {
                   Video Introductions
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Workers can upload intro videos to build trust. Employers can request videos for certain roles. Always optional.
+                  Workers can upload intro videos to build trust. Employers can
+                  request videos for certain roles. Always optional.
                 </p>
               </div>
               <div className="rounded-lg border border-slate-200 p-6">
@@ -267,7 +291,8 @@ export default function HowItWorks() {
                   References & Reviews
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  References can be uploaded or written. Reviews are only posted after work is completed, from verified accounts.
+                  References can be uploaded or written. Reviews are only posted
+                  after work is completed, from verified accounts.
                 </p>
               </div>
               <div className="rounded-lg border border-slate-200 p-6">
@@ -276,7 +301,8 @@ export default function HowItWorks() {
                   Verified Accounts
                 </h4>
                 <p className="text-slate-600 text-sm">
-                  Badges show who's been verified. Email, phone, and identity verification help ensure authentic connections.
+                  Badges show who's been verified. Email, phone, and identity
+                  verification help ensure authentic connections.
                 </p>
               </div>
             </div>
@@ -288,7 +314,9 @@ export default function HowItWorks() {
               Secure In-App Messaging
             </h3>
             <p className="text-slate-600 mb-6">
-              All communication between workers and employers happens in-app. Your phone number and email address are never shared until both parties consent.
+              All communication between workers and employers happens in-app.
+              Your phone number and email address are never shared until both
+              parties consent.
             </p>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
@@ -319,16 +347,20 @@ export default function HowItWorks() {
             </h3>
             <div className="space-y-3 text-slate-700">
               <p>
-                <strong>Fair Pay:</strong> All job postings must include a clear pay range. Workers deserve to know rates upfront.
+                <strong>Fair Pay:</strong> All job postings must include a clear
+                pay range. Workers deserve to know rates upfront.
               </p>
               <p>
-                <strong>Clear Expectations:</strong> Employers describe the work clearly. Workers can ask questions before applying.
+                <strong>Clear Expectations:</strong> Employers describe the work
+                clearly. Workers can ask questions before applying.
               </p>
               <p>
-                <strong>Respect Everyone's Time:</strong> Both parties are expected to communicate honestly and promptly.
+                <strong>Respect Everyone's Time:</strong> Both parties are
+                expected to communicate honestly and promptly.
               </p>
               <p>
-                <strong>No Discrimination:</strong> We prohibit discrimination based on protected characteristics.
+                <strong>No Discrimination:</strong> We prohibit discrimination
+                based on protected characteristics.
               </p>
             </div>
           </div>

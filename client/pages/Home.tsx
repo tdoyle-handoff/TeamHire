@@ -12,7 +12,9 @@ export default function Home() {
 
   const handleSearchJobs = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate(`/find-work${searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ""}`);
+    navigate(
+      `/find-work${searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ""}`,
+    );
   };
 
   const handlePostJob = (e: React.FormEvent) => {
@@ -22,7 +24,6 @@ export default function Home() {
 
   return (
     <Layout>
-
       {/* Hero */}
       <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -31,8 +32,8 @@ export default function Home() {
             <span className="text-[#3BA55C]">Work with respect.</span>
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-slate-600">
-            A safer marketplace for real jobs and real people. Verified profiles,
-            clear expectations, fair hiring.
+            A safer marketplace for real jobs and real people. Verified
+            profiles, clear expectations, fair hiring.
           </p>
 
           {/* Mode Toggle */}
@@ -148,7 +149,8 @@ export default function Home() {
               Explore Career Paths
             </h2>
             <p className="text-lg text-slate-600">
-              Discover opportunities across trades, services, and essential industries.
+              Discover opportunities across trades, services, and essential
+              industries.
             </p>
           </div>
 
@@ -422,13 +424,17 @@ export default function Home() {
               </p>
             </div>
             <div className="rounded-lg border border-slate-200 bg-white p-6">
-              <h3 className="font-semibold text-slate-900">Background checks</h3>
+              <h3 className="font-semibold text-slate-900">
+                Background checks
+              </h3>
               <p className="mt-2 text-slate-600">
                 Optional for workers. Employers can require per job.
               </p>
             </div>
             <div className="rounded-lg border border-slate-200 bg-white p-6">
-              <h3 className="font-semibold text-slate-900">Privacy by default</h3>
+              <h3 className="font-semibold text-slate-900">
+                Privacy by default
+              </h3>
               <p className="mt-2 text-slate-600">
                 Last name and address optional. Moderated messaging.
               </p>
