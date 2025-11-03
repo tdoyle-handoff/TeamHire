@@ -1,7 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, LogOut, Settings } from "lucide-react";
+import { Menu, X, LogOut, Settings, Shield, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/Logo";
 
 export type UserRole = "worker" | "employer" | null;
 
