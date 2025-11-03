@@ -48,6 +48,37 @@ export default function SignIn() {
     }
   };
 
+  const handleDemoLogin = async (
+    demoEmail: string,
+    demoPassword: string,
+  ) => {
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    clearError();
+
+    setIsLoading(true);
+
+    try {
+      await signIn(demoEmail, demoPassword);
+      toast({
+        title: "Success",
+        description: "Demo account signed in successfully",
+      });
+      navigate("/dashboard");
+    } catch (err) {
+      setEmail(demoEmail);
+      setPassword(demoPassword);
+      toast({
+        title: "Demo Account Not Found",
+        description:
+          "Demo account credentials have been pre-filled. Please sign up first or try with your credentials.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Layout>
       <section className="min-h-screen flex items-center justify-center bg-[#FAFAFA] px-4">
@@ -57,6 +88,36 @@ export default function SignIn() {
             <h1 className="text-3xl font-bold text-slate-900">Sign In</h1>
             <p className="text-slate-600 mt-2">
               Access your TeamHire account
+            </p>
+          </div>
+
+          {/* Demo Login Buttons */}
+          <div className="mb-6 space-y-3 bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="text-sm font-medium text-blue-900 mb-3">
+              🎯 Quick Demo Login:
+            </p>
+            <button
+              type="button"
+              onClick={() =>
+                handleDemoLogin("demo.employer@teamhire.com", "Demo123!@#")
+              }
+              disabled={isLoading}
+              className="w-full px-4 py-2.5 bg-[#3BA55C] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"
+            >
+              👔 Demo Employer
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                handleDemoLogin("demo.worker@teamhire.com", "Demo123!@#")
+              }
+              disabled={isLoading}
+              className="w-full px-4 py-2.5 bg-[#24405A] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"
+            >
+              👷 Demo Worker
+            </button>
+            <p className="text-xs text-blue-700 mt-2">
+              Demo credentials will be pre-filled and auto-login.
             </p>
           </div>
 
