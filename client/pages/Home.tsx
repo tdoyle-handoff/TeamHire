@@ -7,7 +7,7 @@ export default function Home() {
     <Layout>
 
       {/* Hero */}
-      <section id="hero" className="bg-[#FAFAFA]">
+      <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">
             Hire with confidence.{" "}
