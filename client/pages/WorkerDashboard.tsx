@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { WorkerProfileCompletion } from "@/components/WorkerProfileCompletion";
+import { WorkerProfile } from "@/components/WorkerProfile";
 import { useAuth } from "@/contexts/AuthContext";
 import { Briefcase, CheckCircle } from "lucide-react";
 
 export default function WorkerDashboard() {
   const { user, userProfile } = useAuth();
   const [profileComplete, setProfileComplete] = useState(false);
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
     <Layout>
