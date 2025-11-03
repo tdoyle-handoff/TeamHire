@@ -140,49 +140,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl font-semibold text-slate-900">How it works</h2>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Employers */}
-            <div className="rounded-lg border border-slate-200 p-6">
-              <h3 className="text-xl font-semibold text-slate-900">
-                For employers
-              </h3>
-              <ol className="mt-4 space-y-3 text-slate-600 list-decimal list-inside">
-                <li>Post your job with skills, language, and requirements.</li>
-                <li>Review profiles and intro videos.</li>
-                <li>Message, confirm, rate.</li>
-              </ol>
-              <Link
-                to="/post-job"
-                className="mt-6 inline-block rounded-md bg-[#3BA55C] px-4 py-2 text-white text-sm font-medium hover:opacity-95 transition-all"
-              >
-                Post a job
-              </Link>
-            </div>
-            {/* Workers */}
-            <div className="rounded-lg border border-slate-200 p-6">
-              <h3 className="text-xl font-semibold text-slate-900">
-                For workers
-              </h3>
-              <ol className="mt-4 space-y-3 text-slate-600 list-decimal list-inside">
-                <li>Create a profile. Last name and address optional.</li>
-                <li>Apply to jobs that fit your skills and schedule.</li>
-                <li>Get hired, get rated, build reputation.</li>
-              </ol>
-              <Link
-                to="/find-work"
-                className="mt-6 inline-block rounded-md bg-[#24405A] px-4 py-2 text-white text-sm font-medium hover:opacity-95 transition-all"
-              >
-                Find work
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Categories */}
       <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
