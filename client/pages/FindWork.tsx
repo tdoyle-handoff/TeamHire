@@ -429,7 +429,13 @@ export default function FindWork() {
               <Filter className="h-4 w-4" />
               Filters {filteredJobs.length !== demoJobs.length && `(${demoJobs.length - filteredJobs.length} hidden)`}
             </button>
-            {(searchQuery || selectedCategory !== "All Categories" || selectedLocation !== "All Locations" || minPay > 0 || maxPay < 50) && (
+            {(searchQuery ||
+              selectedCategory !== "All Categories" ||
+              selectedLocation !== "All Locations" ||
+              minPay > 0 ||
+              maxPay < 50 ||
+              selectedLanguages.length > 0 ||
+              selectedLicenses.length > 0) && (
               <button
                 onClick={resetFilters}
                 className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors"
