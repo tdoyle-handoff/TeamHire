@@ -334,31 +334,42 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-background via-white to-secondary/10 py-12 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-background via-white to-secondary/5 py-16 md:py-28 overflow-hidden">
+        {/* Subtle background element */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-natural-green rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-5 w-80 h-80 bg-muted-blue rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
               Work with dignity.{" "}
               <span className="text-natural-green">Hire with trust.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-foreground font-medium mb-4">
+              Connecting real people to real jobs — safely, fairly, and transparently.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
               Real people. Real skills. Safer matches. TeamHire replaces sketchy
               experiences with safety, respect, and transparency.
             </p>
 
             {/* Dual CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 to="/find-work"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-muted-blue text-white font-semibold rounded-xl hover:bg-muted-blue/90 hover:scale-105 transition-all shadow-lg hover:shadow-2xl"
               >
+                <Briefcase className="w-5 h-5" />
                 Find Work
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/hire-workers"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-natural-green text-white font-semibold rounded-xl hover:bg-natural-green/90 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-natural-green text-white font-semibold rounded-xl hover:bg-natural-green/90 hover:scale-105 transition-all shadow-lg hover:shadow-2xl"
               >
+                <Users className="w-5 h-5" />
                 Hire Workers
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -366,14 +377,25 @@ export default function Home() {
           </div>
 
           {/* Hero Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-            <StatCard number="2,847+" label="Workers" />
-            <StatCard number="1,234+" label="Jobs Posted" />
-            <StatCard number="94%" label="Hire Rate" />
-            <StatCard number="4.8★" label="Avg Rating" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-6">
+            <AnimatedStatCard number="2847" label="Workers" />
+            <AnimatedStatCard number="1234" label="Jobs Posted" />
+            <AnimatedStatCard number="94" label="Hire Rate %" />
+            <AnimatedStatCard number="480" label="Avg Rating (÷100)" />
           </div>
+
+          {/* Stats tagline */}
+          <p className="text-center text-sm text-muted-foreground mb-8">
+            Backed by verification, fairness, and community ratings.
+          </p>
+
+          {/* Scroll Cue */}
+          <ScrollCue label="Learn how it works" />
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       {/* How It Works */}
       <section className="py-16 md:py-20 bg-white">
