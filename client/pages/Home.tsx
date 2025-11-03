@@ -1,45 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { SectionTabs } from "@/components/SectionTabs";
-
-const TABS = [
-  { id: "overview", label: "Overview", sectionId: "hero" },
-  { id: "how-it-works", label: "How It Works", sectionId: "how-it-works" },
-  { id: "categories", label: "Categories", sectionId: "categories" },
-  { id: "safety", label: "Safety & Privacy", sectionId: "safety" },
-];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("overview");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = TABS.map((tab) => ({
-        id: tab.id,
-        element: document.getElementById(tab.sectionId),
-      }));
-
-      let current = "overview";
-      for (const section of sections) {
-        if (section.element) {
-          const rect = section.element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            current = section.id;
-          }
-        }
-      }
-      setActiveTab(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <Layout>
-      <SectionTabs tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
 
       {/* Hero */}
       <section id="hero" className="bg-[#FAFAFA]">
