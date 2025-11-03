@@ -718,32 +718,36 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-primary/90">
+      <section className="py-16 md:py-20 bg-gradient-to-r from-natural-green to-natural-green/90">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to get started?
             </h2>
             <p className="text-lg text-white/90 mb-8">
-              Join thousands of workers and employers building a better hiring
-              experience.
+              Join thousands of workers and employers building safer work connections.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 to="/find-work"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white/90 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-natural-green font-semibold rounded-xl hover:bg-white/90 hover:scale-105 transition-all"
               >
                 Find Work
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/hire-workers"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all border border-white/30"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 hover:scale-105 transition-all border border-white/30"
               >
-                Post a Job
+                Hire Workers
                 <ArrowRight className="w-5 h-5" />
               </Link>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
+              <Zap className="w-4 h-4" />
+              <span>Join thousands building safer work connections</span>
             </div>
           </div>
         </div>
