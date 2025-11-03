@@ -441,66 +441,147 @@ export default function Messages() {
           ) : (
             // Applications Tab
             <div className="space-y-4">
-              {mockApplications.length === 0 ? (
-                <div className="bg-white rounded-lg border border-slate-200 p-8 text-center">
-                  <FileText className="w-16 h-16 mx-auto mb-4 text-slate-300" />
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                    No applications yet
-                  </h3>
-                  <p className="text-slate-600">
-                    Start applying to jobs to see your applications here
-                  </p>
-                </div>
-              ) : (
-                mockApplications.map((app) => (
-                  <div
-                    key={app.id}
-                    className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-slate-900 mb-1">
-                          {app.jobTitle}
-                        </h3>
-                        <p className="text-sm text-slate-600 mb-3">
-                          {app.employer}
+              {userProfile?.role === "employer" ? (
+                // Employer view - Received Applications
+                mockEmployerApplications.length === 0 ? (
+                  <div className="bg-white rounded-lg border border-slate-200 p-8 text-center">
+                    <FileText className="w-16 h-16 mx-auto mb-4 text-slate-300" />
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                      No applications yet
+                    </h3>
+                    <p className="text-slate-600">
+                      Workers who apply to your job postings will appear here
+                    </p>
+                  </div>
+                ) : (
+                  mockEmployerApplications.map((app) => (
+                    <div
+                      key={app.id}
+                      className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                            {app.jobTitle}
+                          </h3>
+                          <div className="flex items-center gap-2 mb-2">
+                            <p className="text-sm text-slate-600">
+                              {app.applicantName}
+                            </p>
+                            {app.verified && (
+                              <span className="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">
+                                ✓ Verified
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-500">
+                            {app.applicantEmail}
+                          </p>
+                        </div>
+                        <div
+                          className={`px-3 py-1 rounded-full text-sm font-medium flex-shrink-0 ${
+                            app.status === "accepted"
+                              ? "bg-green-100 text-green-700"
+                              : app.status === "reviewing"
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-slate-100 text-slate-700"
+                          }`}
+                        >
+                          {app.status === "accepted"
+                            ? "Hired ✓"
+                            : app.status === "reviewing"
+                            ? "Under Review"
+                            : "New"}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 mb-4 pb-4 border-b border-slate-100">
+                        <div className="flex items-center gap-1">
+                          <span className="text-yellow-500">⭐</span>
+                          <span className="text-sm font-medium text-slate-900">
+                            {app.rating}
+                          </span>
+                          <span className="text-xs text-slate-500">rating</span>
+                        </div>
+                        <p className="text-xs text-slate-500">
+                          Applied {app.appliedDate.toLocaleDateString()}
                         </p>
                       </div>
-                      <div
-                        className={`px-3 py-1 rounded-full text-sm font-medium flex-shrink-0 ${
-                          app.status === "accepted"
-                            ? "bg-green-100 text-green-700"
-                            : app.status === "reviewing"
-                            ? "bg-blue-100 text-blue-700"
-                            : "bg-slate-100 text-slate-700"
-                        }`}
-                      >
-                        {app.status === "accepted"
-                          ? "Accepted ✓"
-                          : app.status === "reviewing"
-                          ? "Under Review"
-                          : "Pending"}
+
+                      <div className="flex gap-2">
+                        <button className="flex-1 px-4 py-2 bg-[#24405A] text-white font-medium rounded-md hover:opacity-90 transition-all text-sm">
+                          View Profile
+                        </button>
+                        <button className="px-4 py-2 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-sm">
+                          Message
+                        </button>
                       </div>
                     </div>
-
-                    <p className="text-sm text-slate-600 mb-4">
-                      Applied {app.appliedDate.toLocaleDateString()}
+                  ))
+                )
+              ) : (
+                // Worker view - My Applications
+                mockWorkerApplications.length === 0 ? (
+                  <div className="bg-white rounded-lg border border-slate-200 p-8 text-center">
+                    <FileText className="w-16 h-16 mx-auto mb-4 text-slate-300" />
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                      No applications yet
+                    </h3>
+                    <p className="text-slate-600">
+                      Start applying to jobs to see your applications here
                     </p>
-
-                    {app.message && (
-                      <div className="bg-slate-50 rounded-lg p-3 mb-4 border border-slate-200">
-                        <p className="text-sm text-slate-700 font-medium mb-1">
-                          Message from employer:
-                        </p>
-                        <p className="text-sm text-slate-600">{app.message}</p>
-                      </div>
-                    )}
-
-                    <button className="px-4 py-2 bg-[#24405A] text-white font-medium rounded-md hover:opacity-90 transition-all text-sm">
-                      View Details
-                    </button>
                   </div>
-                ))
+                ) : (
+                  mockWorkerApplications.map((app) => (
+                    <div
+                      key={app.id}
+                      className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                            {app.jobTitle}
+                          </h3>
+                          <p className="text-sm text-slate-600 mb-3">
+                            {app.employer}
+                          </p>
+                        </div>
+                        <div
+                          className={`px-3 py-1 rounded-full text-sm font-medium flex-shrink-0 ${
+                            app.status === "accepted"
+                              ? "bg-green-100 text-green-700"
+                              : app.status === "reviewing"
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-slate-100 text-slate-700"
+                          }`}
+                        >
+                          {app.status === "accepted"
+                            ? "Accepted ✓"
+                            : app.status === "reviewing"
+                            ? "Under Review"
+                            : "Pending"}
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-slate-600 mb-4">
+                        Applied {app.appliedDate.toLocaleDateString()}
+                      </p>
+
+                      {app.message && (
+                        <div className="bg-slate-50 rounded-lg p-3 mb-4 border border-slate-200">
+                          <p className="text-sm text-slate-700 font-medium mb-1">
+                            Message from employer:
+                          </p>
+                          <p className="text-sm text-slate-600">{app.message}</p>
+                        </div>
+                      )}
+
+                      <button className="px-4 py-2 bg-[#24405A] text-white font-medium rounded-md hover:opacity-90 transition-all text-sm">
+                        View Details
+                      </button>
+                    </div>
+                  ))
+                )
               )}
             </div>
           )}
