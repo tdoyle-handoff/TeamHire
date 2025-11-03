@@ -39,8 +39,10 @@ export default function Home() {
 
   return (
     <Layout>
+      <SectionTabs tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
+
       {/* Hero */}
-      <section className="bg-[#FAFAFA]">
+      <section id="hero" className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">
             Hire with confidence.{" "}
