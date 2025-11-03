@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, userProfile, signOut } = useAuth();
+  const { t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -290,7 +292,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="border-t border-border pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground mb-6">
-              <p>&copy; 2024 TeamHire. All rights reserved.</p>
+              <p>{t("footer.copyright")}</p>
               <div className="flex gap-6">
                 <a href="#" className="hover:text-foreground transition-colors">
                   Terms of Service
