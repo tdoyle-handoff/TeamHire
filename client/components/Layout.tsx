@@ -29,8 +29,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navLinks: Array<{ href: string; label: string; icon?: any }> = [
     { href: "/", label: "Home" },
-    { href: "/find-work", label: "Find a Job" },
-    { href: "/post-job", label: "Post a Job" },
+    ...(user && userProfile?.role === "worker"
+      ? [{ href: "/find-work", label: "Find a Job" }]
+      : [{ href: "/find-work", label: "Find a Job" }]),
+    ...(user && userProfile?.role === "employer"
+      ? [{ href: "/post-job", label: "Post a Job" }]
+      : [{ href: "/post-job", label: "Post a Job" }]),
     ...(user ? [{ href: "/messages", label: "Messages" }] : []),
     ...(user && userProfile
       ? [
