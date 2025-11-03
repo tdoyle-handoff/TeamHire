@@ -75,8 +75,9 @@ export default function WorkerDashboard() {
                       Complete Your Profile
                     </h2>
                     <p className="text-slate-600 mb-4">
-                      A complete profile increases your chances of getting hired.
-                      Add a photo, video intro, and set your privacy preferences.
+                      A complete profile increases your chances of getting
+                      hired. Add a photo, video intro, and set your privacy
+                      preferences.
                     </p>
                     <WorkerProfileCompletion
                       onComplete={() => setProfileComplete(true)}
@@ -103,19 +104,27 @@ export default function WorkerDashboard() {
             {/* Dashboard Sections */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="rounded-lg border border-slate-200 bg-white p-6">
-                <h3 className="font-semibold text-slate-900 mb-2">Applications</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Applications
+                </h3>
                 <p className="text-3xl font-bold text-primary">0</p>
-                <p className="text-sm text-slate-600 mt-1">Active applications</p>
+                <p className="text-sm text-slate-600 mt-1">
+                  Active applications
+                </p>
               </div>
 
               <div className="rounded-lg border border-slate-200 bg-white p-6">
-                <h3 className="font-semibold text-slate-900 mb-2">Saved Jobs</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Saved Jobs
+                </h3>
                 <p className="text-3xl font-bold text-primary">0</p>
                 <p className="text-sm text-slate-600 mt-1">Jobs for later</p>
               </div>
 
               <div className="rounded-lg border border-slate-200 bg-white p-6">
-                <h3 className="font-semibold text-slate-900 mb-2">Your Rating</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">
+                  Your Rating
+                </h3>
                 <p className="text-3xl font-bold text-primary">—</p>
                 <p className="text-sm text-slate-600 mt-1">No ratings yet</p>
               </div>
@@ -145,14 +154,10 @@ export default function WorkerDashboard() {
         )}
 
         {/* Profile Tab */}
-        {activeTab === "profile" && (
-          <WorkerProfile />
-        )}
+        {activeTab === "profile" && <WorkerProfile />}
 
         {/* Collectives Tab */}
-        {activeTab === "collectives" && (
-          <WorkerCollectivesPanel />
-        )}
+        {activeTab === "collectives" && <WorkerCollectivesPanel />}
       </div>
     </Layout>
   );

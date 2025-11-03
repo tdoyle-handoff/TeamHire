@@ -11,15 +11,27 @@ import {
   Save,
   Copy,
 } from "lucide-react";
-import { useCollective, CollectiveMember, WorkerCollective } from "@/contexts/CollectiveContext";
+import {
+  useCollective,
+  CollectiveMember,
+  WorkerCollective,
+} from "@/contexts/CollectiveContext";
 import { useToast } from "@/hooks/use-toast";
 
 export const WorkerCollectivesPanel: React.FC = () => {
-  const { collectives, createCollective, updateCollective, deleteCollective, addMemberToCollective, removeMemberFromCollective } = useCollective();
+  const {
+    collectives,
+    createCollective,
+    updateCollective,
+    deleteCollective,
+    addMemberToCollective,
+    removeMemberFromCollective,
+  } = useCollective();
   const { toast } = useToast();
 
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [editingCollective, setEditingCollective] = useState<WorkerCollective | null>(null);
+  const [editingCollective, setEditingCollective] =
+    useState<WorkerCollective | null>(null);
   const [showMemberForm, setShowMemberForm] = useState<string | null>(null);
   const [copiedInviteId, setCopiedInviteId] = useState<string | null>(null);
 
@@ -158,9 +170,7 @@ export const WorkerCollectivesPanel: React.FC = () => {
           <input
             type="text"
             value={formData.name}
-            onChange={(e) =>
-              setFormData({ ...formData, name: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="Collective Name (e.g., Quick Clean Team)"
             className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none text-sm"
           />
@@ -243,7 +253,13 @@ export const WorkerCollectivesPanel: React.FC = () => {
                       className="p-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                       title="Copy invite link"
                     >
-                      <Copy className={copiedInviteId === collective.id ? "w-5 h-5 text-green-600" : "w-5 h-5"} />
+                      <Copy
+                        className={
+                          copiedInviteId === collective.id
+                            ? "w-5 h-5 text-green-600"
+                            : "w-5 h-5"
+                        }
+                      />
                     </button>
                     <button
                       onClick={() => handleDeleteCollective(collective.id)}
@@ -264,12 +280,14 @@ export const WorkerCollectivesPanel: React.FC = () => {
                   {collective.sharedRating && (
                     <div className="flex items-center gap-2 text-slate-600">
                       <Star className="w-4 h-4 text-yellow-400" />
-                      {collective.sharedRating.toFixed(1)} ({collective.totalReviews || 0} reviews)
+                      {collective.sharedRating.toFixed(1)} (
+                      {collective.totalReviews || 0} reviews)
                     </div>
                   )}
                   <div className="flex items-center gap-2 text-slate-600">
                     <Users className="w-4 h-4" />
-                    {collective.members.length} member{collective.members.length !== 1 ? "s" : ""}
+                    {collective.members.length} member
+                    {collective.members.length !== 1 ? "s" : ""}
                   </div>
                 </div>
               </div>
@@ -312,7 +330,10 @@ export const WorkerCollectivesPanel: React.FC = () => {
                       type="number"
                       value={memberData.hourlyRate}
                       onChange={(e) =>
-                        setMemberData({ ...memberData, hourlyRate: e.target.value })
+                        setMemberData({
+                          ...memberData,
+                          hourlyRate: e.target.value,
+                        })
                       }
                       placeholder="Hourly Rate"
                       className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:border-blue-500 focus:outline-none text-sm"

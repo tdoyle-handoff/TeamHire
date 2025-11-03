@@ -30,13 +30,16 @@ interface CollectiveContextType {
   createCollective: (collective: WorkerCollective) => void;
   updateCollective: (id: string, updates: Partial<WorkerCollective>) => void;
   deleteCollective: (id: string) => void;
-  addMemberToCollective: (collectiveId: string, member: CollectiveMember) => void;
+  addMemberToCollective: (
+    collectiveId: string,
+    member: CollectiveMember,
+  ) => void;
   removeMemberFromCollective: (collectiveId: string, memberId: string) => void;
   getCollectiveById: (id: string) => WorkerCollective | undefined;
 }
 
 const CollectiveContext = createContext<CollectiveContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const CollectiveProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -46,7 +49,8 @@ export const CollectiveProvider: React.FC<{ children: React.ReactNode }> = ({
     {
       id: "collective-1",
       name: "Quick Clean Team",
-      description: "Professional cleaning service team with 5+ years experience",
+      description:
+        "Professional cleaning service team with 5+ years experience",
       members: [
         {
           id: "member-1",
@@ -88,7 +92,7 @@ export const CollectiveProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const updateCollective = (id: string, updates: Partial<WorkerCollective>) => {
     setCollectives(
-      collectives.map((c) => (c.id === id ? { ...c, ...updates } : c))
+      collectives.map((c) => (c.id === id ? { ...c, ...updates } : c)),
     );
   };
 
@@ -101,27 +105,25 @@ export const CollectiveProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addMemberToCollective = (
     collectiveId: string,
-    member: CollectiveMember
+    member: CollectiveMember,
   ) => {
     setCollectives(
       collectives.map((c) =>
-        c.id === collectiveId
-          ? { ...c, members: [...c.members, member] }
-          : c
-      )
+        c.id === collectiveId ? { ...c, members: [...c.members, member] } : c,
+      ),
     );
   };
 
   const removeMemberFromCollective = (
     collectiveId: string,
-    memberId: string
+    memberId: string,
   ) => {
     setCollectives(
       collectives.map((c) =>
         c.id === collectiveId
           ? { ...c, members: c.members.filter((m) => m.id !== memberId) }
-          : c
-      )
+          : c,
+      ),
     );
   };
 

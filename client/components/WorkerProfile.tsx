@@ -45,7 +45,7 @@ export const WorkerProfile: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const [editingAbout, setEditingAbout] = useState(false);
   const [about, setAbout] = useState(
-    userProfile?.bio || "Add a professional summary about yourself..."
+    userProfile?.bio || "Add a professional summary about yourself...",
   );
   const [tempAbout, setTempAbout] = useState(about);
 
@@ -87,10 +87,10 @@ export const WorkerProfile: React.FC = () => {
 
   const [newSkill, setNewSkill] = useState("");
   const [editingExperience, setEditingExperience] = useState<Experience | null>(
-    null
+    null,
   );
   const [editingEducation, setEditingEducation] = useState<Education | null>(
-    null
+    null,
   );
 
   const [location, setLocation] = useState(userProfile?.location || "");
@@ -137,7 +137,7 @@ export const WorkerProfile: React.FC = () => {
         editingExperience.startDate
       ) {
         const existingIndex = experience.findIndex(
-          (exp) => exp.id === editingExperience.id
+          (exp) => exp.id === editingExperience.id,
         );
         if (existingIndex > -1) {
           const updated = [...experience];
@@ -178,7 +178,7 @@ export const WorkerProfile: React.FC = () => {
     if (editingEducation) {
       if (editingEducation.school && editingEducation.field) {
         const existingIndex = education.findIndex(
-          (edu) => edu.id === editingEducation.id
+          (edu) => edu.id === editingEducation.id,
         );
         if (existingIndex > -1) {
           const updated = [...education];
@@ -241,9 +241,7 @@ export const WorkerProfile: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <DollarSign className="w-4 h-4 text-slate-400" />
-                <span className="text-sm text-slate-600">
-                  ${hourlyRate}/hr
-                </span>
+                <span className="text-sm text-slate-600">${hourlyRate}/hr</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-slate-400" />
@@ -616,7 +614,7 @@ export const WorkerProfile: React.FC = () => {
                           {
                             year: "numeric",
                             month: "short",
-                          }
+                          },
                         )}
                   </p>
 

@@ -31,7 +31,7 @@ export const AccessibilityControls: React.FC = () => {
                 "w-full text-left px-4 py-2 text-sm transition-colors",
                 language === lang
                   ? "bg-blue-100 text-blue-900 font-medium"
-                  : "text-slate-700 hover:bg-slate-100"
+                  : "text-slate-700 hover:bg-slate-100",
               )}
             >
               {languageLabels[lang]}
@@ -47,7 +47,7 @@ export const AccessibilityControls: React.FC = () => {
           "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2",
           readAloudEnabled
             ? "bg-blue-600 text-white hover:bg-blue-700"
-            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+            : "bg-slate-100 text-slate-700 hover:bg-slate-200",
         )}
         title="Enable read-aloud feature for accessibility"
       >
