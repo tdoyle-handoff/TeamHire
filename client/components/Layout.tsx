@@ -127,22 +127,35 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {link.label}
                 </Link>
               ))}
-              <button
-                onClick={toggleRole}
-                className={cn(
-                  "w-full px-3 py-2 rounded-lg font-medium transition-all text-sm mt-2",
-                  userRole
-                    ? "bg-secondary text-foreground hover:bg-secondary/80"
-                    : "bg-primary text-white hover:bg-primary/90",
-                )}
-              >
-                {userRole ? "Sign Out" : "Sign In"}
-              </button>
-              {userRole && (
-                <div className="px-3 py-2 text-sm text-muted-foreground">
-                  Logged in as:{" "}
-                  <span className="capitalize font-medium">{userRole}</span>
-                </div>
+              {user ? (
+                <>
+                  <button
+                    onClick={() => {
+                      handleSignOut();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full px-3 py-2 rounded-lg font-medium transition-all text-sm mt-2 bg-secondary text-foreground hover:bg-secondary/80 flex items-center justify-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign Out
+                  </button>
+                  {userProfile && (
+                    <div className="px-3 py-2 text-sm text-muted-foreground">
+                      Logged in as:{" "}
+                      <span className="capitalize font-medium">
+                        {userProfile.role}
+                      </span>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  to="/sign-in"
+                  className="w-full px-3 py-2 rounded-lg font-medium transition-all text-sm mt-2 bg-primary text-white hover:bg-primary/90 text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign In
+                </Link>
               )}
             </nav>
           )}
