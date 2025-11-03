@@ -176,23 +176,25 @@ export default function Messages() {
                 </span>
               )}
             </button>
-            {userProfile?.role === "worker" && (
-              <button
-                onClick={() => setActiveTab("applications")}
-                className={cn(
-                  "pb-3 font-medium transition-colors flex items-center gap-2",
-                  activeTab === "applications"
-                    ? "text-[#24405A] border-b-2 border-[#24405A]"
-                    : "text-slate-600 hover:text-slate-900"
-                )}
-              >
-                <FileText className="w-5 h-5" />
-                Applications
-                <span className="ml-2 px-2 py-0.5 bg-slate-200 rounded-full text-xs font-semibold">
-                  {mockApplications.length}
-                </span>
-              </button>
-            )}
+            <button
+              onClick={() => setActiveTab("applications")}
+              className={cn(
+                "pb-3 font-medium transition-colors flex items-center gap-2",
+                activeTab === "applications"
+                  ? "text-[#24405A] border-b-2 border-[#24405A]"
+                  : "text-slate-600 hover:text-slate-900"
+              )}
+            >
+              <FileText className="w-5 h-5" />
+              {userProfile?.role === "employer"
+                ? "Received Applications"
+                : "My Applications"}
+              <span className="ml-2 px-2 py-0.5 bg-slate-200 rounded-full text-xs font-semibold">
+                {userProfile?.role === "employer"
+                  ? mockEmployerApplications.length
+                  : mockWorkerApplications.length}
+              </span>
+            </button>
           </div>
 
           {/* Content */}
