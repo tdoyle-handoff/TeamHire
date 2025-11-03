@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Shield, Eye, Lock, CheckCircle } from "lucide-react";
 import { Layout } from "@/components/Layout";
 
 export default function HowItWorks() {
