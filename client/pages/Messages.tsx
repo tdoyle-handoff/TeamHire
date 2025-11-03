@@ -2,14 +2,25 @@ import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useMessages } from "@/hooks/useMessages";
-import { Search, Send, Paperclip, X, Clock, Check, MessageSquare, FileText } from "lucide-react";
+import {
+  Search,
+  Send,
+  Paperclip,
+  X,
+  Clock,
+  Check,
+  MessageSquare,
+  FileText,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Messages() {
   const { user, userProfile } = useAuth();
   const { conversations, messages, fetchMessages, sendMessage, loading } =
     useMessages();
-  const [activeTab, setActiveTab] = useState<"messages" | "applications">("messages");
+  const [activeTab, setActiveTab] = useState<"messages" | "applications">(
+    "messages",
+  );
   const [selectedConversationId, setSelectedConversationId] = useState<
     string | null
   >(null);
@@ -20,7 +31,7 @@ export default function Messages() {
   >([]);
 
   const selectedConversation = conversations.find(
-    (c) => c.id === selectedConversationId
+    (c) => c.id === selectedConversationId,
   );
   const isSmallScreen = window.innerWidth < 768;
   const showChat = !isSmallScreen || selectedConversationId;
@@ -28,7 +39,7 @@ export default function Messages() {
   const filteredConversations = conversations.filter((conv) =>
     conv.other_participant?.displayName
       ?.toLowerCase()
-      .includes(searchQuery.toLowerCase())
+      .includes(searchQuery.toLowerCase()),
   );
 
   const handleSelectConversation = (conversationId: string) => {
@@ -165,7 +176,7 @@ export default function Messages() {
                 "pb-3 font-medium transition-colors flex items-center gap-2",
                 activeTab === "messages"
                   ? "text-[#24405A] border-b-2 border-[#24405A]"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-slate-600 hover:text-slate-900",
               )}
             >
               <MessageSquare className="w-5 h-5" />
@@ -182,7 +193,7 @@ export default function Messages() {
                 "pb-3 font-medium transition-colors flex items-center gap-2",
                 activeTab === "applications"
                   ? "text-[#24405A] border-b-2 border-[#24405A]"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-slate-600 hover:text-slate-900",
               )}
             >
               <FileText className="w-5 h-5" />
@@ -233,7 +244,9 @@ export default function Messages() {
                         filteredConversations.map((conversation) => (
                           <button
                             key={conversation.id}
-                            onClick={() => handleSelectConversation(conversation.id)}
+                            onClick={() =>
+                              handleSelectConversation(conversation.id)
+                            }
                             className={`w-full p-4 border-b border-slate-100 text-left hover:bg-slate-50 transition-colors ${
                               selectedConversationId === conversation.id
                                 ? "bg-blue-50"
@@ -255,7 +268,7 @@ export default function Messages() {
                             </p>
                             <p className="text-xs text-slate-500 mt-1">
                               {new Date(
-                                conversation.last_message_at
+                                conversation.last_message_at,
                               ).toLocaleDateString()}
                             </p>
                           </button>
@@ -298,7 +311,10 @@ export default function Messages() {
                         messages.map((message) => {
                           const isOwn = message.sender_id === user.id;
                           return (
-                            <div key={message.id} className={`flex ${isOwn ? "justify-end" : "justify-start"}`}>
+                            <div
+                              key={message.id}
+                              className={`flex ${isOwn ? "justify-end" : "justify-start"}`}
+                            >
                               <div
                                 className={`max-w-xs px-4 py-2 rounded-lg ${
                                   isOwn
@@ -338,13 +354,12 @@ export default function Messages() {
                                   }`}
                                 >
                                   <span>
-                                    {new Date(message.created_at).toLocaleTimeString(
-                                      [],
-                                      {
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                      }
-                                    )}
+                                    {new Date(
+                                      message.created_at,
+                                    ).toLocaleTimeString([], {
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
                                   </span>
                                   {isOwn && (
                                     <>
@@ -373,7 +388,9 @@ export default function Messages() {
                               key={idx}
                               className="flex items-center justify-between bg-slate-100 p-2 rounded text-sm"
                             >
-                              <span className="text-slate-700">{file.name}</span>
+                              <span className="text-slate-700">
+                                {file.name}
+                              </span>
                               <button
                                 onClick={() => removeAttachment(idx)}
                                 className="text-slate-400 hover:text-slate-600"
@@ -483,15 +500,15 @@ export default function Messages() {
                             app.status === "accepted"
                               ? "bg-green-100 text-green-700"
                               : app.status === "reviewing"
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-slate-100 text-slate-700"
+                                ? "bg-blue-100 text-blue-700"
+                                : "bg-slate-100 text-slate-700"
                           }`}
                         >
                           {app.status === "accepted"
                             ? "Hired ✓"
                             : app.status === "reviewing"
-                            ? "Under Review"
-                            : "New"}
+                              ? "Under Review"
+                              : "New"}
                         </div>
                       </div>
 
@@ -519,69 +536,67 @@ export default function Messages() {
                     </div>
                   ))
                 )
+              ) : // Worker view - My Applications
+              mockWorkerApplications.length === 0 ? (
+                <div className="bg-white rounded-lg border border-slate-200 p-8 text-center">
+                  <FileText className="w-16 h-16 mx-auto mb-4 text-slate-300" />
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                    No applications yet
+                  </h3>
+                  <p className="text-slate-600">
+                    Start applying to jobs to see your applications here
+                  </p>
+                </div>
               ) : (
-                // Worker view - My Applications
-                mockWorkerApplications.length === 0 ? (
-                  <div className="bg-white rounded-lg border border-slate-200 p-8 text-center">
-                    <FileText className="w-16 h-16 mx-auto mb-4 text-slate-300" />
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                      No applications yet
-                    </h3>
-                    <p className="text-slate-600">
-                      Start applying to jobs to see your applications here
-                    </p>
-                  </div>
-                ) : (
-                  mockWorkerApplications.map((app) => (
-                    <div
-                      key={app.id}
-                      className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-slate-900 mb-1">
-                            {app.jobTitle}
-                          </h3>
-                          <p className="text-sm text-slate-600 mb-3">
-                            {app.employer}
-                          </p>
-                        </div>
-                        <div
-                          className={`px-3 py-1 rounded-full text-sm font-medium flex-shrink-0 ${
-                            app.status === "accepted"
-                              ? "bg-green-100 text-green-700"
-                              : app.status === "reviewing"
+                mockWorkerApplications.map((app) => (
+                  <div
+                    key={app.id}
+                    className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                          {app.jobTitle}
+                        </h3>
+                        <p className="text-sm text-slate-600 mb-3">
+                          {app.employer}
+                        </p>
+                      </div>
+                      <div
+                        className={`px-3 py-1 rounded-full text-sm font-medium flex-shrink-0 ${
+                          app.status === "accepted"
+                            ? "bg-green-100 text-green-700"
+                            : app.status === "reviewing"
                               ? "bg-blue-100 text-blue-700"
                               : "bg-slate-100 text-slate-700"
-                          }`}
-                        >
-                          {app.status === "accepted"
-                            ? "Accepted ✓"
-                            : app.status === "reviewing"
+                        }`}
+                      >
+                        {app.status === "accepted"
+                          ? "Accepted ✓"
+                          : app.status === "reviewing"
                             ? "Under Review"
                             : "Pending"}
-                        </div>
                       </div>
-
-                      <p className="text-sm text-slate-600 mb-4">
-                        Applied {app.appliedDate.toLocaleDateString()}
-                      </p>
-
-                      {app.message && (
-                        <div className="bg-slate-50 rounded-lg p-3 mb-4 border border-slate-200">
-                          <p className="text-sm text-slate-700 font-medium mb-1">
-                            Message from employer:
-                          </p>
-                          <p className="text-sm text-slate-600">{app.message}</p>
-                        </div>
-                      )}
-
-                      <button className="px-4 py-2 bg-[#24405A] text-white font-medium rounded-md hover:opacity-90 transition-all text-sm">
-                        View Details
-                      </button>
                     </div>
-                  ))
-                )
+
+                    <p className="text-sm text-slate-600 mb-4">
+                      Applied {app.appliedDate.toLocaleDateString()}
+                    </p>
+
+                    {app.message && (
+                      <div className="bg-slate-50 rounded-lg p-3 mb-4 border border-slate-200">
+                        <p className="text-sm text-slate-700 font-medium mb-1">
+                          Message from employer:
+                        </p>
+                        <p className="text-sm text-slate-600">{app.message}</p>
+                      </div>
+                    )}
+
+                    <button className="px-4 py-2 bg-[#24405A] text-white font-medium rounded-md hover:opacity-90 transition-all text-sm">
+                      View Details
+                    </button>
+                  </div>
+                ))
               )}
             </div>
           )}
