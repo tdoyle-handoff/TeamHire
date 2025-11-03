@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { Search, Briefcase } from "lucide-react";
+import { JobListingCard } from "@/components/JobListingCard";
+import { VerificationBadge } from "@/components/VerificationBadge";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Search, Briefcase, Users, TrendingUp, Heart, Key } from "lucide-react";
 
 export default function Home() {
   const [mode, setMode] = useState<"find" | "post">("find");
@@ -9,6 +12,7 @@ export default function Home() {
   const [jobTitle, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleSearchJobs = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,11 +33,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-slate-900 mb-3">
-              Explore Career Paths
+              {t("categories.title")}
             </h2>
             <p className="text-lg text-slate-600">
-              Discover opportunities across trades, services, and essential
-              industries.
+              {t("categories.subtitle")}
             </p>
           </div>
 
