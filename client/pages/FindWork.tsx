@@ -141,7 +141,7 @@ const demoJobs: JobPost[] = [
   {
     id: "6",
     title: "Landscaping - Residential Garden Work",
-    category: "General Labor",
+    category: "Landscaping / Lawn Care",
     description: "Lawn maintenance and garden design",
     skillsRequired: ["Landscaping", "Gardening", "Equipment Operation"],
     languageRequirements: ["English"],
