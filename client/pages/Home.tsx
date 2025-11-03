@@ -296,34 +296,155 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Safety */}
-      <section className="bg-[#FAFAFA]">
+      {/* Trust, Safety & Transparency */}
+      <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            Safety & privacy
-          </h2>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-lg border border-slate-200 bg-white p-6">
-              <h3 className="font-semibold text-slate-900">Verification</h3>
-              <p className="mt-2 text-slate-600">
-                Employer and worker verification with visible badges.
-              </p>
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+              {t("safety.title")}
+            </h2>
+            <p className="text-lg text-slate-600">
+              {t("safety.subtitle")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Verified Ecosystem */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">✅</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-2">
+                    Verified Employers & Workers
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-3">
+                    {t("safety.verified")}
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li>• Employers verified by business license</li>
+                    <li>• Optional worker background checks</li>
+                    <li>• Rating system for ongoing verification</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="rounded-lg border border-slate-200 bg-white p-6">
-              <h3 className="font-semibold text-slate-900">
-                Background checks
-              </h3>
-              <p className="mt-2 text-slate-600">
-                Optional for workers. Employers can require per job.
-              </p>
+
+            {/* Verification Badges */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">🛡️</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-3">
+                    Verification Levels
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <VerificationBadge level={1} showLabel={true} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <VerificationBadge level={2} showLabel={true} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <VerificationBadge level={3} showLabel={true} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <VerificationBadge level={4} showLabel={true} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="rounded-lg border border-slate-200 bg-white p-6">
-              <h3 className="font-semibold text-slate-900">
-                Privacy by default
-              </h3>
-              <p className="mt-2 text-slate-600">
-                Last name and address optional. Moderated messaging.
-              </p>
+
+            {/* Fair Wages & Transparency */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">💰</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-2">
+                    Fair Wages & Clear Terms
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-3">
+                    {t("safety.fairWages")}
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li>• Pay, hours, and location disclosed upfront</li>
+                    <li>• No hidden fees or surprise costs</li>
+                    <li>• Fair Hiring Pledge on every listing</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Privacy & Safety */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">🔒</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-2">
+                    Privacy by Default
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-3">
+                    Last name and address optional until hire
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li>• First name only until accepted</li>
+                    <li>• Optional anonymity for sensitive situations</li>
+                    <li>• Moderated messaging system</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Worker Ratings */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">⭐</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-2">
+                    Worker Reputation System
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-3">
+                    Build your professional reputation
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li>• 5-star rating system for reliability</li>
+                    <li>• Skills verification portfolio</li>
+                    <li>• Video intro instead of resume</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Employer Ratings */}
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-lg">📊</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-slate-900 text-lg mb-2">
+                    Employer Accountability
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-3">
+                    {t("safety.ratings")}
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-600">
+                    <li>• Ratings for safety and communication</li>
+                    <li>• Fair Hiring Pledge certification</li>
+                    <li>• Review history visibility</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
