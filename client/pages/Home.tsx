@@ -28,6 +28,107 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* Search & Quick Action */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">
+              Find Work or Hire Talent
+            </h2>
+            <p className="text-slate-600">
+              Search for jobs by title or skill, or post your opportunity
+            </p>
+          </div>
+
+          {/* Mode Toggle */}
+          <div className="flex gap-3 mb-6">
+            <button
+              onClick={() => setMode("find")}
+              className={`px-6 py-2 rounded-md font-medium transition-all ${
+                mode === "find"
+                  ? "bg-[#24405A] text-white"
+                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+              }`}
+            >
+              Find Work
+            </button>
+            <button
+              onClick={() => setMode("post")}
+              className={`px-6 py-2 rounded-md font-medium transition-all ${
+                mode === "post"
+                  ? "bg-[#3BA55C] text-white"
+                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+              }`}
+            >
+              Post a Job
+            </button>
+          </div>
+
+          {/* Search/Post Forms */}
+          <div className="max-w-2xl">
+            {mode === "find" ? (
+              <form onSubmit={handleSearchJobs} className="space-y-3">
+                <div className="relative">
+                  <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search jobs by title or skills... (e.g., cleaning, construction, kitchen)"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 px-6 py-3 bg-[#24405A] text-white font-medium rounded-md hover:opacity-95 transition-all"
+                  >
+                    Search Jobs
+                  </button>
+                  <Link
+                    to="/find-work"
+                    className="flex-1 px-6 py-3 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-center"
+                  >
+                    Browse All
+                  </Link>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handlePostJob} className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Job title (e.g., House Cleaning, General Labor)"
+                  value={jobTitle}
+                  onChange={(e) => setJobTitle(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#3BA55C]"
+                />
+                <input
+                  type="text"
+                  placeholder="Location (e.g., San Francisco, CA)"
+                  value={jobLocation}
+                  onChange={(e) => setJobLocation(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#3BA55C]"
+                />
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 px-6 py-3 bg-[#3BA55C] text-white font-medium rounded-md hover:opacity-95 transition-all"
+                  >
+                    Post Job
+                  </button>
+                  <Link
+                    to="/post-job"
+                    className="flex-1 px-6 py-3 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-center"
+                  >
+                    Full Form
+                  </Link>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
