@@ -290,7 +290,9 @@ export const WorkerProfile: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-slate-900">About</h2>
+                  <h2 className="text-xl font-semibold text-slate-900">
+                    About
+                  </h2>
                   <ReadAloudButton text={about} size="md" />
                 </div>
                 {!editingAbout && (
@@ -403,9 +405,7 @@ export const WorkerProfile: React.FC = () => {
           <div className="space-y-6">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <h2 className="text-xl font-semibold text-slate-900">
-                  Skills
-                </h2>
+                <h2 className="text-xl font-semibold text-slate-900">Skills</h2>
                 <ReadAloudButton
                   text={`Your skills: ${skills.map((s) => s.name).join(", ")}`}
                   size="md"

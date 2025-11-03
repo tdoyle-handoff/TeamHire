@@ -279,7 +279,14 @@ const CATEGORY_GROUPS = [
 
 const ALL_CATEGORIES = CATEGORY_GROUPS.flatMap((g) => g.subcategories);
 
-const LOCATIONS = ["All Locations", "San Francisco, CA", "Oakland, CA", "Berkeley, CA", "San Jose, CA", "Palo Alto, CA"];
+const LOCATIONS = [
+  "All Locations",
+  "San Francisco, CA",
+  "Oakland, CA",
+  "Berkeley, CA",
+  "San Jose, CA",
+  "Palo Alto, CA",
+];
 
 const LANGUAGES = [
   "English",
@@ -351,14 +358,15 @@ export default function FindWork() {
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         job.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         job.skillsRequired.some((skill) =>
-          skill.toLowerCase().includes(searchQuery.toLowerCase())
+          skill.toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
       // Category filter
       const matchesCategory =
         selectedCategory === "All Categories" ||
         job.category === selectedCategory ||
-        (selectedCategory !== "All Categories" && job.category === selectedCategory);
+        (selectedCategory !== "All Categories" &&
+          job.category === selectedCategory);
 
       // Location filter
       const matchesLocation =
@@ -373,14 +381,14 @@ export default function FindWork() {
       const matchesLanguage =
         selectedLanguages.length === 0 ||
         selectedLanguages.some((lang) =>
-          job.languageRequirements.includes(lang)
+          job.languageRequirements.includes(lang),
         );
 
       // License filter
       const matchesLicense =
         selectedLicenses.length === 0 ||
         selectedLicenses.some((license) =>
-          (job.licensesRequired || []).includes(license)
+          (job.licensesRequired || []).includes(license),
         );
 
       return (
@@ -425,7 +433,8 @@ export default function FindWork() {
             />
           </div>
           <p className="text-slate-600">
-            Browse {demoJobs.length} verified job opportunities from trusted employers
+            Browse {demoJobs.length} verified job opportunities from trusted
+            employers
           </p>
         </div>
       </section>
@@ -454,7 +463,9 @@ export default function FindWork() {
               className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-md transition-colors"
             >
               <Filter className="h-4 w-4" />
-              Filters {filteredJobs.length !== demoJobs.length && `(${demoJobs.length - filteredJobs.length} hidden)`}
+              Filters{" "}
+              {filteredJobs.length !== demoJobs.length &&
+                `(${demoJobs.length - filteredJobs.length} hidden)`}
             </button>
             {(searchQuery ||
               selectedCategory !== "All Categories" ||
@@ -568,16 +579,21 @@ export default function FindWork() {
                           checked={selectedLanguages.includes(language)}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              setSelectedLanguages([...selectedLanguages, language]);
+                              setSelectedLanguages([
+                                ...selectedLanguages,
+                                language,
+                              ]);
                             } else {
                               setSelectedLanguages(
-                                selectedLanguages.filter((l) => l !== language)
+                                selectedLanguages.filter((l) => l !== language),
                               );
                             }
                           }}
                           className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
                         />
-                        <span className="text-sm text-slate-700">{language}</span>
+                        <span className="text-sm text-slate-700">
+                          {language}
+                        </span>
                       </label>
                     ))}
                   </div>
@@ -599,16 +615,21 @@ export default function FindWork() {
                           checked={selectedLicenses.includes(license)}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              setSelectedLicenses([...selectedLicenses, license]);
+                              setSelectedLicenses([
+                                ...selectedLicenses,
+                                license,
+                              ]);
                             } else {
                               setSelectedLicenses(
-                                selectedLicenses.filter((l) => l !== license)
+                                selectedLicenses.filter((l) => l !== license),
                               );
                             }
                           }}
                           className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
                         />
-                        <span className="text-sm text-slate-700">{license}</span>
+                        <span className="text-sm text-slate-700">
+                          {license}
+                        </span>
                       </label>
                     ))}
                   </div>
@@ -689,7 +710,9 @@ export default function FindWork() {
                   <div className="mb-4 pb-4 border-t border-slate-200">
                     {/* Skills */}
                     <div className="mb-3">
-                      <p className="text-xs font-medium text-slate-600 mb-1">Skills</p>
+                      <p className="text-xs font-medium text-slate-600 mb-1">
+                        Skills
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {job.skillsRequired.slice(0, 2).map((skill, i) => (
                           <span
@@ -710,7 +733,9 @@ export default function FindWork() {
                     {/* Languages */}
                     {job.languageRequirements.length > 0 && (
                       <div className="mb-2">
-                        <p className="text-xs font-medium text-slate-600 mb-1">Languages</p>
+                        <p className="text-xs font-medium text-slate-600 mb-1">
+                          Languages
+                        </p>
                         <div className="flex flex-wrap gap-1">
                           {job.languageRequirements.map((lang, i) => (
                             <span
@@ -725,21 +750,24 @@ export default function FindWork() {
                     )}
 
                     {/* Licenses */}
-                    {job.licensesRequired && job.licensesRequired.length > 0 && (
-                      <div>
-                        <p className="text-xs font-medium text-slate-600 mb-1">Licenses</p>
-                        <div className="flex flex-wrap gap-1">
-                          {job.licensesRequired.map((license, i) => (
-                            <span
-                              key={i}
-                              className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded"
-                            >
-                              {license}
-                            </span>
-                          ))}
+                    {job.licensesRequired &&
+                      job.licensesRequired.length > 0 && (
+                        <div>
+                          <p className="text-xs font-medium text-slate-600 mb-1">
+                            Licenses
+                          </p>
+                          <div className="flex flex-wrap gap-1">
+                            {job.licensesRequired.map((license, i) => (
+                              <span
+                                key={i}
+                                className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded"
+                              >
+                                {license}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
                   </div>
 
                   {/* Features */}
