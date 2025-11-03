@@ -4,6 +4,7 @@ import { Menu, X, LogOut, Settings, Shield, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { ViewModeToggle } from "@/components/ViewModeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
