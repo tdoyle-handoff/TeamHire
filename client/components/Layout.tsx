@@ -32,7 +32,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     { href: "/find-work", label: "Find a Job" },
     { href: "/post-job", label: "Post a Job" },
     ...(user ? [{ href: "/messages", label: "Messages" }] : []),
-    ...(user && userProfile ? [{ href: userProfile.role === 'employer' ? '/employer-dashboard' : '/dashboard', label: "Dashboard" }] : []),
+    ...(user && userProfile
+      ? [
+          {
+            href:
+              userProfile.role === "employer"
+                ? "/employer-dashboard"
+                : "/dashboard",
+            label: "Dashboard",
+          },
+        ]
+      : []),
     { href: "/how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },
   ];

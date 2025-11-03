@@ -48,10 +48,7 @@ export default function SignIn() {
     }
   };
 
-  const handleDemoLogin = async (
-    demoEmail: string,
-    demoPassword: string,
-  ) => {
+  const handleDemoLogin = async (demoEmail: string, demoPassword: string) => {
     setEmail(demoEmail);
     setPassword(demoPassword);
     clearError();
@@ -86,9 +83,7 @@ export default function SignIn() {
           {/* Header */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl font-bold text-slate-900">Sign In</h1>
-            <p className="text-slate-600 mt-2">
-              Access your TeamHire account
-            </p>
+            <p className="text-slate-600 mt-2">Access your TeamHire account</p>
           </div>
 
           {/* Demo Login Buttons */}
@@ -122,10 +117,16 @@ export default function SignIn() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-8 space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-lg shadow-sm p-8 space-y-6"
+          >
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-slate-900 mb-2"
+              >
                 Email
               </label>
               <input
@@ -141,7 +142,10 @@ export default function SignIn() {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-900 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-slate-900 mb-2"
+              >
                 Password
               </label>
               <div className="relative">

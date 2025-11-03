@@ -35,9 +35,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-slate-900 mb-3">
               {t("categories.title")}
             </h2>
-            <p className="text-lg text-slate-600">
-              {t("categories.subtitle")}
-            </p>
+            <p className="text-lg text-slate-600">{t("categories.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -303,9 +301,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-slate-900 mb-3">
               {t("safety.title")}
             </h2>
-            <p className="text-lg text-slate-600">
-              {t("safety.subtitle")}
-            </p>
+            <p className="text-lg text-slate-600">{t("safety.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -458,7 +454,8 @@ export default function Home() {
               Essential Jobs, Dignified Opportunities
             </h2>
             <p className="text-lg text-slate-600">
-              Browse verified jobs with transparent pay, fair employers, and worker protections.
+              Browse verified jobs with transparent pay, fair employers, and
+              worker protections.
             </p>
           </div>
 
