@@ -1,10 +1,9 @@
 import React, { ReactNode, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, LogOut, Settings, Shield, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
-
-export type UserRole = "worker" | "employer" | null;
+import { useAuth } from "@/contexts/AuthContext";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,15 +11,17 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [userRole, setUserRole] = useState<UserRole>(null);
+  const { user, userProfile, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const toggleRole = () => {
-    setUserRole((prev) => {
-      if (prev === "worker") return "employer";
-      if (prev === "employer") return null;
-      return "worker";
-    });
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigate("/");
+    } catch (err) {
+      console.error("Sign out failed:", err);
+    }
   };
 
   const navLinks: Array<{ href: string; label: string; icon?: any }> = [
