@@ -644,10 +644,16 @@ export default function FindWork() {
                   {/* Header */}
                   <div className="mb-4">
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <div>
-                        <h3 className="font-semibold text-slate-900 text-lg line-clamp-2">
-                          {job.title}
-                        </h3>
+                      <div className="flex-1">
+                        <div className="flex items-start gap-2">
+                          <h3 className="font-semibold text-slate-900 text-lg line-clamp-2">
+                            {job.title}
+                          </h3>
+                          <ReadAloudButton
+                            text={`${job.title}. ${job.description}`}
+                            size="md"
+                          />
+                        </div>
                         <p className="text-sm text-slate-600 mt-1">
                           {job.employerName}
                         </p>
