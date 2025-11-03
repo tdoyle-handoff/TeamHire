@@ -66,7 +66,7 @@ const demoJobs: JobPost[] = [
   {
     id: "3",
     title: "Handyman Services - Home Repairs",
-    category: "Handyman",
+    category: "Handyman / Maintenance",
     description: "Various repairs and maintenance needed",
     skillsRequired: ["General Repair", "Carpentry", "Plumbing"],
     languageRequirements: ["English"],
