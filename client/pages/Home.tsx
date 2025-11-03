@@ -676,6 +676,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Real Stories. Real Results.
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Workers and employers share their TeamHire experiences
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+            <Testimonial
+              quote="TeamHire gave me respect and fair pay. No more sketchy conversations—everything was clear from the start."
+              author="Maria G."
+              role="House Cleaner • San Francisco"
+              rating={5}
+            />
+            <Testimonial
+              quote="I found reliable workers on my first try. The verification badges gave me peace of mind hiring."
+              author="Sarah M."
+              role="Homeowner • San Francisco"
+              rating={5}
+            />
+            <Testimonial
+              quote="The process is transparent and safe. I love that I can communicate with employers without giving out my personal info."
+              author="David C."
+              role="Handyman • Berkeley"
+              rating={5}
+            />
+          </div>
+
+          <div className="text-center">
+            <p className="text-muted-foreground text-sm">
+              Join 2,847+ workers and 1,200+ employers who've found safer work connections
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-primary/90">
         <div className="container mx-auto px-4">
