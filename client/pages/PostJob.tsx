@@ -108,7 +108,23 @@ const JOB_CATEGORIES = [
   },
 ];
 
-const LANGUAGES = ["English", "Spanish", "Mandarin", "Vietnamese", "Tagalog"];
+const LANGUAGES = [
+  "English",
+  "Spanish",
+  "Mandarin Chinese",
+  "Hindi",
+  "French",
+  "Arabic",
+  "Portuguese",
+  "Russian",
+  "Japanese",
+  "Vietnamese",
+  "Italian",
+  "Korean",
+  "German",
+  "Polish",
+  "Thai",
+];
 
 const DAYS_OF_WEEK = [
   "Monday",
