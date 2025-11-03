@@ -108,7 +108,7 @@ export default function PostJob() {
   // Form state
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState<JobCategory>("Cleaning");
+  const [category, setCategory] = useState<JobCategory>("Carpentry");
   const [skillsRequired, setSkillsRequired] = useState<string[]>([]);
   const [skillInput, setSkillInput] = useState("");
   const [locationCityArea, setLocationCityArea] = useState("");
