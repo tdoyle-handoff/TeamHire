@@ -4,13 +4,81 @@ import { Layout } from "@/components/Layout";
 import { X, Plus } from "lucide-react";
 import { JobCategory } from "@shared/types";
 
-const JOB_CATEGORIES: JobCategory[] = [
-  "Cleaning",
-  "General Labor",
-  "Caregiving",
-  "Handyman",
-  "Hospitality",
-  "Other",
+const JOB_CATEGORIES = [
+  {
+    category: "Skilled Trades & Construction",
+    subcategories: [
+      "Carpentry",
+      "Electrical",
+      "Plumbing",
+      "HVAC / Refrigeration",
+      "Masonry / Concrete",
+      "Roofing / Framing",
+      "Welding / Fabrication",
+      "General Construction Labor",
+      "Site Cleanup / Demolition",
+    ],
+  },
+  {
+    category: "Home & Property Services",
+    subcategories: [
+      "Residential Cleaning",
+      "Handyman / Maintenance",
+      "Landscaping / Lawn Care",
+      "Gardening / Tree Trimming",
+      "Painting / Drywall",
+      "Pool Maintenance",
+      "Snow Removal",
+      "Pest Control",
+    ],
+  },
+  {
+    category: "Hospitality & Food Service",
+    subcategories: [
+      "Line Cook / Prep Cook",
+      "Server / Waitstaff",
+      "Bartender",
+      "Dishwasher",
+      "Host / Front Desk",
+      "Housekeeping (Hotels, Airbnb)",
+      "Catering & Events",
+      "Barista / Café Assistant",
+    ],
+  },
+  {
+    category: "Caregiving & Personal Support",
+    subcategories: [
+      "Childcare / Nanny",
+      "Elder Care / Companion",
+      "Home Health Aide",
+      "Personal Care Assistant",
+      "Pet Sitting / Dog Walking",
+      "Housekeeper / Domestic Worker",
+    ],
+  },
+  {
+    category: "Transportation & Logistics",
+    subcategories: [
+      "Delivery Driver",
+      "Courier / Messenger",
+      "Mover / Loader",
+      "Forklift Operator",
+      "Warehouse Associate",
+      "Inventory Clerk",
+      "Fleet Maintenance",
+    ],
+  },
+  {
+    category: "Facilities & Operations",
+    subcategories: [
+      "Janitorial / Custodial",
+      "Security / Night Watch",
+      "Building Maintenance",
+      "Groundskeeping",
+      "Mailroom / Logistics",
+      "Equipment Technician",
+    ],
+  },
 ];
 
 const LANGUAGES = ["English", "Spanish", "Mandarin", "Vietnamese", "Tagalog"];
