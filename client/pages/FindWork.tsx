@@ -313,6 +313,8 @@ const LICENSES = [
 ];
 
 export default function FindWork() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
@@ -321,6 +323,23 @@ export default function FindWork() {
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [selectedLicenses, setSelectedLicenses] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+
+  const handleApplyNow = (jobId: string) => {
+    if (!user) {
+      navigate("/sign-in");
+      return;
+    }
+    // TODO: Navigate to job application or show application modal
+    navigate(`/messages?jobId=${jobId}`);
+  };
+
+  const handleMessage = (jobId: string) => {
+    if (!user) {
+      navigate("/sign-in");
+      return;
+    }
+    navigate(`/messages?jobId=${jobId}`);
+  };
 
   // Filter jobs based on all criteria
   const filteredJobs = useMemo(() => {
