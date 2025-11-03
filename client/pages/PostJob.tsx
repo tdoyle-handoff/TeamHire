@@ -247,10 +247,14 @@ export default function PostJob() {
                   onChange={(e) => setCategory(e.target.value as JobCategory)}
                   className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
                 >
-                  {JOB_CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
+                  {JOB_CATEGORIES.map((group) => (
+                    <optgroup key={group.category} label={group.category}>
+                      {group.subcategories.map((subcat) => (
+                        <option key={subcat} value={subcat}>
+                          {subcat}
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
               </div>
