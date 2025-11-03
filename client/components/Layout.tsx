@@ -43,9 +43,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       ? [
           {
             href:
-              viewMode === "employer"
-                ? "/employer-dashboard"
-                : "/dashboard",
+              viewMode === "employer" ? "/employer-dashboard" : "/dashboard",
             label: "Dashboard",
           },
         ]

@@ -22,7 +22,7 @@ export const ViewModeToggle: React.FC = () => {
           "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all",
           viewMode === "worker"
             ? "bg-white text-slate-900 shadow-sm"
-            : "text-slate-600 hover:text-slate-900"
+            : "text-slate-600 hover:text-slate-900",
         )}
         title="View as Worker"
       >
@@ -37,7 +37,7 @@ export const ViewModeToggle: React.FC = () => {
           "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all",
           viewMode === "employer"
             ? "bg-white text-slate-900 shadow-sm"
-            : "text-slate-600 hover:text-slate-900"
+            : "text-slate-600 hover:text-slate-900",
         )}
         title="View as Employer"
       >
