@@ -49,84 +49,94 @@ export default function WorkerDashboard() {
           </div>
         </div>
 
-        {/* Profile Completion Section */}
-        {!profileComplete && (
-          <div className="mb-8 bg-white rounded-lg border border-slate-200 p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Briefcase className="w-6 h-6 text-blue-600" />
+        {/* Dashboard Tab */}
+        {activeTab === "dashboard" && (
+          <>
+            {/* Profile Completion Section */}
+            {!profileComplete && (
+              <div className="mb-8 bg-white rounded-lg border border-slate-200 p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Briefcase className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-xl font-semibold text-slate-900 mb-2">
+                      Complete Your Profile
+                    </h2>
+                    <p className="text-slate-600 mb-4">
+                      A complete profile increases your chances of getting hired.
+                      Add a photo, video intro, and set your privacy preferences.
+                    </p>
+                    <WorkerProfileCompletion
+                      onComplete={() => setProfileComplete(true)}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-slate-900 mb-2">
-                  Complete Your Profile
-                </h2>
-                <p className="text-slate-600 mb-4">
-                  A complete profile increases your chances of getting hired.
-                  Add a photo, video intro, and set your privacy preferences.
+            )}
+
+            {profileComplete && (
+              <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-6 flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-green-900">
+                    Profile Complete!
+                  </h3>
+                  <p className="text-sm text-green-700">
+                    You're all set to start applying for jobs.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Dashboard Sections */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="rounded-lg border border-slate-200 bg-white p-6">
+                <h3 className="font-semibold text-slate-900 mb-2">Applications</h3>
+                <p className="text-3xl font-bold text-primary">0</p>
+                <p className="text-sm text-slate-600 mt-1">Active applications</p>
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-white p-6">
+                <h3 className="font-semibold text-slate-900 mb-2">Saved Jobs</h3>
+                <p className="text-3xl font-bold text-primary">0</p>
+                <p className="text-sm text-slate-600 mt-1">Jobs for later</p>
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-white p-6">
+                <h3 className="font-semibold text-slate-900 mb-2">Your Rating</h3>
+                <p className="text-3xl font-bold text-primary">—</p>
+                <p className="text-sm text-slate-600 mt-1">No ratings yet</p>
+              </div>
+            </div>
+
+            {/* Placeholder Sections */}
+            <div className="space-y-6">
+              <div className="rounded-lg border border-slate-200 bg-white p-6">
+                <h3 className="font-semibold text-slate-900 mb-4">
+                  Recent Applications
+                </h3>
+                <p className="text-slate-600 text-center py-8">
+                  No applications yet. Start by browsing available jobs.
                 </p>
-                <WorkerProfileCompletion
-                  onComplete={() => setProfileComplete(true)}
-                />
+              </div>
+
+              <div className="rounded-lg border border-slate-200 bg-white p-6">
+                <h3 className="font-semibold text-slate-900 mb-4">
+                  Messages & Communications
+                </h3>
+                <p className="text-slate-600 text-center py-8">
+                  Your messages with employers will appear here.
+                </p>
               </div>
             </div>
-          </div>
+          </>
         )}
 
-        {profileComplete && (
-          <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-6 flex items-center gap-3">
-            <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-green-900">
-                Profile Complete!
-              </h3>
-              <p className="text-sm text-green-700">
-                You're all set to start applying for jobs.
-              </p>
-            </div>
-          </div>
+        {/* Profile Tab */}
+        {activeTab === "profile" && (
+          <WorkerProfile />
         )}
-
-        {/* Dashboard Sections */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
-            <h3 className="font-semibold text-slate-900 mb-2">Applications</h3>
-            <p className="text-3xl font-bold text-primary">0</p>
-            <p className="text-sm text-slate-600 mt-1">Active applications</p>
-          </div>
-
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
-            <h3 className="font-semibold text-slate-900 mb-2">Saved Jobs</h3>
-            <p className="text-3xl font-bold text-primary">0</p>
-            <p className="text-sm text-slate-600 mt-1">Jobs for later</p>
-          </div>
-
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
-            <h3 className="font-semibold text-slate-900 mb-2">Your Rating</h3>
-            <p className="text-3xl font-bold text-primary">—</p>
-            <p className="text-sm text-slate-600 mt-1">No ratings yet</p>
-          </div>
-        </div>
-
-        {/* Placeholder Sections */}
-        <div className="space-y-6">
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">
-              Recent Applications
-            </h3>
-            <p className="text-slate-600 text-center py-8">
-              No applications yet. Start by browsing available jobs.
-            </p>
-          </div>
-
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">
-              Messages & Communications
-            </h3>
-            <p className="text-slate-600 text-center py-8">
-              Your messages with employers will appear here.
-            </p>
-          </div>
-        </div>
       </div>
     </Layout>
   );
