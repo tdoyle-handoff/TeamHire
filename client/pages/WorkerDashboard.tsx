@@ -1,13 +1,109 @@
-import React from "react";
-import { Users } from "lucide-react";
-import { Placeholder } from "./Placeholder";
+import React, { useState } from "react";
+import { Layout } from "@/components/Layout";
+import { WorkerProfileCompletion } from "@/components/WorkerProfileCompletion";
+import { useAuth } from "@/contexts/AuthContext";
+import { Briefcase, CheckCircle } from "lucide-react";
 
 export default function WorkerDashboard() {
+  const { user, userProfile } = useAuth();
+  const [profileComplete, setProfileComplete] = useState(false);
+
   return (
-    <Placeholder
-      icon={<Users className="w-16 h-16 text-primary" />}
-      title="Worker Dashboard"
-      description="View your profile, saved jobs, applications, and messages. This page will show your complete dashboard with all your work opportunities and communications."
-    />
+    <Layout>
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        {/* Welcome Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            Welcome, {userProfile?.displayName}!
+          </h1>
+          <p className="text-slate-600">
+            Manage your profile, applications, and opportunities.
+          </p>
+        </div>
+
+        {/* Profile Completion Section */}
+        {!profileComplete && (
+          <div className="mb-8 bg-white rounded-lg border border-slate-200 p-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Briefcase className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-semibold text-slate-900 mb-2">
+                  Complete Your Profile
+                </h2>
+                <p className="text-slate-600 mb-4">
+                  A complete profile increases your chances of getting hired.
+                  Add a photo, video intro, and set your privacy preferences.
+                </p>
+                <WorkerProfileCompletion
+                  onComplete={() => setProfileComplete(true)}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {profileComplete && (
+          <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-6 flex items-center gap-3">
+            <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+            <div>
+              <h3 className="font-semibold text-green-900">
+                Profile Complete!
+              </h3>
+              <p className="text-sm text-green-700">
+                You're all set to start applying for jobs.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Dashboard Sections */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 className="font-semibold text-slate-900 mb-2">
+              Applications
+            </h3>
+            <p className="text-3xl font-bold text-primary">0</p>
+            <p className="text-sm text-slate-600 mt-1">Active applications</p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 className="font-semibold text-slate-900 mb-2">Saved Jobs</h3>
+            <p className="text-3xl font-bold text-primary">0</p>
+            <p className="text-sm text-slate-600 mt-1">Jobs for later</p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 className="font-semibold text-slate-900 mb-2">
+              Your Rating
+            </h3>
+            <p className="text-3xl font-bold text-primary">—</p>
+            <p className="text-sm text-slate-600 mt-1">No ratings yet</p>
+          </div>
+        </div>
+
+        {/* Placeholder Sections */}
+        <div className="space-y-6">
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 className="font-semibold text-slate-900 mb-4">
+              Recent Applications
+            </h3>
+            <p className="text-slate-600 text-center py-8">
+              No applications yet. Start by browsing available jobs.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
+            <h3 className="font-semibold text-slate-900 mb-4">
+              Messages & Communications
+            </h3>
+            <p className="text-slate-600 text-center py-8">
+              Your messages with employers will appear here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Layout>
   );
 }
