@@ -448,76 +448,144 @@ export default function FindWork() {
 
           {/* Expandable Filters */}
           {showFilters && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t border-slate-200">
-              {/* Category Filter */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Category
-                </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
-                >
-                  <option value="All Categories">All Categories</option>
-                  {CATEGORY_GROUPS.map((group) => (
-                    <optgroup key={group.category} label={group.category}>
-                      {group.subcategories.map((subcat) => (
-                        <option key={subcat} value={subcat}>
-                          {subcat}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
+            <div className="space-y-4 pt-4 border-t border-slate-200">
+              {/* Main Filters Row */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {/* Category Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Category
+                  </label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+                  >
+                    <option value="All Categories">All Categories</option>
+                    {CATEGORY_GROUPS.map((group) => (
+                      <optgroup key={group.category} label={group.category}>
+                        {group.subcategories.map((subcat) => (
+                          <option key={subcat} value={subcat}>
+                            {subcat}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Location Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Location
+                  </label>
+                  <select
+                    value={selectedLocation}
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+                  >
+                    {LOCATIONS.map((loc) => (
+                      <option key={loc} value={loc}>
+                        {loc}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Min Pay Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Min Pay: ${minPay}/hr
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="50"
+                    value={minPay}
+                    onChange={(e) => setMinPay(parseInt(e.target.value))}
+                    className="w-full"
+                  />
+                </div>
+
+                {/* Max Pay Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Max Pay: ${maxPay}/hr
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="50"
+                    value={maxPay}
+                    onChange={(e) => setMaxPay(parseInt(e.target.value))}
+                    className="w-full"
+                  />
+                </div>
               </div>
 
-              {/* Location Filter */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Location
-                </label>
-                <select
-                  value={selectedLocation}
-                  onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
-                >
-                  {LOCATIONS.map((loc) => (
-                    <option key={loc} value={loc}>
-                      {loc}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {/* Language and License Filters Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Language Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Languages
+                  </label>
+                  <div className="border border-slate-200 rounded-md p-3 max-h-48 overflow-y-auto">
+                    {LANGUAGES.map((language) => (
+                      <label
+                        key={language}
+                        className="flex items-center gap-2 cursor-pointer mb-2"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedLanguages.includes(language)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedLanguages([...selectedLanguages, language]);
+                            } else {
+                              setSelectedLanguages(
+                                selectedLanguages.filter((l) => l !== language)
+                              );
+                            }
+                          }}
+                          className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
+                        />
+                        <span className="text-sm text-slate-700">{language}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
 
-              {/* Min Pay Filter */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Min Pay: ${minPay}/hr
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="50"
-                  value={minPay}
-                  onChange={(e) => setMinPay(parseInt(e.target.value))}
-                  className="w-full"
-                />
-              </div>
-
-              {/* Max Pay Filter */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Max Pay: ${maxPay}/hr
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="50"
-                  value={maxPay}
-                  onChange={(e) => setMaxPay(parseInt(e.target.value))}
-                  className="w-full"
-                />
+                {/* License Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Licenses Required
+                  </label>
+                  <div className="border border-slate-200 rounded-md p-3 max-h-48 overflow-y-auto">
+                    {LICENSES.map((license) => (
+                      <label
+                        key={license}
+                        className="flex items-center gap-2 cursor-pointer mb-2"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedLicenses.includes(license)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedLicenses([...selectedLicenses, license]);
+                            } else {
+                              setSelectedLicenses(
+                                selectedLicenses.filter((l) => l !== license)
+                              );
+                            }
+                          }}
+                          className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
+                        />
+                        <span className="text-sm text-slate-700">{license}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
