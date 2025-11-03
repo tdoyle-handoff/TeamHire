@@ -160,7 +160,9 @@ export default function PostJob() {
   const [startDate, setStartDate] = useState("");
   const [daysOfWeek, setDaysOfWeek] = useState<string[]>([]);
   const [timeBlocks, setTimeBlocks] = useState<string[]>([]);
-  const [languageRequirements, setLanguageRequirements] = useState<string[]>(["English"]);
+  const [noLanguageRequirement, setNoLanguageRequirement] = useState(false);
+  const [languageRequirements, setLanguageRequirements] = useState<string[]>([]);
+  const [customLanguage, setCustomLanguage] = useState("");
   const [requireBackgroundCheck, setRequireBackgroundCheck] = useState(false);
   const [requireIntroVideo, setRequireIntroVideo] = useState(false);
   const [requireReferences, setRequireReferences] = useState(false);
