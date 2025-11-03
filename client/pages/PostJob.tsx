@@ -456,6 +456,129 @@ export default function PostJob() {
               </div>
             </div>
 
+            {/* Certifications Required */}
+            <div>
+              <label className="block text-sm font-semibold text-slate-900 mb-2">
+                Certifications Required
+              </label>
+              <p className="text-xs text-slate-600 mb-3">
+                Optional: Specify any required certifications
+              </p>
+              <div className="flex gap-2 mb-3">
+                <input
+                  type="text"
+                  value={certificationInput}
+                  onChange={(e) => setCertificationInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addCertification();
+                    }
+                  }}
+                  placeholder="e.g., CPR Certification, OSHA 30, Forklift License"
+                  className="flex-1 px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent"
+                />
+                <button
+                  type="button"
+                  onClick={addCertification}
+                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 transition-colors font-medium"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+
+              {certifications.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {certifications.map((cert) => (
+                    <span
+                      key={cert}
+                      className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-sm"
+                    >
+                      {cert}
+                      <button
+                        type="button"
+                        onClick={() => removeCertification(cert)}
+                        className="hover:bg-amber-200 rounded-full p-0.5"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Experience Level and Tools */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Minimum Experience Level */}
+              <div>
+                <label htmlFor="experience" className="block text-sm font-semibold text-slate-900 mb-2">
+                  Minimum Experience Level
+                </label>
+                <select
+                  id="experience"
+                  value={experienceLevel}
+                  onChange={(e) => setExperienceLevel(e.target.value)}
+                  className="w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+                >
+                  <option value="No specific requirement">No specific requirement</option>
+                  <option value="Entry level (no experience)">Entry level (no experience)</option>
+                  <option value="Less than 1 year">Less than 1 year</option>
+                  <option value="1-2 years">1-2 years</option>
+                  <option value="3-5 years">3-5 years</option>
+                  <option value="5+ years">5+ years</option>
+                  <option value="10+ years">10+ years</option>
+                </select>
+              </div>
+
+              {/* Tools or Uniform Required */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                  Tools or Uniform
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={requireTools}
+                    onChange={(e) => setRequireTools(e.target.checked)}
+                    className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
+                  />
+                  <span className="text-sm text-slate-700">
+                    Worker must provide/wear tools or uniform
+                  </span>
+                </label>
+                {requireTools && (
+                  <input
+                    type="text"
+                    value={toolsDescription}
+                    onChange={(e) => setToolsDescription(e.target.value)}
+                    placeholder="e.g., Steel-toed boots, hard hat, work gloves"
+                    className="mt-2 w-full px-4 py-2 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#24405A] focus:border-transparent text-sm"
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Transportation Access */}
+            <div>
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={requireTransportation}
+                  onChange={(e) => setRequireTransportation(e.target.checked)}
+                  className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
+                />
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    Transportation Access Required
+                  </p>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    Worker must have reliable transportation for off-site work
+                  </p>
+                </div>
+              </label>
+            </div>
+
             {/* Language Requirements */}
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-3">
