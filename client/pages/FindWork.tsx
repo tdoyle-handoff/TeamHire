@@ -240,6 +240,33 @@ const CATEGORY_GROUPS = [
       "Equipment Technician",
     ],
   },
+  {
+    category: "Retail & Customer Service",
+    subcategories: [
+      "Cashier",
+      "Sales Associate",
+      "Stock Clerk",
+      "Customer Service Representative",
+    ],
+  },
+  {
+    category: "Beauty & Wellness",
+    subcategories: [
+      "Hairstylist",
+      "Barber",
+      "Massage Therapist",
+      "Esthetician",
+    ],
+  },
+  {
+    category: "Creative & Media",
+    subcategories: [
+      "Photographer",
+      "Graphic Designer",
+      "Video Editor",
+      "Writer",
+    ],
+  },
 ];
 
 const ALL_CATEGORIES = CATEGORY_GROUPS.flatMap((g) => g.subcategories);
