@@ -34,19 +34,92 @@ export default function Home() {
             A safer marketplace for real jobs and real people. Verified profiles,
             clear expectations, fair hiring.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to="/find-work"
-              className="inline-flex items-center justify-center rounded-md bg-[#24405A] px-5 py-3 text-white font-medium hover:opacity-95 transition-all"
+
+          {/* Mode Toggle */}
+          <div className="mt-8 flex justify-center gap-3 mb-6">
+            <button
+              onClick={() => setMode("find")}
+              className={`px-6 py-2 rounded-md font-medium transition-all ${
+                mode === "find"
+                  ? "bg-[#24405A] text-white"
+                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+              }`}
             >
-              Find work
-            </Link>
-            <Link
-              to="/hire-workers"
-              className="inline-flex items-center justify-center rounded-md bg-[#3BA55C] px-5 py-3 text-white font-medium hover:opacity-95 transition-all"
+              Find Work
+            </button>
+            <button
+              onClick={() => setMode("post")}
+              className={`px-6 py-2 rounded-md font-medium transition-all ${
+                mode === "post"
+                  ? "bg-[#3BA55C] text-white"
+                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+              }`}
             >
-              Hire workers
-            </Link>
+              Post a Job
+            </button>
+          </div>
+
+          {/* Search/Post Forms */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            {mode === "find" ? (
+              <form onSubmit={handleSearchJobs} className="space-y-3">
+                <div className="relative">
+                  <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search jobs by title or skills..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#24405A]"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 px-6 py-3 bg-[#24405A] text-white font-medium rounded-md hover:opacity-95 transition-all"
+                  >
+                    Search Jobs
+                  </button>
+                  <Link
+                    to="/find-work"
+                    className="flex-1 px-6 py-3 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-center"
+                  >
+                    Browse All
+                  </Link>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handlePostJob} className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Job title (e.g., House Cleaning)"
+                  value={jobTitle}
+                  onChange={(e) => setJobTitle(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#3BA55C]"
+                />
+                <input
+                  type="text"
+                  placeholder="Location (e.g., San Francisco, CA)"
+                  value={jobLocation}
+                  onChange={(e) => setJobLocation(e.target.value)}
+                  className="w-full px-4 py-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#3BA55C]"
+                />
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="flex-1 px-6 py-3 bg-[#3BA55C] text-white font-medium rounded-md hover:opacity-95 transition-all"
+                  >
+                    Post Job
+                  </button>
+                  <Link
+                    to="/post-job"
+                    className="flex-1 px-6 py-3 bg-slate-200 text-slate-900 font-medium rounded-md hover:bg-slate-300 transition-all text-center"
+                  >
+                    Full Form
+                  </Link>
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Trust bar */}
