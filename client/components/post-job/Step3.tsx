@@ -1,6 +1,10 @@
-import React from 'react';
-import { X } from 'lucide-react';
-import { JobPostFormData, StepErrors, validateStep3 } from '@/lib/job-post-validation';
+import React from "react";
+import { X } from "lucide-react";
+import {
+  JobPostFormData,
+  StepErrors,
+  validateStep3,
+} from "@/lib/job-post-validation";
 
 interface Step3Props {
   formData: Partial<JobPostFormData>;
@@ -27,8 +31,13 @@ const LANGUAGES = [
   "Thai",
 ];
 
-export default function Step3({ formData, setFormData, errors, setErrors }: Step3Props) {
-  const [customLanguage, setCustomLanguage] = React.useState('');
+export default function Step3({
+  formData,
+  setFormData,
+  errors,
+  setErrors,
+}: Step3Props) {
+  const [customLanguage, setCustomLanguage] = React.useState("");
 
   const handleChange = (field: keyof JobPostFormData, value: any) => {
     setFormData({
@@ -43,38 +52,47 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
   const handleToggleLanguage = (language: string) => {
     const currentLanguages = formData.languageRequirements || [];
     if (formData.noLanguageRequirement) {
-      handleChange('noLanguageRequirement', false);
+      handleChange("noLanguageRequirement", false);
     }
     if (currentLanguages.includes(language)) {
-      handleChange('languageRequirements', currentLanguages.filter((l) => l !== language));
+      handleChange(
+        "languageRequirements",
+        currentLanguages.filter((l) => l !== language),
+      );
     } else {
-      handleChange('languageRequirements', [...currentLanguages, language]);
+      handleChange("languageRequirements", [...currentLanguages, language]);
     }
   };
 
   const handleToggleNoLanguageRequirement = () => {
-    handleChange('noLanguageRequirement', !formData.noLanguageRequirement);
+    handleChange("noLanguageRequirement", !formData.noLanguageRequirement);
     if (!formData.noLanguageRequirement) {
-      handleChange('languageRequirements', []);
-      setCustomLanguage('');
+      handleChange("languageRequirements", []);
+      setCustomLanguage("");
     }
   };
 
   const handleAddCustomLanguage = () => {
-    if (customLanguage.trim() && !formData.languageRequirements?.includes(customLanguage.trim())) {
-      handleChange('languageRequirements', [
+    if (
+      customLanguage.trim() &&
+      !formData.languageRequirements?.includes(customLanguage.trim())
+    ) {
+      handleChange("languageRequirements", [
         ...(formData.languageRequirements || []),
         customLanguage.trim(),
       ]);
-      setCustomLanguage('');
+      setCustomLanguage("");
       if (formData.noLanguageRequirement) {
-        handleChange('noLanguageRequirement', false);
+        handleChange("noLanguageRequirement", false);
       }
     }
   };
 
   const handleRemoveLanguage = (language: string) => {
-    handleChange('languageRequirements', formData.languageRequirements?.filter((l) => l !== language) || []);
+    handleChange(
+      "languageRequirements",
+      formData.languageRequirements?.filter((l) => l !== language) || [],
+    );
   };
 
   const handleValidate = () => {
@@ -97,7 +115,9 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
           <input
             type="checkbox"
             checked={formData.requireBackgroundCheck || false}
-            onChange={(e) => handleChange('requireBackgroundCheck', e.target.checked)}
+            onChange={(e) =>
+              handleChange("requireBackgroundCheck", e.target.checked)
+            }
             className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
           />
           <div>
@@ -117,7 +137,9 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
           <input
             type="checkbox"
             checked={formData.requireIntroVideo || false}
-            onChange={(e) => handleChange('requireIntroVideo', e.target.checked)}
+            onChange={(e) =>
+              handleChange("requireIntroVideo", e.target.checked)
+            }
             className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
           />
           <div>
@@ -137,7 +159,9 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
           <input
             type="checkbox"
             checked={formData.requireReferences || false}
-            onChange={(e) => handleChange('requireReferences', e.target.checked)}
+            onChange={(e) =>
+              handleChange("requireReferences", e.target.checked)
+            }
             className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A] mt-1"
           />
           <div>
@@ -183,7 +207,9 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
                 >
                   <input
                     type="checkbox"
-                    checked={formData.languageRequirements?.includes(language) || false}
+                    checked={
+                      formData.languageRequirements?.includes(language) || false
+                    }
                     onChange={() => handleToggleLanguage(language)}
                     className="w-4 h-4 border-slate-300 rounded focus:ring-[#24405A]"
                   />
@@ -203,7 +229,7 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
                   value={customLanguage}
                   onChange={(e) => setCustomLanguage(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === "Enter") {
                       e.preventDefault();
                       handleAddCustomLanguage();
                     }
@@ -222,35 +248,38 @@ export default function Step3({ formData, setFormData, errors, setErrors }: Step
             </div>
 
             {/* Selected Languages Display */}
-            {formData.languageRequirements && formData.languageRequirements.length > 0 && (
-              <div className="mt-4 p-3 bg-slate-50 rounded-md">
-                <p className="text-xs font-medium text-slate-600 mb-2">
-                  Selected languages:
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {formData.languageRequirements.map((lang) => (
-                    <span
-                      key={lang}
-                      className="inline-flex items-center gap-1.5 bg-[#24405A] text-white px-2.5 py-1 rounded-full text-xs"
-                    >
-                      {lang}
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveLanguage(lang)}
-                        className="hover:bg-white/20 rounded-full p-0.5"
+            {formData.languageRequirements &&
+              formData.languageRequirements.length > 0 && (
+                <div className="mt-4 p-3 bg-slate-50 rounded-md">
+                  <p className="text-xs font-medium text-slate-600 mb-2">
+                    Selected languages:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {formData.languageRequirements.map((lang) => (
+                      <span
+                        key={lang}
+                        className="inline-flex items-center gap-1.5 bg-[#24405A] text-white px-2.5 py-1 rounded-full text-xs"
                       >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
+                        {lang}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveLanguage(lang)}
+                          className="hover:bg-white/20 rounded-full p-0.5"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         )}
 
         {errors.languageRequirements && (
-          <p className="text-red-500 text-sm mt-2">{errors.languageRequirements}</p>
+          <p className="text-red-500 text-sm mt-2">
+            {errors.languageRequirements}
+          </p>
         )}
       </div>
     </div>

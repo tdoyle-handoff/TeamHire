@@ -3,12 +3,12 @@ export interface JobPostFormData {
   category: string;
   description: string;
   location: string;
-  payType: 'hourly' | 'fixed';
+  payType: "hourly" | "fixed";
   payMin: number;
   payMax: number;
   variableHours: boolean;
   hoursPerPeriod: number;
-  hoursPeriodType: 'week' | 'month';
+  hoursPeriodType: "week" | "month";
   skillsRequired: string[];
   certifications: string[];
   experienceLevel: string;
@@ -30,45 +30,49 @@ export const validateStep1 = (data: Partial<JobPostFormData>): StepErrors => {
   const errors: StepErrors = {};
 
   if (!data.jobTitle?.trim()) {
-    errors.jobTitle = 'Job title is required';
+    errors.jobTitle = "Job title is required";
   }
 
   if (!data.category?.trim()) {
-    errors.category = 'Category is required';
+    errors.category = "Category is required";
   }
 
   if (!data.description?.trim()) {
-    errors.description = 'Job description is required';
+    errors.description = "Job description is required";
   } else if (data.description.trim().length < 20) {
-    errors.description = 'Description must be at least 20 characters';
+    errors.description = "Description must be at least 20 characters";
   }
 
   if (!data.location?.trim()) {
-    errors.location = 'Location is required';
+    errors.location = "Location is required";
   }
 
   if (!data.payType) {
-    errors.payType = 'Pay type is required';
+    errors.payType = "Pay type is required";
   }
 
   if (!data.payMin || data.payMin < 0) {
-    errors.payMin = 'Minimum pay is required and must be >= 0';
+    errors.payMin = "Minimum pay is required and must be >= 0";
   }
 
   if (!data.payMax || data.payMax < 0) {
-    errors.payMax = 'Maximum pay is required and must be >= 0';
+    errors.payMax = "Maximum pay is required and must be >= 0";
   }
 
   if (data.payMin && data.payMax && data.payMin > data.payMax) {
-    errors.payMax = 'Maximum pay must be greater than or equal to minimum pay';
+    errors.payMax = "Maximum pay must be greater than or equal to minimum pay";
   }
 
-  if (!data.variableHours && (!data.hoursPerPeriod || data.hoursPerPeriod <= 0)) {
-    errors.hoursPerPeriod = 'Hours per period is required when hours are not variable';
+  if (
+    !data.variableHours &&
+    (!data.hoursPerPeriod || data.hoursPerPeriod <= 0)
+  ) {
+    errors.hoursPerPeriod =
+      "Hours per period is required when hours are not variable";
   }
 
   if (!data.hoursPeriodType) {
-    errors.hoursPeriodType = 'Hours period type is required';
+    errors.hoursPeriodType = "Hours period type is required";
   }
 
   return errors;
@@ -78,7 +82,7 @@ export const validateStep2 = (data: Partial<JobPostFormData>): StepErrors => {
   const errors: StepErrors = {};
 
   if (!data.skillsRequired || data.skillsRequired.length === 0) {
-    errors.skillsRequired = 'At least one skill is required';
+    errors.skillsRequired = "At least one skill is required";
   }
 
   return errors;
@@ -87,8 +91,11 @@ export const validateStep2 = (data: Partial<JobPostFormData>): StepErrors => {
 export const validateStep3 = (data: Partial<JobPostFormData>): StepErrors => {
   const errors: StepErrors = {};
 
-  if (!data.noLanguageRequirement && (!data.languageRequirements || data.languageRequirements.length === 0)) {
-    errors.languageRequirements = 'Language requirements must be specified';
+  if (
+    !data.noLanguageRequirement &&
+    (!data.languageRequirements || data.languageRequirements.length === 0)
+  ) {
+    errors.languageRequirements = "Language requirements must be specified";
   }
 
   return errors;
