@@ -98,6 +98,7 @@ const demoJobs: JobPost[] = [
     description: "Companionship and light assistance",
     skillsRequired: ["Compassion", "Patience", "Communication"],
     languageRequirements: ["English", "Spanish"],
+    licensesRequired: ["First Aid Certification"],
     payRangeHourly: { min: 20, max: 28 },
     locationCityArea: "San Jose, CA",
     schedule: {
