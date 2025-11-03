@@ -57,6 +57,12 @@ export default function Step4({ formData, onEditSection }: Step4Props) {
               <p className="text-slate-900 font-medium">${formData.payMax || '0'}</p>
             </div>
           </div>
+          <div>
+            <p className="text-xs font-medium text-slate-600 uppercase">Hours Required</p>
+            <p className="text-slate-900 font-medium">
+              {formData.variableHours ? 'Variable' : `${formData.hoursPerPeriod} hours per ${formData.hoursPeriodType}`}
+            </p>
+          </div>
         </div>
       </div>
 
