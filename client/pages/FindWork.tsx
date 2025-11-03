@@ -348,9 +348,38 @@ export default function FindWork() {
       const matchesPay =
         job.payRangeHourly.min >= minPay && job.payRangeHourly.max <= maxPay;
 
-      return matchesSearch && matchesCategory && matchesLocation && matchesPay;
+      // Language filter
+      const matchesLanguage =
+        selectedLanguages.length === 0 ||
+        selectedLanguages.some((lang) =>
+          job.languageRequirements.includes(lang)
+        );
+
+      // License filter
+      const matchesLicense =
+        selectedLicenses.length === 0 ||
+        selectedLicenses.some((license) =>
+          (job.licensesRequired || []).includes(license)
+        );
+
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesLocation &&
+        matchesPay &&
+        matchesLanguage &&
+        matchesLicense
+      );
     });
-  }, [searchQuery, selectedCategory, selectedLocation, minPay, maxPay]);
+  }, [
+    searchQuery,
+    selectedCategory,
+    selectedLocation,
+    minPay,
+    maxPay,
+    selectedLanguages,
+    selectedLicenses,
+  ]);
 
   const resetFilters = () => {
     setSearchQuery("");
