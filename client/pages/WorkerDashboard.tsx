@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { WorkerProfileCompletion } from "@/components/WorkerProfileCompletion";
 import { WorkerProfile } from "@/components/WorkerProfile";
+import { WorkerCollectivesPanel } from "@/components/WorkerCollectivesPanel";
 import { useAuth } from "@/contexts/AuthContext";
 import { Briefcase, CheckCircle } from "lucide-react";
 
