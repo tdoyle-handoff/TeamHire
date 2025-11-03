@@ -87,18 +87,6 @@ export const validateStep2 = (data: Partial<JobPostFormData>): StepErrors => {
 export const validateStep3 = (data: Partial<JobPostFormData>): StepErrors => {
   const errors: StepErrors = {};
 
-  if (!data.requireBackgroundCheck) {
-    errors.requireBackgroundCheck = 'Background check requirement must be specified';
-  }
-
-  if (!data.requireIntroVideo) {
-    errors.requireIntroVideo = 'Intro video requirement must be specified';
-  }
-
-  if (!data.requireReferences) {
-    errors.requireReferences = 'References requirement must be specified';
-  }
-
   if (!data.noLanguageRequirement && (!data.languageRequirements || data.languageRequirements.length === 0)) {
     errors.languageRequirements = 'Language requirements must be specified';
   }
