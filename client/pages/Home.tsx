@@ -11,12 +11,15 @@ import {
   DollarSign,
   CheckCircle,
   Star,
+  Zap,
 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { JobCard } from "@/components/JobCard";
 import { WorkerCard } from "@/components/WorkerCard";
 import { TrustBadge } from "@/components/TrustBadge";
-import { StatCard } from "@/components/StatCard";
+import { AnimatedStatCard } from "@/components/AnimatedStatCard";
+import { ScrollCue } from "@/components/ScrollCue";
+import { Testimonial } from "@/components/Testimonial";
 import { WorkerProfile, JobPost } from "@shared/types";
 
 // Demo data
