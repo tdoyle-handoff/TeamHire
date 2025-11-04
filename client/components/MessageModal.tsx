@@ -41,7 +41,7 @@ export const MessageModal: React.FC<MessageModalProps> = ({
       }
 
       // Send the message
-      await sendMessage(conversation.id, messageText.trim());
+      await sendMessage(conversation.id, messageText.trim(), []);
 
       // Reset and close
       setMessageText("");
