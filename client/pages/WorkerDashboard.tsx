@@ -11,8 +11,13 @@ import { cn } from "@/lib/utils";
 
 export default function WorkerDashboard() {
   const { user, userProfile } = useAuth();
+  const { conversations, messages, fetchMessages, sendMessage, loading } = useMessages();
   const [profileComplete, setProfileComplete] = useState(false);
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
+  const [messageText, setMessageText] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [attachedFiles, setAttachedFiles] = useState<Array<{ name: string; size: number; type: string }>>([]);
 
   return (
     <Layout>
