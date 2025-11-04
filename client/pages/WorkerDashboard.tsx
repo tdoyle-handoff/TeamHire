@@ -19,6 +19,47 @@ export default function WorkerDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<Array<{ name: string; size: number; type: string }>>([]);
 
+  const selectedConversation = conversations.find((c) => c.id === selectedConversationId);
+  const isSmallScreen = window.innerWidth < 768;
+  const showChat = !isSmallScreen || selectedConversationId;
+
+  const filteredConversations = conversations.filter((conv) =>
+    conv.other_participant?.displayName?.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const handleSelectConversation = (conversationId: string) => {
+    setSelectedConversationId(conversationId);
+    fetchMessages(conversationId);
+  };
+
+  const handleSendMessage = async () => {
+    if (!selectedConversationId || !messageText.trim()) return;
+
+    try {
+      await sendMessage(selectedConversationId, messageText.trim(), []);
+      setMessageText("");
+      setAttachedFiles([]);
+    } catch (err) {
+      console.error("Failed to send message:", err);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.currentTarget.files;
+    if (files) {
+      const newFiles = Array.from(files).map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      }));
+      setAttachedFiles([...attachedFiles, ...newFiles]);
+    }
+  };
+
+  const removeAttachment = (index: number) => {
+    setAttachedFiles(attachedFiles.filter((_, i) => i !== index));
+  };
+
   return (
     <Layout>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
