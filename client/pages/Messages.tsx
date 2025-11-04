@@ -45,7 +45,7 @@ export default function Messages() {
         fetchMessages(jobConversation.id);
       }
     }
-  }, [location.search, conversations]);
+  }, [location.search, conversations, fetchMessages]);
 
   const selectedConversation = conversations.find(
     (c) => c.id === selectedConversationId,
