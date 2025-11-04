@@ -349,12 +349,13 @@ export default function FindWork() {
     setApplicationModalOpen(true);
   };
 
-  const handleMessage = (jobId: string) => {
+  const handleMessage = (job: JobPost) => {
     if (!user) {
       navigate("/sign-in");
       return;
     }
-    navigate(`/messages?jobId=${jobId}`);
+    setSelectedJobForMessage(job);
+    setMessageModalOpen(true);
   };
 
   // Filter jobs based on all criteria
