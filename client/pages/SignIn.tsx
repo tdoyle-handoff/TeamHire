@@ -48,27 +48,23 @@ export default function SignIn() {
     }
   };
 
-  const handleDemoLogin = async (demoEmail: string, demoPassword: string) => {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
+  const handleDemoLogin = async (demoEmail: string, role: "worker" | "employer") => {
     clearError();
-
     setIsLoading(true);
 
     try {
-      await signIn(demoEmail, demoPassword);
+      // Use demoSignIn to skip authentication
+      await demoSignIn(demoEmail, role);
       toast({
         title: "Success",
-        description: "Demo account signed in successfully",
+        description: `Demo ${role} account signed in successfully`,
       });
       navigate("/dashboard");
     } catch (err) {
-      setEmail(demoEmail);
-      setPassword(demoPassword);
       toast({
-        title: "Demo Account Not Found",
+        title: "Demo Login Failed",
         description:
-          "Demo account credentials have been pre-filled. Please sign up first or try with your credentials.",
+          err instanceof Error ? err.message : "Failed to sign in with demo account",
         variant: "destructive",
       });
     } finally {
