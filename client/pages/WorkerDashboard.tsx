@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { WorkerProfileCompletion } from "@/components/WorkerProfileCompletion";
 import { WorkerProfile } from "@/components/WorkerProfile";
 import { WorkerCollectivesPanel } from "@/components/WorkerCollectivesPanel";
 import { WorkerApplicationsPanel } from "@/components/WorkerApplicationsPanel";
 import { useAuth } from "@/contexts/AuthContext";
-import { Briefcase, CheckCircle } from "lucide-react";
+import { useMessages } from "@/hooks/useMessages";
+import { Briefcase, CheckCircle, MessageSquare, Search, Send, Paperclip, X, Clock, Check, FileText } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function WorkerDashboard() {
   const { user, userProfile } = useAuth();
