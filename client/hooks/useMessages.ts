@@ -75,8 +75,6 @@ export const useMessages = () => {
         new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
       );
 
-      if (fetchError) throw fetchError;
-
       // Fetch participant details and unread counts
       const enrichedConversations = await Promise.all(
         (data || []).map(async (conv) => {
