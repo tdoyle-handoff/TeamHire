@@ -64,7 +64,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             >
               <Logo showText={false} size="md" />
               <span className="text-xl font-bold text-foreground hidden sm:inline">
-                TeamHire
+                Zipity
               </span>
             </Link>
 
@@ -198,7 +198,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="w-8 h-8 bg-gradient-to-br from-muted-blue to-natural-green rounded-lg flex items-center justify-center text-white font-bold text-sm">
                   TH
                 </div>
-                <span className="font-bold text-foreground">TeamHire</span>
+                <span className="font-bold text-foreground">Zipity</span>
               </Link>
               <p className="text-sm text-muted-foreground">
                 Work with dignity. Hire with trust.
@@ -295,7 +295,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </li>
                 <li>
                   <a
-                    href="mailto:hello@teamhire.com"
+                    href="mailto:hello@zipity.com"
                     className="hover:text-foreground transition-colors"
                   >
                     Contact
