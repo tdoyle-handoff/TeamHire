@@ -488,9 +488,6 @@ export default function WorkerDashboard() {
         {/* Applications Tab */}
         {activeTab === "applications" && <WorkerApplicationsPanel />}
 
-        {/* Profile Tab */}
-        {activeTab === "profile" && <WorkerProfile />}
-
         {/* Collectives Tab */}
         {activeTab === "collectives" && <WorkerCollectivesPanel />}
       </div>
