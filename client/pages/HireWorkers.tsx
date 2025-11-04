@@ -1,13 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import {
-  Search,
-  MapPin,
-  Star,
-  Filter,
-  X,
-  ChevronDown,
-} from "lucide-react";
+import { Search, MapPin, Star, Filter, X, ChevronDown } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { ReadAloudButton } from "@/components/ReadAloudButton";
@@ -121,9 +114,7 @@ export default function HireWorkers() {
     "All Locations",
     ...new Set(demoWorkers.map((w) => w.location)),
   ];
-  const allSkills = [
-    ...new Set(demoWorkers.flatMap((w) => w.skills)),
-  ].sort();
+  const allSkills = [...new Set(demoWorkers.flatMap((w) => w.skills))].sort();
 
   const filteredWorkers = useMemo(() => {
     return demoWorkers.filter((worker) => {
@@ -131,7 +122,7 @@ export default function HireWorkers() {
         worker.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         worker.bio?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         worker.skills.some((s) =>
-          s.toLowerCase().includes(searchQuery.toLowerCase())
+          s.toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
       const matchesLocation =
@@ -144,17 +135,13 @@ export default function HireWorkers() {
 
       const matchesRating = (worker.rating || 0) >= minRating;
 
-      return (
-        matchesSearch && matchesLocation && matchesSkills && matchesRating
-      );
+      return matchesSearch && matchesLocation && matchesSkills && matchesRating;
     });
   }, [searchQuery, selectedLocation, selectedSkills, minRating]);
 
   const toggleSkillFilter = (skill: string) => {
     setSelectedSkills((prev) =>
-      prev.includes(skill)
-        ? prev.filter((s) => s !== skill)
-        : [...prev, skill]
+      prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill],
     );
   };
 
@@ -319,7 +306,9 @@ export default function HireWorkers() {
 
                     {/* Bio */}
                     {worker.bio && (
-                      <p className="text-sm text-slate-600 mt-2">{worker.bio}</p>
+                      <p className="text-sm text-slate-600 mt-2">
+                        {worker.bio}
+                      </p>
                     )}
                   </div>
 
