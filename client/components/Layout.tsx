@@ -62,9 +62,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               to="/"
               className="hover:opacity-80 transition-opacity"
             >
-              <span className="text-xl font-bold text-foreground">
-                Zipity
-              </span>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fd17493787dd14ef798478b15abccc651%2Fcd94e4c839304a6ba91f8b2c3543853c?format=webp&width=800"
+                alt="Zipity"
+                className="h-10 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}
