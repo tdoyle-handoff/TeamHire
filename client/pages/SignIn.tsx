@@ -90,7 +90,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() =>
-                handleDemoLogin("demo.employer@zipity.com", "Demo123!@#")
+                handleDemoLogin("demo.employer@zipity.com", "employer")
               }
               disabled={isLoading}
               className="w-full px-4 py-2.5 bg-[#3BA55C] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"
@@ -100,7 +100,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() =>
-                handleDemoLogin("demo.worker@zipity.com", "Demo123!@#")
+                handleDemoLogin("demo.worker@zipity.com", "worker")
               }
               disabled={isLoading}
               className="w-full px-4 py-2.5 bg-[#24405A] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"
