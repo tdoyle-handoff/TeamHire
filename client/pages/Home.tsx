@@ -99,32 +99,32 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Saved Searches */}
                     <div>
-                      <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                      <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
                         <Heart className="w-5 h-5 text-blue-600 fill-blue-600" />
                         Saved Searches
                       </h3>
-                      <div className="space-y-2">
+                      <div className="flex flex-wrap gap-3">
                         <button
                           onClick={() => setSearchQuery("Barista")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Barista
                         </button>
                         <button
                           onClick={() => setSearchQuery("Driver")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Driver
                         </button>
                         <button
                           onClick={() => setSearchQuery("Housekeeper")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Housekeeper
                         </button>
                         <button
                           onClick={() => setSearchQuery("Hairdresser")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Hairdresser
                         </button>
