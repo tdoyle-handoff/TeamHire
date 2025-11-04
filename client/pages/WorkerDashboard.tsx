@@ -75,10 +75,10 @@ export default function WorkerDashboard() {
 
         {/* Tab Navigation */}
         <div className="mb-8 bg-white rounded-lg border border-slate-200 border-b-0">
-          <div className="flex gap-4 border-b border-slate-200 px-6">
+          <div className="flex gap-4 border-b border-slate-200 px-6 overflow-x-auto">
             <button
               onClick={() => setActiveTab("dashboard")}
-              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors whitespace-nowrap ${
                 activeTab === "dashboard"
                   ? "text-slate-900 border-blue-600"
                   : "text-slate-600 border-transparent hover:text-slate-900"
@@ -87,8 +87,24 @@ export default function WorkerDashboard() {
               Dashboard
             </button>
             <button
+              onClick={() => setActiveTab("your-jobs")}
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors whitespace-nowrap flex items-center gap-2 ${
+                activeTab === "your-jobs"
+                  ? "text-slate-900 border-blue-600"
+                  : "text-slate-600 border-transparent hover:text-slate-900"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              Your Jobs
+              {conversations.length > 0 && (
+                <span className="ml-1 px-2 py-0.5 bg-slate-200 rounded-full text-xs font-semibold">
+                  {conversations.length}
+                </span>
+              )}
+            </button>
+            <button
               onClick={() => setActiveTab("applications")}
-              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors whitespace-nowrap ${
                 activeTab === "applications"
                   ? "text-slate-900 border-blue-600"
                   : "text-slate-600 border-transparent hover:text-slate-900"
@@ -98,7 +114,7 @@ export default function WorkerDashboard() {
             </button>
             <button
               onClick={() => setActiveTab("profile")}
-              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors whitespace-nowrap ${
                 activeTab === "profile"
                   ? "text-slate-900 border-blue-600"
                   : "text-slate-600 border-transparent hover:text-slate-900"
@@ -108,7 +124,7 @@ export default function WorkerDashboard() {
             </button>
             <button
               onClick={() => setActiveTab("collectives")}
-              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors ${
+              className={`px-4 py-3 font-medium text-sm border-b-2 -mb-px transition-colors whitespace-nowrap ${
                 activeTab === "collectives"
                   ? "text-slate-900 border-blue-600"
                   : "text-slate-600 border-transparent hover:text-slate-900"
