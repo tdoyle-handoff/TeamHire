@@ -235,6 +235,12 @@ export default function WorkerDashboard() {
                 </p>
               </div>
             </div>
+
+            {/* Profile Section */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Your Profile</h2>
+              <WorkerProfile />
+            </div>
           </>
         )}
 
