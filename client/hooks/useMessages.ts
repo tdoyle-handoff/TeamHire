@@ -204,15 +204,27 @@ export const useMessages = () => {
     if (!user) return;
 
     try {
-      const { data: existing } = await supabase
+      // Try to find existing conversation (both directions)
+      const { data: existing, error: existError } = await supabase
         .from("conversations")
         .select("*")
-        .or(
-          `and(participant1_id.eq.${user.id},participant2_id.eq.${otherUserId}),and(participant1_id.eq.${otherUserId},participant2_id.eq.${user.id})`
-        )
+        .eq("participant1_id", user.id)
+        .eq("participant2_id", otherUserId)
         .single();
 
       if (existing) return existing;
+
+      // If not found, try reverse order
+      if (existError?.code === "PGRST116") {
+        const { data: existing2, error: existError2 } = await supabase
+          .from("conversations")
+          .select("*")
+          .eq("participant1_id", otherUserId)
+          .eq("participant2_id", user.id)
+          .single();
+
+        if (existing2) return existing2;
+      }
 
       // Create new conversation
       const { data: newConv, error: createError } = await supabase
