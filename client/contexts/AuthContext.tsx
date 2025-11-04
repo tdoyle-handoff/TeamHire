@@ -19,7 +19,7 @@ interface AuthContextType {
     email: string,
     password: string,
     role: "worker" | "employer",
-    displayName: string
+    displayName: string,
   ) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   demoSignIn: (email: string, role: "worker" | "employer") => Promise<void>;
@@ -99,7 +99,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     email: string,
     password: string,
     role: "worker" | "employer",
-    displayName: string
+    displayName: string,
   ) => {
     try {
       setError(null);
@@ -144,12 +144,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const signIn = async (email: string, password: string) => {
     try {
       setError(null);
-      const { data, error: signInError } = await supabase.auth.signInWithPassword(
-        {
+      const { data, error: signInError } =
+        await supabase.auth.signInWithPassword({
           email,
           password,
-        }
-      );
+        });
 
       if (signInError) throw signInError;
 

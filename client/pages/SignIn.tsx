@@ -48,7 +48,10 @@ export default function SignIn() {
     }
   };
 
-  const handleDemoLogin = async (demoEmail: string, role: "worker" | "employer") => {
+  const handleDemoLogin = async (
+    demoEmail: string,
+    role: "worker" | "employer",
+  ) => {
     clearError();
     setIsLoading(true);
 
@@ -64,7 +67,9 @@ export default function SignIn() {
       toast({
         title: "Demo Login Failed",
         description:
-          err instanceof Error ? err.message : "Failed to sign in with demo account",
+          err instanceof Error
+            ? err.message
+            : "Failed to sign in with demo account",
         variant: "destructive",
       });
     } finally {
