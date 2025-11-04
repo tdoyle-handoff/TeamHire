@@ -115,7 +115,7 @@ export default function WorkerDashboard() {
               }`}
             >
               <MessageSquare className="w-4 h-4" />
-              Your Jobs
+              Messages
               {conversations.length > 0 && (
                 <span className="ml-1 px-2 py-0.5 bg-slate-200 rounded-full text-xs font-semibold">
                   {conversations.length}
