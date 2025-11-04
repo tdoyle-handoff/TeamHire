@@ -48,16 +48,32 @@ export const useMessages = () => {
   // Fetch all conversations for current user
   const fetchConversations = async () => {
     if (!user) return;
-    
+
     setLoading(true);
     try {
-      const { data, error: fetchError } = await supabase
+      // Fetch conversations where user is participant1
+      const { data: conversations1, error: error1 } = await supabase
         .from("conversations")
         .select("*")
-        .or(
-          `participant1_id.eq.${user.id},participant2_id.eq.${user.id}`
-        )
+        .eq("participant1_id", user.id)
         .order("last_message_at", { ascending: false });
+
+      // Fetch conversations where user is participant2
+      const { data: conversations2, error: error2 } = await supabase
+        .from("conversations")
+        .select("*")
+        .eq("participant2_id", user.id)
+        .order("last_message_at", { ascending: false });
+
+      if (error1) throw error1;
+      if (error2) throw error2;
+
+      const data = [
+        ...(conversations1 || []),
+        ...(conversations2 || []),
+      ].sort((a, b) =>
+        new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
+      );
 
       if (fetchError) throw fetchError;
 
