@@ -47,8 +47,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           },
         ]
       : []),
-    { href: "/how-it-works", label: "How It Works" },
-    { href: "/about", label: "About" },
+    ...(!user
+      ? [
+          { href: "/how-it-works", label: "How It Works" },
+          { href: "/about", label: "About" },
+        ]
+      : []),
   ];
 
   const isActive = (href: string) => location.pathname === href;
