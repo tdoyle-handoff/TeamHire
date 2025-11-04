@@ -25,6 +25,7 @@ import Categories from "./pages/Categories";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
