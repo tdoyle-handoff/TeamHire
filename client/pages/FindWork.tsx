@@ -848,6 +848,25 @@ export default function FindWork() {
           }}
         />
       )}
+
+      {/* Message Modal */}
+      {selectedJobForMessage && (
+        <MessageModal
+          isOpen={messageModalOpen}
+          onClose={() => {
+            setMessageModalOpen(false);
+            setSelectedJobForMessage(null);
+          }}
+          job={selectedJobForMessage}
+          onMessageSent={() => {
+            toast({
+              title: "Message sent!",
+              description: `Your message to ${selectedJobForMessage.employerName} has been sent.`,
+            });
+            navigate("/messages");
+          }}
+        />
+      )}
     </Layout>
   );
 }
