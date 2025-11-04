@@ -30,7 +30,7 @@ const translations: Translations = {
     "safety.ratings": "Employers rated for fairness",
     "cta.postJob": "Post a Job",
     "cta.findWork": "Find Work",
-    "footer.copyright": "© 2024 TeamHire. All rights reserved.",
+    "footer.copyright": "© 2024 Zipity. All rights reserved.",
   },
   es: {
     "nav.home": "Inicio",
@@ -53,7 +53,7 @@ const translations: Translations = {
     "safety.ratings": "Empleadores calificados por equidad",
     "cta.postJob": "Publicar Trabajo",
     "cta.findWork": "Buscar Trabajo",
-    "footer.copyright": "© 2024 TeamHire. Todos los derechos reservados.",
+    "footer.copyright": "© 2024 Zipity. Todos los derechos reservados.",
   },
   pt: {
     "nav.home": "Início",
@@ -76,7 +76,7 @@ const translations: Translations = {
     "safety.ratings": "Empregadores classificados por equidade",
     "cta.postJob": "Postar Trabalho",
     "cta.findWork": "Encontrar Trabalho",
-    "footer.copyright": "© 2024 TeamHire. Todos os direitos reservados.",
+    "footer.copyright": "© 2024 Zipity. Todos os direitos reservados.",
   },
   ht: {
     "nav.home": "Akèy",
@@ -99,7 +99,7 @@ const translations: Translations = {
     "safety.ratings": "Anplwayè klase pou ekite",
     "cta.postJob": "Poste Travay",
     "cta.findWork": "Chèche Travay",
-    "footer.copyright": "© 2024 TeamHire. Tout dwa rezève.",
+    "footer.copyright": "© 2024 Zipity. Tout dwa rezève.",
   },
   zh: {
     "nav.home": "首页",
@@ -120,7 +120,7 @@ const translations: Translations = {
     "safety.ratings": "根据公平性评定雇主",
     "cta.postJob": "发布工作",
     "cta.findWork": "找工作",
-    "footer.copyright": "© 2024 TeamHire。保留所有权利。",
+    "footer.copyright": "© 2024 Zipity。保留所有权利。",
   },
 };
 

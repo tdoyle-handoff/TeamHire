@@ -83,7 +83,7 @@ export default function SignIn() {
           {/* Header */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl font-bold text-slate-900">Sign In</h1>
-            <p className="text-slate-600 mt-2">Access your TeamHire account</p>
+            <p className="text-slate-600 mt-2">Access your Zipity account</p>
           </div>
 
           {/* Demo Login Buttons */}
@@ -94,7 +94,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() =>
-                handleDemoLogin("demo.employer@teamhire.com", "Demo123!@#")
+                handleDemoLogin("demo.employer@zipity.com", "Demo123!@#")
               }
               disabled={isLoading}
               className="w-full px-4 py-2.5 bg-[#3BA55C] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"
@@ -104,7 +104,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() =>
-                handleDemoLogin("demo.worker@teamhire.com", "Demo123!@#")
+                handleDemoLogin("demo.worker@zipity.com", "Demo123!@#")
               }
               disabled={isLoading}
               className="w-full px-4 py-2.5 bg-[#24405A] text-white font-medium rounded-lg hover:opacity-90 disabled:opacity-50 transition-all text-sm"

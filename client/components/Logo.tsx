@@ -42,7 +42,7 @@ export const Logo: React.FC<LogoProps> = ({ showText = true, size = "md" }) => {
       </div>
       {showText && (
         <span className={`${textSizeMap[size]} font-bold text-foreground`}>
-          TeamHire
+          Zipity
         </span>
       )}
     </div>

@@ -11,7 +11,7 @@ export default function About() {
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              About TeamHire
+              About Zipity
             </h1>
             <p className="text-xl text-muted-foreground">
               Dignifying blue-collar and non-degree work. Rebuilding trust
@@ -30,7 +30,7 @@ export default function About() {
                 We're on a mission to replace sketchy, dehumanizing hiring
                 experiences with safety, respect, and transparency. Blue-collar
                 and non-degree labor built this world—it deserves better than
-                Craigslist and Indeed. TeamHire gives workers dignity and
+                Craigslist and Indeed. Zipity gives workers dignity and
                 employers trustworthy candidates.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function About() {
                 without risking their time and money. Both sides deserve better.
               </p>
               <p className="text-muted-foreground mb-4">
-                TeamHire changes this. By putting dignity first—protecting
+                Zipity changes this. By putting dignity first—protecting
                 privacy, enabling verification, and building accountability—we
                 create a marketplace where both workers and employers can trust
                 each other.
@@ -112,10 +112,10 @@ export default function About() {
             </div>
           </div>
 
-          {/* Why Choose TeamHire */}
+          {/* Why Choose Zipity */}
           <div className="max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-foreground mb-6 text-center">
-              Why Choose TeamHire?
+              Why Choose Zipity?
             </h2>
             <div className="space-y-4">
               {[

@@ -14,7 +14,7 @@ export default function SafetyPrivacy() {
               Safety & Privacy
             </h1>
             <p className="text-lg text-muted-foreground">
-              Your safety and privacy are our top priorities. Learn how TeamHire
+              Your safety and privacy are our top priorities. Learn how Zipity
               protects you while building trust between workers and employers.
             </p>
           </div>
@@ -190,7 +190,7 @@ export default function SafetyPrivacy() {
               <p className="text-sm text-muted-foreground">
                 Have privacy concerns or want to report unsafe behavior?{" "}
                 <a
-                  href="mailto:safety@teamhire.com"
+                  href="mailto:safety@zipity.com"
                   className="text-primary font-semibold hover:underline"
                 >
                   Contact our safety team

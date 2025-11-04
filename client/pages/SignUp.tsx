@@ -85,7 +85,7 @@ export default function SignUp() {
           {/* Header */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl font-bold text-slate-900">Create Account</h1>
-            <p className="text-slate-600 mt-2">Join TeamHire today</p>
+            <p className="text-slate-600 mt-2">Join Zipity today</p>
           </div>
 
           {step === "role" ? (
