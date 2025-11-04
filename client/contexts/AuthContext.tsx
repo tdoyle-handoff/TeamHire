@@ -237,6 +237,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     error,
     signUp,
     signIn,
+    demoSignIn,
     signOut,
     clearError,
   };
