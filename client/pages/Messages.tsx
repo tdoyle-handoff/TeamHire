@@ -197,7 +197,7 @@ export default function Messages() {
               )}
             >
               <MessageSquare className="w-5 h-5" />
-              Messages
+              Your Jobs
               {conversations.length > 0 && (
                 <span className="ml-2 px-2 py-0.5 bg-slate-200 rounded-full text-xs font-semibold">
                   {conversations.length}
