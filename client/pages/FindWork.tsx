@@ -13,6 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { JobPost } from "@shared/types";
 import { ReadAloudButton } from "@/components/ReadAloudButton";
 import { ApplicationModal } from "@/components/ApplicationModal";
+import { MessageModal } from "@/components/MessageModal";
 import { useToast } from "@/hooks/use-toast";
 
 // Demo jobs data
