@@ -133,56 +133,56 @@ export default function Home() {
 
                     {/* Popular Searches */}
                     <div>
-                      <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                      <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
                         <TrendingUp className="w-5 h-5 text-blue-600" />
                         Popular Searches
                       </h3>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="flex flex-wrap gap-3">
                         <button
                           onClick={() => setSearchQuery("Cleaning Lady")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Cleaning Lady
                         </button>
                         <button
                           onClick={() => setSearchQuery("Retail Sales")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Retail Sales
                         </button>
                         <button
                           onClick={() => setSearchQuery("Rideshare Driver")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Rideshare Driver
                         </button>
                         <button
                           onClick={() => setSearchQuery("Dog Walker")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Dog Walker
                         </button>
                         <button
                           onClick={() => setSearchQuery("Babysitter")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Babysitter
                         </button>
                         <button
                           onClick={() => setSearchQuery("Event Staff")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Event Staff
                         </button>
                         <button
                           onClick={() => setSearchQuery("Language Tutor")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Language Tutor
                         </button>
                         <button
                           onClick={() => setSearchQuery("Virtual Assistant")}
-                          className="text-left text-slate-700 hover:text-blue-600 hover:underline transition-colors"
+                          className="px-3 py-1.5 bg-white text-slate-700 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-colors text-sm"
                         >
                           Virtual Assistant
                         </button>
