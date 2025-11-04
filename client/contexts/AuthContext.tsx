@@ -22,6 +22,7 @@ interface AuthContextType {
     displayName: string
   ) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
+  demoSignIn: (email: string, role: "worker" | "employer") => Promise<void>;
   signOut: () => Promise<void>;
   clearError: () => void;
 }
