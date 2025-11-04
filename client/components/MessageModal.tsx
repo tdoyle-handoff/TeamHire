@@ -62,7 +62,8 @@ export const MessageModal: React.FC<MessageModalProps> = ({
       onMessageSent?.();
       onClose();
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to send message";
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to send message";
       console.error("Message send error:", errorMessage, err);
       setError(errorMessage);
     } finally {

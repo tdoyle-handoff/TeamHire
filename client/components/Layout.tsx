@@ -58,10 +58,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
-            <Link
-              to="/"
-              className="hover:opacity-80 transition-opacity"
-            >
+            <Link to="/" className="hover:opacity-80 transition-opacity">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fd17493787dd14ef798478b15abccc651%2Fcd94e4c839304a6ba91f8b2c3543853c?format=webp&width=800"
                 alt="Zipity"

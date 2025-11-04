@@ -84,7 +84,9 @@ export default function SignUp() {
         <div className="w-full max-w-md">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-slate-900">Create Account</h1>
+            <h1 className="text-3xl font-bold text-slate-900">
+              Create Account
+            </h1>
             <p className="text-slate-600 mt-2">Join Zipity today</p>
           </div>
 
@@ -140,7 +142,10 @@ export default function SignUp() {
             </div>
           ) : (
             // Account Details Form
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-8 space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white rounded-lg shadow-sm p-8 space-y-6"
+            >
               {/* Back Button */}
               <button
                 type="button"
@@ -160,7 +165,10 @@ export default function SignUp() {
 
               {/* Display Name */}
               <div>
-                <label htmlFor="displayName" className="block text-sm font-medium text-slate-900 mb-2">
+                <label
+                  htmlFor="displayName"
+                  className="block text-sm font-medium text-slate-900 mb-2"
+                >
                   Full Name
                 </label>
                 <input
@@ -176,7 +184,10 @@ export default function SignUp() {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-slate-900 mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -192,7 +203,10 @@ export default function SignUp() {
 
               {/* Password */}
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-slate-900 mb-2">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-slate-900 mb-2"
+                >
                   Password
                 </label>
                 <div className="relative">
@@ -224,7 +238,10 @@ export default function SignUp() {
 
               {/* Confirm Password */}
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-900 mb-2">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium text-slate-900 mb-2"
+                >
                   Confirm Password
                 </label>
                 <div className="relative">

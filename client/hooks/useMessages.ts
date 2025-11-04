@@ -68,11 +68,10 @@ export const useMessages = () => {
       if (error1) throw error1;
       if (error2) throw error2;
 
-      const data = [
-        ...(conversations1 || []),
-        ...(conversations2 || []),
-      ].sort((a, b) =>
-        new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
+      const data = [...(conversations1 || []), ...(conversations2 || [])].sort(
+        (a, b) =>
+          new Date(b.last_message_at).getTime() -
+          new Date(a.last_message_at).getTime(),
       );
 
       // Fetch participant details and unread counts
@@ -112,12 +111,14 @@ export const useMessages = () => {
             unread_count: count || 0,
             last_message: lastMsg?.content || "",
           };
-        })
+        }),
       );
 
       setConversations(enrichedConversations);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch conversations");
+      setError(
+        err instanceof Error ? err.message : "Failed to fetch conversations",
+      );
     } finally {
       setLoading(false);
     }
@@ -141,7 +142,7 @@ export const useMessages = () => {
 
       // Mark messages as read
       const unreadMessages = (data || []).filter(
-        (m) => !m.read_at && m.sender_id !== user.id
+        (m) => !m.read_at && m.sender_id !== user.id,
       );
 
       if (unreadMessages.length > 0) {
@@ -150,7 +151,7 @@ export const useMessages = () => {
           .update({ read_at: new Date().toISOString() })
           .in(
             "id",
-            unreadMessages.map((m) => m.id)
+            unreadMessages.map((m) => m.id),
           );
       }
     } catch (err) {
@@ -164,7 +165,7 @@ export const useMessages = () => {
   const sendMessage = async (
     conversationId: string,
     content: string,
-    attachments?: MessageAttachment[]
+    attachments?: MessageAttachment[],
   ) => {
     if (!user) return;
 
@@ -189,9 +190,7 @@ export const useMessages = () => {
           ...att,
         }));
 
-        await supabase
-          .from("message_attachments")
-          .insert(attachmentInserts);
+        await supabase.from("message_attachments").insert(attachmentInserts);
       }
 
       // Update conversation
@@ -213,7 +212,7 @@ export const useMessages = () => {
   // Create or get conversation
   const getOrCreateConversation = async (
     otherUserId: string,
-    jobId?: string
+    jobId?: string,
   ) => {
     if (!user) return;
 
@@ -257,7 +256,9 @@ export const useMessages = () => {
 
       return newConv;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to create conversation");
+      setError(
+        err instanceof Error ? err.message : "Failed to create conversation",
+      );
       throw err;
     }
   };
