@@ -37,32 +37,35 @@ const App = () => (
             <CollectiveProvider>
               <ApplicationProvider>
                 <AuthProvider>
-                <Toaster />
-                <Sonner />
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/how-it-works" element={<HowItWorks />} />
-                    <Route path="/categories" element={<Categories />} />
-                    <Route path="/sign-in" element={<SignIn />} />
-                    <Route path="/sign-up" element={<SignUp />} />
-                    <Route path="/messages" element={<Messages />} />
-                    <Route path="/dashboard" element={<WorkerDashboard />} />
-                    <Route
-                      path="/employer-dashboard"
-                      element={<EmployerDashboard />}
-                    />
-                    <Route path="/safety-privacy" element={<SafetyPrivacy />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/find-work" element={<FindWork />} />
-                    <Route path="/jobs" element={<FindWork />} />
-                    <Route path="/hire-workers" element={<HireWorkers />} />
-                    <Route path="/workers" element={<HireWorkers />} />
-                    <Route path="/post-job" element={<PostJob />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </BrowserRouter>
+                  <Toaster />
+                  <Sonner />
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/how-it-works" element={<HowItWorks />} />
+                      <Route path="/categories" element={<Categories />} />
+                      <Route path="/sign-in" element={<SignIn />} />
+                      <Route path="/sign-up" element={<SignUp />} />
+                      <Route path="/messages" element={<Messages />} />
+                      <Route path="/dashboard" element={<WorkerDashboard />} />
+                      <Route
+                        path="/employer-dashboard"
+                        element={<EmployerDashboard />}
+                      />
+                      <Route
+                        path="/safety-privacy"
+                        element={<SafetyPrivacy />}
+                      />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/find-work" element={<FindWork />} />
+                      <Route path="/jobs" element={<FindWork />} />
+                      <Route path="/hire-workers" element={<HireWorkers />} />
+                      <Route path="/workers" element={<HireWorkers />} />
+                      <Route path="/post-job" element={<PostJob />} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </BrowserRouter>
                 </AuthProvider>
               </ApplicationProvider>
             </CollectiveProvider>
