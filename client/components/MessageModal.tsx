@@ -24,12 +24,22 @@ export const MessageModal: React.FC<MessageModalProps> = ({
   const [error, setError] = useState<string | null>(null);
 
   const handleSendMessage = async () => {
-    if (!messageText.trim() || !user || !userProfile) return;
+    if (!messageText.trim()) {
+      setError("Message cannot be empty");
+      return;
+    }
+
+    if (!user) {
+      setError("You must be logged in to send a message");
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
 
     try {
+      console.log("Creating conversation with employer:", job.employerId);
+
       // Create or get conversation with the employer
       const conversation = await getOrCreateConversation(
         job.employerId,
@@ -40,15 +50,21 @@ export const MessageModal: React.FC<MessageModalProps> = ({
         throw new Error("Failed to create conversation");
       }
 
+      console.log("Conversation created/found:", conversation.id);
+
       // Send the message
-      await sendMessage(conversation.id, messageText.trim(), []);
+      const result = await sendMessage(conversation.id, messageText.trim(), []);
+
+      console.log("Message sent successfully:", result);
 
       // Reset and close
       setMessageText("");
       onMessageSent?.();
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to send message");
+      const errorMessage = err instanceof Error ? err.message : "Failed to send message";
+      console.error("Message send error:", errorMessage, err);
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
