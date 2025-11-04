@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const { signIn, error, clearError } = useAuth();
+  const { signIn, demoSignIn, error, clearError } = useAuth();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
