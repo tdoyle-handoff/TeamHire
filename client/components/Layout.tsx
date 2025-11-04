@@ -36,7 +36,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       ? [{ href: "/find-work", label: "Find a Job" }]
       : []),
     ...(!user || viewMode === "employer"
-      ? [{ href: "/post-job", label: "Post a Job" }]
+      ? [
+          { href: "/hire-workers", label: "Browse Workers" },
+          { href: "/post-job", label: "Post a Job" },
+        ]
       : []),
     ...(user && userProfile
       ? [
