@@ -62,8 +62,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               to="/"
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              <Logo showText={false} size="md" />
-              <span className="text-xl font-bold text-foreground hidden sm:inline">
+              <span className="text-xl font-bold text-foreground">
                 Zipity
               </span>
             </Link>
