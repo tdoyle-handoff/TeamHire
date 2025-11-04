@@ -17,8 +17,9 @@ import { cn } from "@/lib/utils";
 
 export default function Messages() {
   const { user, userProfile } = useAuth();
-  const { conversations, messages, fetchMessages, sendMessage, loading } =
+  const { conversations, messages, fetchMessages, sendMessage, loading, fetchConversations } =
     useMessages();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState<"messages" | "applications">(
     "messages",
   );
@@ -30,6 +31,21 @@ export default function Messages() {
   const [attachedFiles, setAttachedFiles] = useState<
     Array<{ name: string; size: number; type: string }>
   >([]);
+
+  // Handle jobId query parameter to auto-load conversation
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const jobId = params.get("jobId");
+
+    if (jobId && conversations.length > 0) {
+      // Find conversation related to this job
+      const jobConversation = conversations.find((c) => c.job_id === jobId);
+      if (jobConversation) {
+        setSelectedConversationId(jobConversation.id);
+        fetchMessages(jobConversation.id);
+      }
+    }
+  }, [location.search, conversations]);
 
   const selectedConversation = conversations.find(
     (c) => c.id === selectedConversationId,
