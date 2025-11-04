@@ -173,6 +173,45 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  const demoSignIn = async (email: string, role: "worker" | "employer") => {
+    try {
+      setError(null);
+
+      // Create a mock user object for demo
+      const mockUserId = `demo-${role}-${Date.now()}`;
+      const mockUser = {
+        id: mockUserId,
+        email,
+        user_metadata: {},
+        app_metadata: {},
+        aud: "authenticated",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        email_confirmed_at: new Date().toISOString(),
+        phone: "",
+        confirmed_at: new Date().toISOString(),
+      } as unknown as User;
+
+      // Create mock profile
+      const displayName = role === "worker" ? "Demo Worker" : "Demo Employer";
+      const mockProfile: UserProfile = {
+        id: mockUserId,
+        role,
+        displayName,
+        email,
+      };
+
+      // Set user and profile directly (skipping Supabase auth)
+      setUser(mockUser);
+      setUserProfile(mockProfile);
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Demo sign in failed";
+      setError(errorMessage);
+      throw err;
+    }
+  };
+
   const signOut = async () => {
     try {
       setError(null);
