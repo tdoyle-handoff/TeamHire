@@ -17,8 +17,14 @@ import { cn } from "@/lib/utils";
 
 export default function Messages() {
   const { user, userProfile } = useAuth();
-  const { conversations, messages, fetchMessages, sendMessage, loading, fetchConversations } =
-    useMessages();
+  const {
+    conversations,
+    messages,
+    fetchMessages,
+    sendMessage,
+    loading,
+    fetchConversations,
+  } = useMessages();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<"messages" | "applications">(
     "messages",

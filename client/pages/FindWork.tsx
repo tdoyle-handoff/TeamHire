@@ -338,7 +338,8 @@ export default function FindWork() {
   const [applicationModalOpen, setApplicationModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
   const [messageModalOpen, setMessageModalOpen] = useState(false);
-  const [selectedJobForMessage, setSelectedJobForMessage] = useState<JobPost | null>(null);
+  const [selectedJobForMessage, setSelectedJobForMessage] =
+    useState<JobPost | null>(null);
 
   const handleApplyNow = (job: JobPost) => {
     if (!user) {

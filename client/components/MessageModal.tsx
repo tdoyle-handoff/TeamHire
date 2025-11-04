@@ -31,7 +31,10 @@ export const MessageModal: React.FC<MessageModalProps> = ({
 
     try {
       // Create or get conversation with the employer
-      const conversation = await getOrCreateConversation(job.employerId, job.id);
+      const conversation = await getOrCreateConversation(
+        job.employerId,
+        job.id,
+      );
 
       if (!conversation) {
         throw new Error("Failed to create conversation");
@@ -45,9 +48,7 @@ export const MessageModal: React.FC<MessageModalProps> = ({
       onMessageSent?.();
       onClose();
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to send message"
-      );
+      setError(err instanceof Error ? err.message : "Failed to send message");
     } finally {
       setIsLoading(false);
     }
@@ -82,8 +83,8 @@ export const MessageModal: React.FC<MessageModalProps> = ({
               <span className="font-medium text-slate-900">{job.title}</span>
               <br />
               <span className="text-xs">
-                Posted by {job.employerName} • $
-                {job.payRangeHourly.min}-${job.payRangeHourly.max}/hr
+                Posted by {job.employerName} • ${job.payRangeHourly.min}-$
+                {job.payRangeHourly.max}/hr
               </span>
             </p>
           </div>
